@@ -26,12 +26,19 @@ namespace DoCeluNaCzasMobile.ViewModels.Register
 
                     if (isSuccess)
                     {
-                        var masterPage = new MainMasterPage();
-                        masterPage.Title = App.Current.MainPage.Title;
-                        masterPage.Detail = new NavigationPage(new UserAccountPage());
-
-                        App.Current.MainPage = masterPage;
+                        NavigationService.NewMasterPage("UserAccountPage");
                     }
+                });
+            }
+        }
+
+        public ICommand NavigateToLoginPageCommand
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    NavigationService.NewMasterPage("UserAccountPage");
                 });
             }
         }

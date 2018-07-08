@@ -3,25 +3,25 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewModels="clr-namespace:DoCeluNaCzasMobile.ViewModels.Login"
              x:Class="DoCeluNaCzasMobile.Views.UserAccount.Views.LoginAndRegistrationView">
-    
+
     <ContentView.BindingContext>
         <viewModels:LoginViewModel/>
     </ContentView.BindingContext>
-    
+
     <ContentView.Content>
         <StackLayout VerticalOptions="Center"
                      Margin="20">
-            
+
             <Entry  x:Name="EmailEntry"
                     Text="{Binding Username}"
                     Placeholder="Email"
                     Keyboard="Email"/>
-            
+
             <Entry  x:Name="PasswordEntry"
                     Text="{Binding Password}"
                     IsPassword="True"
                     Placeholder="Password"/>
-            
+
             <Button x:Name="LoginButton"
                     Command="{Binding LoginCommand}"
                     Text="Login"/>
@@ -30,11 +30,11 @@
                    HorizontalOptions="CenterAndExpand"
                    FontSize="Medium"
                    TextColor="DodgerBlue">
-                
+
                 <Label.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding RegisterCommand}" />
                 </Label.GestureRecognizers>
-                
+
             </Label>
 
         </StackLayout>

@@ -31,11 +31,7 @@ namespace DoCeluNaCzasMobile.ViewModels.Login
             {
                 return new Command(() =>
                 {
-                    var masterPage = new MainMasterPage();
-                    masterPage.Title = App.Current.MainPage.Title;
-                    masterPage.Detail = new NavigationPage(new RegisterPage());
-
-                    App.Current.MainPage = masterPage;
+                    NavigationService.NewMasterPage("RegisterPage");
                 });
             }
         }

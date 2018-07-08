@@ -63,12 +63,8 @@ namespace DoCeluNaCzasMobile.Services
             var user = JsonConvert.DeserializeObject<User>(content);
 
             App.Current.Properties["user"] = user;
-
-            var masterPage = new MainMasterPage();
-            masterPage.Title = App.Current.MainPage.Title;
-            masterPage.Detail = new NavigationPage(new UserAccountPage());
-
-            App.Current.MainPage = masterPage;
+            
+            NavigationService.NewMasterPage("UserAccountPage");
         }
 
         private string removeChars(string content)

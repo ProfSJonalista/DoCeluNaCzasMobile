@@ -17,14 +17,5 @@ namespace DoCeluNaCzasMobile.Views.UserAccount
 		{
 			InitializeComponent ();
 		}
-
-        private void OpenLoginPage_Clicked(object sender, EventArgs e)
-        {
-            var masterPage = new MainMasterPage();
-            masterPage.Title = App.Current.MainPage.Title;
-            masterPage.Detail = new NavigationPage(new UserAccountPage());
-
-            App.Current.MainPage = masterPage;
-        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using DoCeluNaCzasMobile.Models;
+using DoCeluNaCzasMobile.Services;
 using DoCeluNaCzasMobile.Views;
 using DoCeluNaCzasMobile.Views.DetailPages;
 using System;
@@ -19,11 +20,7 @@ namespace DoCeluNaCzasMobile.ViewModels.UserLoggedIn
                 {
                     App.Current.Properties["user"] = new User();
 
-                    var masterPage = new MainMasterPage();
-                    masterPage.Title = App.Current.MainPage.Title;
-                    masterPage.Detail = new NavigationPage(new UserAccountPage());
-
-                    App.Current.MainPage = masterPage;
+                    NavigationService.NewMasterPage("UserAccountPage");
                 });
             }
         }
