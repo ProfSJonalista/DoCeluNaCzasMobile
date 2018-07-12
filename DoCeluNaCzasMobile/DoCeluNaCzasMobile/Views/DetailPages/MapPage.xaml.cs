@@ -10,13 +10,13 @@ using Xamarin.Forms.Xaml;
 namespace DoCeluNaCzasMobile.Views.DetailPages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class MapPage : ContentPage
-	{
+    public partial class MapPage : ContentPage
+    {
         private double distance = 1.0;
-		public MapPage ()
-		{
-			InitializeComponent ();
-		}
+        public MapPage()
+        {
+            InitializeComponent();
+        }
 
         protected async override void OnAppearing()
         {
@@ -28,9 +28,25 @@ namespace DoCeluNaCzasMobile.Views.DetailPages
 
             var position = await locator.GetPositionAsync();
             var center = new Position(position.Latitude, position.Longitude);
-            var stops = await PublicTransportService.GetBusStops();
+            //var stops = await PublicTransportService.GetBusStops();
 
-            DisplayInMap(stops);
+            var busStopData = new BusStopData();
+            try
+            {
+                busStopData = (BusStopData)App.Current.Properties["BusStops"];
+            } catch (Exception e)
+            {
+
+            }
+            
+
+            if (busStopData != null && !DateTime.Now.ToString("yyyy-MM-dd").Equals(busStopData.Day))
+            {
+                PublicTransportService.GetBusStops();
+                busStopData = (BusStopData)App.Current.Properties["BusStops"];
+            }
+
+            DisplayInMap(busStopData);
 
             locationsMap.MoveToRegion(MapSpan.FromCenterAndRadius(center, Distance.FromKilometers(distance)));
         }
@@ -51,7 +67,7 @@ namespace DoCeluNaCzasMobile.Views.DetailPages
                 try
                 {
                     var position = new Position(stop.StopLat, stop.StopLon);
-                    
+
                     var pin = new Pin()
                     {
                         Type = PinType.SavedPin,

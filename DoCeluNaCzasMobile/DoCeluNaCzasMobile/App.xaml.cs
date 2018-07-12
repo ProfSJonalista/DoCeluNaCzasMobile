@@ -5,6 +5,7 @@ using System.Text;
 
 using Xamarin.Forms;
 using DoCeluNaCzasMobile.Views;
+using DoCeluNaCzasMobile.Services;
 
 namespace DoCeluNaCzasMobile
 {
@@ -15,12 +16,14 @@ namespace DoCeluNaCzasMobile
 			InitializeComponent();
 
             MainPage = new MainMasterPage();
-		}
+            
+        }
 
 		protected override void OnStart ()
 		{
-			// Handle when your app starts
-		}
+            // Handle when your app starts
+            PublicTransportService.GetBusStops();
+        }
 
 		protected override void OnSleep ()
 		{

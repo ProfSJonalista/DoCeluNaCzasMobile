@@ -10,14 +10,15 @@ namespace DoCeluNaCzasMobile.Services
 {
     public class PublicTransportService
     {
-        internal async static Task<BusStopData> GetBusStops()
+        internal async static void GetBusStops()
         {
             var json = await PublicTransportRepository.GetBusStops();
             var busStopData = (string) JsonConvert.DeserializeObject(json);
 
             var data = JsonConvert.DeserializeObject<BusStopData>(busStopData);
-            
-            return data;
+
+            App.Current.Properties["BusStops"] = data;
+            //return data;
         }
     }
 }
