@@ -9,12 +9,17 @@ namespace DoCeluNaCzasMobile.DataAccess
 {
     public class PublicTransportRepository
     {
-        public static async Task<String> GetBusStops()
+        public static async Task<string> GetBusStops()
         {
             return await DownloadData(Constants.BUS_STOPS);
         }
 
-        private async static Task<string> DownloadData(string url)
+        public static async Task<string> GetBusLines()
+        {
+            return await DownloadData(Constants.BUS_LINES);
+        }
+
+        private static async Task<string> DownloadData(string url)
         {
             var data = "";
 

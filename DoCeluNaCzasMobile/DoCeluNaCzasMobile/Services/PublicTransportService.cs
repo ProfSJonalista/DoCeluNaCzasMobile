@@ -18,7 +18,16 @@ namespace DoCeluNaCzasMobile.Services
             var data = JsonConvert.DeserializeObject<BusStopData>(busStopData);
 
             App.Current.Properties["BusStops"] = data;
-            //return data;
+        }
+
+        internal async static void GetBusLines()
+        {
+            var json = await PublicTransportRepository.GetBusLines();
+            var busLineData = (string)JsonConvert.DeserializeObject(json);
+
+            var data = JsonConvert.DeserializeObject<BusLineData>(busLineData);
+
+            App.Current.Properties["BusLines"] = data;
         }
     }
 }

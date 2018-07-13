@@ -23,6 +23,7 @@ namespace DoCeluNaCzasMobile
 		{
             // Handle when your app starts
             PublicTransportService.GetBusStops();
+            PublicTransportService.GetBusLines();
         }
 
 		protected override void OnSleep ()
