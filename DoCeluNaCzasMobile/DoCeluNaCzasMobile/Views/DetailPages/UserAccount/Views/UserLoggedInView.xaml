@@ -2,7 +2,7 @@
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewModel="clr-namespace:DoCeluNaCzasMobile.ViewModels.UserLoggedIn"
-             x:Class="DoCeluNaCzasMobile.Views.UserAccount.Views.UserLoggedInView">
+             x:Class="DoCeluNaCzasMobile.Views.DetailPages.UserAccount.Views.UserLoggedInView">
 
     <ContentView.BindingContext>
         <viewModel:LoggedInViewModel/>

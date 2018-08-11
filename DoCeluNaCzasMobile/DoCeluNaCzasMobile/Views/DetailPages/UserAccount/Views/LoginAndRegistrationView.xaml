@@ -2,7 +2,7 @@
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewModels="clr-namespace:DoCeluNaCzasMobile.ViewModels.Login"
-             x:Class="DoCeluNaCzasMobile.Views.UserAccount.Views.LoginAndRegistrationView">
+             x:Class="DoCeluNaCzasMobile.Views.DetailPages.UserAccount.Views.LoginAndRegistrationView">
 
     <ContentView.BindingContext>
         <viewModels:LoginViewModel/>

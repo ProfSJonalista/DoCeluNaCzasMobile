@@ -37,7 +37,7 @@
     <EmbeddedResource Update="Views\DetailPages\UserAccountPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\UserAccount\Views\LoginAndRegistrationView.xaml">
+    <EmbeddedResource Update="Views\DetailPages\UserAccount\Views\LoginAndRegistrationView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\MainMasterPage.xaml">
@@ -52,10 +52,10 @@
     <EmbeddedResource Update="Views\DetailPages\MapPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\UserAccount\RegisterPage.xaml">
+    <EmbeddedResource Update="Views\DetailPages\UserAccount\RegisterPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\UserAccount\Views\UserLoggedInView.xaml">
+    <EmbeddedResource Update="Views\DetailPages\UserAccount\Views\UserLoggedInView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

@@ -1,5 +1,5 @@
 ﻿using DoCeluNaCzasMobile.Models;
-using DoCeluNaCzasMobile.Views.UserAccount.Views;
+using DoCeluNaCzasMobile.Views.DetailPages.UserAccount.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;

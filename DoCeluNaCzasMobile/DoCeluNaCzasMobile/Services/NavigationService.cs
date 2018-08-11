@@ -1,6 +1,6 @@
 ﻿using DoCeluNaCzasMobile.Views;
 using DoCeluNaCzasMobile.Views.DetailPages;
-using DoCeluNaCzasMobile.Views.UserAccount;
+using DoCeluNaCzasMobile.Views.DetailPages.UserAccount;
 using System;
 using System.Collections.Generic;
 using System.Text;
