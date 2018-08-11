@@ -20,7 +20,7 @@ namespace DoCeluNaCzasMobile.Views.DetailPages
         public TimeTablePage()
         {
             InitializeComponent();
-            var lstView = new ListView();
+
             grouped = new ObservableCollection<GroupedRouteModel>();
 
             grouped.Add(TimeTableService.GetVehicles("Autobusy", "buses"));
@@ -33,9 +33,7 @@ namespace DoCeluNaCzasMobile.Views.DetailPages
             lstView.GroupShortNameBinding = new Binding("ShortName");
 
             lstView.ItemTemplate = new DataTemplate(typeof(TextCell));
-            lstView.ItemTemplate.SetBinding(TextCell.TextProperty, "RouteShortName");
-
-            Content = lstView;
+            lstView.ItemTemplate.SetBinding(TextCell.TextProperty, "Name");
         }
     }
 }

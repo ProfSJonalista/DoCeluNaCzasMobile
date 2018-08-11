@@ -7,14 +7,14 @@ namespace DoCeluNaCzasMobile.ViewModels.TimeTable
 {
     public class RouteViewModel
     {
-        public RouteViewModel(int routeId, string routeShortName)
+        public RouteViewModel(int id, string name)
         {
-            RouteId = routeId;
-            RouteShortName = routeShortName;
+            Id = id;
+            Name = name;
         }
 
-        public int RouteId { get; set; }
-        public string RouteShortName { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
     }
 
     public class GroupedRouteModel : ObservableCollection<RouteViewModel>

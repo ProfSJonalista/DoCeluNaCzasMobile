@@ -11,25 +11,25 @@
                     <ViewCell>
                         <StackLayout BackgroundColor="Black" Orientation="Vertical">
                             <StackLayout Orientation="Horizontal">
-                                <Label Text="{Binding RouteShortName}" TextColor="White"/>
+                                <Label Text="{Binding Name}" TextColor="White"/>
                             </StackLayout>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+    
+    
     </ContentPage.Content>-->
     
     <StackLayout>
         <Entry x:Name="searchEntry" 
-               Placeholder="Wprowadź numer linii lub nazwę przystanku"
-               BackgroundColor="Black"
-               TextColor="White"/>
+               Placeholder="Wprowadź numer linii lub nazwę przystanku"/>
 
         <ListView x:Name ="lstView" IsGroupingEnabled="true" GroupDisplayBinding="{Binding LongName}" GroupShortNameBinding="{Binding ShortName}">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextCell Text="{Binding RouteShortName}" TextColor="Brown"/>
+                    <Label Text="{Binding Name}" Margin="10"/>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
