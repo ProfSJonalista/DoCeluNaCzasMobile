@@ -1,4 +1,5 @@
 ﻿using DoCeluNaCzasMobile.Models;
+using DoCeluNaCzasMobile.Services;
 using DoCeluNaCzasMobile.ViewModels.TimeTable;
 using System;
 using System.Collections.Generic;
@@ -21,18 +22,10 @@ namespace DoCeluNaCzasMobile.Views.DetailPages
             InitializeComponent();
             var lstView = new ListView();
             grouped = new ObservableCollection<GroupedRouteModel>();
-            var busGroup = new GroupedRouteModel() { LongName = "Autobusy", ShortName = "aut" };
-            var tramGrup = new GroupedRouteModel() { LongName = "Tramwaje", ShortName = "tram" };
 
-            busGroup.Add(new RouteViewModel(400, "62"));
-            busGroup.Add(new RouteViewModel(300, "45"));
-
-            tramGrup.Add(new RouteViewModel(250, "42"));
-            tramGrup.Add(new RouteViewModel(20, "2"));
-            tramGrup.Add(new RouteViewModel(50, "4"));
-
-            grouped.Add(busGroup);
-            grouped.Add(tramGrup);
+            grouped.Add(TimeTableService.GetVehicles("Autobusy", "buses"));
+            grouped.Add(TimeTableService.GetVehicles("Tramwaje", "trams"));
+            grouped.Add(TimeTableService.GetVehicles("Trolejbusy", "trolleys"));
 
             lstView.ItemsSource = grouped;
             lstView.IsGroupingEnabled = true;
