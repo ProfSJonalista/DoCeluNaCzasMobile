@@ -19,7 +19,8 @@ namespace DoCeluNaCzasMobile.ViewModels.TimeTable
 
     public class GroupedRouteModel : ObservableCollection<RouteViewModel>
     {
-        public string LongName { get; set; }
+        public string Key { get; set; }
         public string ShortName { get; set; }
+        public bool IsVisible { get; set; }
     }
 }

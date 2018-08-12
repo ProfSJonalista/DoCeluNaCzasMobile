@@ -1,37 +1,29 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:DoCeluNaCzasMobile.ViewModels.TimeTable"
+             xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
              x:Class="DoCeluNaCzasMobile.Views.DetailPages.TimeTablePage">
 
-    <!--<ContentPage.Content>
-        <ListView x:Name ="lstView" IsGroupingEnabled="true" GroupDisplayBinding="{Binding LongName}" GroupShortNameBinding="{Binding ShortName}">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <StackLayout BackgroundColor="Black" Orientation="Vertical">
-                            <StackLayout Orientation="Horizontal">
-                                <Label Text="{Binding Name}" TextColor="White"/>
-                            </StackLayout>
-                        </StackLayout>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-    
-    
-    </ContentPage.Content>-->
-    
-    <StackLayout>
+    <StackLayout Margin="10">
         <Entry x:Name="searchEntry" 
                Placeholder="Wprowadź numer linii lub nazwę przystanku"/>
 
-        <ListView x:Name ="lstView" IsGroupingEnabled="true" GroupDisplayBinding="{Binding LongName}" GroupShortNameBinding="{Binding ShortName}">
-            <ListView.ItemTemplate>
+        <flv:FlowListView x:Name ="lstView" 
+                          IsGroupingEnabled="true"
+                          FlowGroupDisplayBinding="{Binding Key}"
+                          FlowGroupShortNameBinding="{Binding ShortName}"
+                          FlowColumnCount="4"
+                          SeparatorVisibility="None">
+
+            <flv:FlowListView.FlowColumnTemplate>
                 <DataTemplate>
-                    <Label Text="{Binding Name}" Margin="10"/>
+                    <Label HorizontalOptions="Fill" 
+                           VerticalOptions="Fill" 
+                           XAlign="Center" 
+                           YAlign="Center" 
+                           Text="{Binding Name}"/>
                 </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+            </flv:FlowListView.FlowColumnTemplate>
+        </flv:FlowListView>
     </StackLayout>
 </ContentPage>

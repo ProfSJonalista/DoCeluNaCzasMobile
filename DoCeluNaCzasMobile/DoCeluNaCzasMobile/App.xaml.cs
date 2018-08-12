@@ -6,6 +6,7 @@ using System.Text;
 using Xamarin.Forms;
 using DoCeluNaCzasMobile.Views;
 using DoCeluNaCzasMobile.Services;
+using DLToolkit.Forms.Controls;
 
 namespace DoCeluNaCzasMobile
 {
@@ -14,6 +15,7 @@ namespace DoCeluNaCzasMobile
 		public App ()
 		{
 			InitializeComponent();
+            FlowListView.Init();
 
             MainPage = new MainMasterPage();
             

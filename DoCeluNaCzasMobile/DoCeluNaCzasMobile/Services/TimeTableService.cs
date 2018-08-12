@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using DoCeluNaCzasMobile.Models;
+﻿using DoCeluNaCzasMobile.Models;
 using DoCeluNaCzasMobile.ViewModels.TimeTable;
+using System.Collections.Generic;
 
 namespace DoCeluNaCzasMobile.Services
 {
@@ -12,11 +10,11 @@ namespace DoCeluNaCzasMobile.Services
         {
             var groupedVM = new GroupedRouteModel()
             {
-                LongName = longName,
+                Key = longName,
                 ShortName = shortName
             };
 
-            List<Route> routeList = (List<Route>)App.Current.Properties[shortName];
+            var routeList = (List<Route>)App.Current.Properties[shortName];
 
             routeList.ForEach(x => groupedVM.Add(new RouteViewModel(x.RouteId, x.RouteShortName)));
 
