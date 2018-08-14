@@ -2,18 +2,38 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
+             xmlns:local="clr-namespace:DoCeluNaCzasMobile.ViewModels.TimeTable"
              x:Class="DoCeluNaCzasMobile.Views.DetailPages.TimeTablePage">
 
+    <ContentPage.BindingContext>
+        <local:TimeTableViewModel/>
+    </ContentPage.BindingContext>
+    
     <StackLayout Margin="10">
         <Entry x:Name="searchEntry" 
                Placeholder="Wprowadź numer linii lub nazwę przystanku"/>
 
-        <flv:FlowListView x:Name ="lstView" 
+        <flv:FlowListView x:Name ="lstView"
+                          FlowItemsSource="{Binding GroupedRoutes}"
                           IsGroupingEnabled="true"
                           FlowGroupDisplayBinding="{Binding Key}"
                           FlowGroupShortNameBinding="{Binding ShortName}"
                           FlowColumnCount="4"
                           SeparatorVisibility="None">
+
+            <flv:FlowListView.GroupHeaderTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="5,0,0,0" VerticalOptions="StartAndExpand" Orientation="Vertical">
+                            <Label Text="{Binding Key}" YAlign="Center" BackgroundColor="AliceBlue" FontSize="Large">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Command="lstView_FlowItemTapped" />
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </flv:FlowListView.GroupHeaderTemplate>
 
             <flv:FlowListView.FlowColumnTemplate>
                 <DataTemplate>
@@ -21,7 +41,8 @@
                            VerticalOptions="Fill" 
                            XAlign="Center" 
                            YAlign="Center" 
-                           Text="{Binding Name}"/>
+                           Text="{Binding Name}"
+                           IsVisible="{Binding IsVisible}"/>
                 </DataTemplate>
             </flv:FlowListView.FlowColumnTemplate>
         </flv:FlowListView>
