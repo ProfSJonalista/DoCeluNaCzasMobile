@@ -8,11 +8,13 @@
     <ContentPage.BindingContext>
         <local:TimeTableViewModel/>
     </ContentPage.BindingContext>
-    
+
     <StackLayout Margin="10">
         <Entry x:Name="searchEntry" 
                Placeholder="Wprowadź numer linii lub nazwę przystanku"/>
-
+        <!--TODO
+        -rozwijana lista
+        -->
         <flv:FlowListView x:Name ="lstView"
                           FlowItemsSource="{Binding GroupedRoutes}"
                           IsGroupingEnabled="true"
@@ -25,11 +27,7 @@
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout Padding="5,0,0,0" VerticalOptions="StartAndExpand" Orientation="Vertical">
-                            <Label Text="{Binding Key}" YAlign="Center" BackgroundColor="AliceBlue" FontSize="Large">
-                                <Label.GestureRecognizers>
-                                    <TapGestureRecognizer Command="lstView_FlowItemTapped" />
-                                </Label.GestureRecognizers>
-                            </Label>
+                            <Label Text="{Binding Key}" YAlign="Center" BackgroundColor="AliceBlue" FontSize="Large"/>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
@@ -41,8 +39,7 @@
                            VerticalOptions="Fill" 
                            XAlign="Center" 
                            YAlign="Center" 
-                           Text="{Binding Name}"
-                           IsVisible="{Binding IsVisible}"/>
+                           Text="{Binding Name}"/>
                 </DataTemplate>
             </flv:FlowListView.FlowColumnTemplate>
         </flv:FlowListView>
