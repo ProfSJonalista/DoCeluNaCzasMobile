@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>DoCeluNaCzasMobile.Droid</RootNamespace>
     <AssemblyName>DoCeluNaCzasMobile.Android</AssemblyName>
-    <TargetFrameworkVersion>v7.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v8.1</TargetFrameworkVersion>
     <AndroidApplication>True</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AndroidResgenClass>Resource</AndroidResgenClass>
@@ -90,9 +90,6 @@
       <Project>{63BEFEE6-89EB-4246-AF71-34B9CD3B63E6}</Project>
       <Name>DoCeluNaCzasMobile</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\sortIcon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

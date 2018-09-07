@@ -16,5 +16,15 @@ namespace DoCeluNaCzasMobile.Views
         {
             InitializeComponent();
         }
+
+        private void SwapButton_Clicked(Object sender, EventArgs e)
+        {
+
+        }
+
+        private void SearchRouteButton_Clicked(Object sender, EventArgs e)
+        {
+
+        }
     }
 }
