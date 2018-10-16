@@ -1,18 +1,25 @@
 ﻿using DoCeluNaCzasMobile.Services;
+using DoCeluNaCzasMobile.ViewModels.TimeTable.Commands;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Text;
 
 namespace DoCeluNaCzasMobile.ViewModels.TimeTable
 {
-    public class TimeTableViewModel
+    public class TimeTableViewModel : INotifyPropertyChanged
     {
         private GroupedRouteModel _oldRoutes;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public ObservableCollection<GroupedRouteModel> GroupedRoutes { get; set; }
 
         public TimeTableViewModel()
         {
+            DisplayTripsCommand = new DisplayTripsCommand(this);
+
             GroupedRoutes = new ObservableCollection<GroupedRouteModel>()
             {
                 TimeTableService.GetVehicles("Autobusy", "buses"),
@@ -21,7 +28,9 @@ namespace DoCeluNaCzasMobile.ViewModels.TimeTable
             };
         }
 
-        internal void HideOrShowRoutes(GroupedRouteModel groupedRoutes)
+        public DisplayTripsCommand DisplayTripsCommand { get; set; }
+
+        public void HideOrShowRoutes(GroupedRouteModel groupedRoutes)
         {
             if(_oldRoutes == groupedRoutes)
             {
@@ -48,6 +57,11 @@ namespace DoCeluNaCzasMobile.ViewModels.TimeTable
             var id = GroupedRoutes.IndexOf(groupedRoutes);
             GroupedRoutes.Remove(groupedRoutes);
             GroupedRoutes.Insert(id, groupedRoutes);
+        }
+
+        private void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 

@@ -20,6 +20,12 @@
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="MainPage.xaml.cs">
       <DependentUpon>*.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\DetailPages\TimeTable\BusChoicePage.xaml.cs">
+      <DependentUpon>BusChoicePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\DetailPages\TimeTable\BusStopChoicePage.xaml.cs">
+      <DependentUpon>BusStopChoicePage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\MainMasterPageMenuItem.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -32,7 +38,10 @@
     <EmbeddedResource Update="Views\DetailPages\SettingsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\DetailPages\TimeTablePage.xaml">
+    <EmbeddedResource Update="Views\DetailPages\TimeTable\BusChoicePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\DetailPages\TimeTable\BusStopChoicePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\DetailPages\UserAccountPage.xaml">

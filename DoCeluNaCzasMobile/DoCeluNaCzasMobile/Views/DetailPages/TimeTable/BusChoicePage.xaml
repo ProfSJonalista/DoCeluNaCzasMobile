@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
              xmlns:local="clr-namespace:DoCeluNaCzasMobile.ViewModels.TimeTable"
-             x:Class="DoCeluNaCzasMobile.Views.DetailPages.TimeTablePage">
+             x:Class="DoCeluNaCzasMobile.Views.DetailPages.TimeTable.TimeTablePage">
 
     <ContentPage.BindingContext>
         <local:TimeTableViewModel/>
@@ -14,6 +14,7 @@
                Placeholder="Wprowadź numer linii lub nazwę przystanku"/>
         <!--TODO
         -rozwijana lista
+        -szukanie przystanków
         -->
         <flv:FlowListView x:Name ="lstView"
                           FlowItemsSource="{Binding GroupedRoutes}"
@@ -21,6 +22,8 @@
                           FlowGroupDisplayBinding="{Binding Key}"
                           FlowGroupShortNameBinding="{Binding ShortName}"
                           FlowColumnCount="4"
+                          FlowItemTappedCommand="{Binding DisplayTripsCommand}"
+                          
                           SeparatorVisibility="None">
 
             <flv:FlowListView.GroupHeaderTemplate>
@@ -39,7 +42,8 @@
                            VerticalOptions="Fill" 
                            XAlign="Center" 
                            YAlign="Center" 
-                           Text="{Binding Name}"/>
+                           Text="{Binding Name}">
+                    </Label>
                 </DataTemplate>
             </flv:FlowListView.FlowColumnTemplate>
         </flv:FlowListView>

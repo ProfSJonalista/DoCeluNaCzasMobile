@@ -9,6 +9,11 @@ namespace DoCeluNaCzasMobile.DataAccess
 {
     public class PublicTransportRepository
     {
+        public static async Task<string> GetJoinedTrips()
+        {
+            return await DownloadData(Constants.JOINED_TRIPS);
+        }
+
         public static async Task<string> GetBusStops()
         {
             return await DownloadData(Constants.BUS_STOPS);

@@ -11,6 +11,25 @@ namespace DoCeluNaCzasMobile.Services
 {
     public class PublicTransportService
     {
+        public static void GetData()
+        {
+            GetJoinedTrips();
+            GetBusStops();
+            GetBusLines();
+        }
+
+        internal async static void GetJoinedTrips()
+        {
+            var json = await PublicTransportRepository.GetJoinedTrips();
+            var joinedTrips = (string)JsonConvert.DeserializeObject(json);
+
+            var data = JsonConvert.DeserializeObject<List<JoinedTripsModel>>(joinedTrips);
+
+            data = data.OrderBy(x => x.BusLineName).ToList();
+
+            App.Current.Properties["JoinedTrips"] = data;
+        }
+
         internal async static void GetBusStops()
         {
             var json = await PublicTransportRepository.GetBusStops();

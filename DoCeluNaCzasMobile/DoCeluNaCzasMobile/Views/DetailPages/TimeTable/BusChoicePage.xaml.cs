@@ -2,7 +2,7 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace DoCeluNaCzasMobile.Views.DetailPages
+namespace DoCeluNaCzasMobile.Views.DetailPages.TimeTable
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TimeTablePage : ContentPage
