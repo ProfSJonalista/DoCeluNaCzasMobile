@@ -5,9 +5,9 @@ using Xamarin.Forms.Xaml;
 namespace DoCeluNaCzasMobile.Views.DetailPages.TimeTable
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class TimeTablePage : ContentPage
+    public partial class BusChoicePage : ContentPage
     {
-        public TimeTablePage()
+        public BusChoicePage()
         {
             InitializeComponent();
         }

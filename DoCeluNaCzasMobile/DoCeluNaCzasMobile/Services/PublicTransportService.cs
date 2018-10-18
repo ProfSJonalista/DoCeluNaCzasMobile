@@ -1,10 +1,8 @@
 ﻿using DoCeluNaCzasMobile.DataAccess;
 using DoCeluNaCzasMobile.Models;
+using DoCeluNaCzasMobile.ViewModels.TimeTable;
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
 using System.Linq;
 
 namespace DoCeluNaCzasMobile.Services
@@ -27,8 +25,9 @@ namespace DoCeluNaCzasMobile.Services
 
             data = data.OrderBy(x => x.BusLineName).ToList();
 
-            App.Current.Properties["JoinedTrips"] = data;
+            App.Current.Properties["JoinedTrips"] = TimeTableService.JoinedTripsMapper(data);
         }
+
 
         internal async static void GetBusStops()
         {

@@ -1,4 +1,5 @@
 ﻿using DoCeluNaCzasMobile.Views.DetailPages;
+using DoCeluNaCzasMobile.Views.DetailPages.TimeTable;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,7 +44,7 @@ namespace DoCeluNaCzasMobile.Views
                     break;
                      
                 case "Rozkład jazdy":
-                    page = new TimeTablePage();
+                    page = new BusChoicePage();
                     break;
 
                 case "Opóźnienia":
@@ -63,7 +64,8 @@ namespace DoCeluNaCzasMobile.Views
                     break;
 
                 default:
-                    page = (Page)Activator.CreateInstance(item.TargetType);
+                    page = new MainMasterPageDetail();
+                    item.Title = "Strona główna";
                     break;
             }
 

@@ -18,7 +18,6 @@ namespace DoCeluNaCzasMobile
             FlowListView.Init();
 
             MainPage = new MainMasterPage();
-            
         }
 
 		protected override void OnStart ()

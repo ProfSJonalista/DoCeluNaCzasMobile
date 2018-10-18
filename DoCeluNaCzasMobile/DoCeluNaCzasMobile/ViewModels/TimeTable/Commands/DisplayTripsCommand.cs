@@ -1,7 +1,10 @@
-﻿using System;
+﻿using DoCeluNaCzasMobile.Services;
+using DoCeluNaCzasMobile.Views.DetailPages.TimeTable;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace DoCeluNaCzasMobile.ViewModels.TimeTable.Commands
 {
@@ -24,10 +27,8 @@ namespace DoCeluNaCzasMobile.ViewModels.TimeTable.Commands
         public void Execute(object parameter)
         {
             var busLine = (RouteViewModel) parameter;
-            
 
-
-            App.Current.MainPage.DisplayAlert("Error", "Try again", "Ok");
+            NavigationService.NewMasterPage("BusStopChoicePage", busLine.Name);
         }
     }
 }

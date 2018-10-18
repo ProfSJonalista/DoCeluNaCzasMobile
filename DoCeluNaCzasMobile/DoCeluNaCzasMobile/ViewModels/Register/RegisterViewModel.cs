@@ -26,7 +26,7 @@ namespace DoCeluNaCzasMobile.ViewModels.Register
 
                     if (isSuccess)
                     {
-                        NavigationService.NewMasterPage("UserAccountPage");
+                        NavigationService.NewMasterPage("UserAccountPage", "");
                     }
                 });
             }
@@ -38,7 +38,7 @@ namespace DoCeluNaCzasMobile.ViewModels.Register
             {
                 return new Command(() =>
                 {
-                    NavigationService.NewMasterPage("UserAccountPage");
+                    NavigationService.NewMasterPage("UserAccountPage", "");
                 });
             }
         }

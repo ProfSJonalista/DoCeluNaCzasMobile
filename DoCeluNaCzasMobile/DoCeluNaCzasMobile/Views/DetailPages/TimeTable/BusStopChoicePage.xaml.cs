@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DoCeluNaCzasMobile.Models;
+using DoCeluNaCzasMobile.ViewModels.TimeTable;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,11 +12,29 @@ using Xamarin.Forms.Xaml;
 namespace DoCeluNaCzasMobile.Views.DetailPages.TimeTable
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class BusStopChoice : ContentPage
+	public partial class BusStopChoicePage : ContentPage
 	{
-		public BusStopChoice ()
+        JoinedTripsViewModel joinedTrips;
+		public BusStopChoicePage()
 		{
 			InitializeComponent ();
 		}
-	}
+
+        public BusStopChoicePage(string busLineName)
+        {
+            InitializeComponent();
+            var allJoinedTrips = (List<JoinedTripsViewModel>) App.Current.Properties["JoinedTrips"];
+
+            joinedTrips = allJoinedTrips.Where(x => x.BusLineName.Equals(busLineName)).SingleOrDefault();
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            JoinedTripsStackLayout.BindingContext = joinedTrips;
+
+            JoinedTripsListView.ItemsSource = joinedTrips.JoinedTrips.FirstOrDefault().Stops;
+        }
+    }
 }

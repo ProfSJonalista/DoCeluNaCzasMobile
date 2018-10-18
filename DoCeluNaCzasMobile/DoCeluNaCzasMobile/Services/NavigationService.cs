@@ -1,5 +1,6 @@
 ﻿using DoCeluNaCzasMobile.Views;
 using DoCeluNaCzasMobile.Views.DetailPages;
+using DoCeluNaCzasMobile.Views.DetailPages.TimeTable;
 using DoCeluNaCzasMobile.Views.DetailPages.UserAccount;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ namespace DoCeluNaCzasMobile.Services
 {
     public class NavigationService
     {
-        internal static void NewMasterPage(string pageToNavigate)
+        internal /*async*/ static void NewMasterPage(string pageToNavigate, string busLineName)
         {
             var masterPage = new MainMasterPage();
             masterPage.Title = App.Current.MainPage.Title;
@@ -20,8 +21,13 @@ namespace DoCeluNaCzasMobile.Services
                 case "RegisterPage":
                     masterPage.Detail = new NavigationPage(new RegisterPage());
                     break;
+
                 case "UserAccountPage":
                     masterPage.Detail = new NavigationPage(new UserAccountPage());
+                    break;
+
+                case "BusStopChoicePage":
+                    masterPage.Detail = new NavigationPage(new BusStopChoicePage(busLineName));
                     break;
             }
 

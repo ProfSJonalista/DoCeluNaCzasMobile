@@ -64,7 +64,7 @@ namespace DoCeluNaCzasMobile.Services
 
             App.Current.Properties["user"] = user;
             
-            NavigationService.NewMasterPage("UserAccountPage");
+            NavigationService.NewMasterPage("UserAccountPage", "");
         }
 
         private string removeChars(string content)
