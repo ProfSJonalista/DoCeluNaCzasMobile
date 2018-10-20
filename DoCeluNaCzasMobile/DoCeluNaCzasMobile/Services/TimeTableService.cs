@@ -2,11 +2,15 @@
 using DoCeluNaCzasMobile.ViewModels.TimeTable;
 using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace DoCeluNaCzasMobile.Services
 {
     public class TimeTableService
     {
+        readonly static Char[] CharactersToDeleteFromString = new Char[] { ' ', '+' };
+        readonly static string ParenthesisToDelete = "(\\[.*\\])|(\".*\")|('.*')|(\\(.*\\))";
+
         internal static GroupedRouteModel GetVehicles(string longName, string shortName)
         {
             var groupedVM = new GroupedRouteModel()
@@ -70,30 +74,23 @@ namespace DoCeluNaCzasMobile.Services
         private static string GetFirstStopName(string tripHeadsign)
         {
             var belongsToGdynia = tripHeadsign.Contains(">");
-            var firstStopName = "";
             var index = 0;
 
+            tripHeadsign = tripHeadsign.Trim(CharactersToDeleteFromString);
+
             if (belongsToGdynia)
-                index = tripHeadsign.IndexOf('>') - 2;
+                index = tripHeadsign.IndexOf('>') - 1;
             else
-                index = tripHeadsign.IndexOf('-') - 2;
+                index = tripHeadsign.IndexOf('-') - 1;
 
-            try
-            {
-                firstStopName = tripHeadsign.Substring(0, index - 2);
-            }
-            catch(Exception e)
-            {
+            var input = tripHeadsign.Substring(0, index);
 
-            }
-
-            return firstStopName;
+            return Regex.Replace(input, ParenthesisToDelete, "");
         }
 
         private static string GetDestinationStopName(string tripHeadsign)
         {
             var belongsToGdynia = tripHeadsign.Contains(">");
-            var destinationStopName = "";
             var index = 0;
 
             if (belongsToGdynia)
@@ -102,16 +99,10 @@ namespace DoCeluNaCzasMobile.Services
                 index = tripHeadsign.IndexOf('-') + 2;
 
             var length = tripHeadsign.Length - index;
-            try
-            {
-                destinationStopName = tripHeadsign.Substring(index, length);
-            }
-            catch (Exception e)
-            {
 
-            }
+            var input = tripHeadsign.Substring(index, length);
 
-            return destinationStopName;
+            return Regex.Replace(input, ParenthesisToDelete, "");
         }
 
         private static List<StopTripViewModel> StopsMapper(List<StopTripModel> stops)

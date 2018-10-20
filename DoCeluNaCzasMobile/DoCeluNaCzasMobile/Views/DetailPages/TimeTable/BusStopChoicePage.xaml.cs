@@ -15,6 +15,7 @@ namespace DoCeluNaCzasMobile.Views.DetailPages.TimeTable
 	public partial class BusStopChoicePage : ContentPage
 	{
         JoinedTripsViewModel joinedTrips;
+        StopTripDataViewModel Source { get; set; }
 		public BusStopChoicePage()
 		{
 			InitializeComponent ();
@@ -33,8 +34,18 @@ namespace DoCeluNaCzasMobile.Views.DetailPages.TimeTable
             base.OnAppearing();
 
             JoinedTripsStackLayout.BindingContext = joinedTrips;
+            Source = joinedTrips.JoinedTrips.FirstOrDefault();
+            FirstStopNameLabel.Text = Source.FirstStopName;
+            DestinationStopNameLabel.Text = Source.DestinationStopName;
+            JoinedTripsListView.ItemsSource = Source.Stops;
+        }
 
-            JoinedTripsListView.ItemsSource = joinedTrips.JoinedTrips.FirstOrDefault().Stops;
+        private void ChangeDestinationButton_Clicked(object sender, EventArgs e)
+        {
+            Source = joinedTrips.JoinedTrips.Where(x => !x.DestinationStopName.Equals(Source.DestinationStopName)).SingleOrDefault();
+            FirstStopNameLabel.Text = Source.FirstStopName;
+            DestinationStopNameLabel.Text = Source.DestinationStopName;
+            JoinedTripsListView.ItemsSource = Source.Stops;
         }
     }
 }

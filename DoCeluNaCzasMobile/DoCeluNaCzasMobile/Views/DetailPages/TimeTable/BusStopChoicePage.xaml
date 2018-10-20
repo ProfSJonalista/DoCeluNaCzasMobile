@@ -10,9 +10,29 @@
                    Text="{Binding BusLineName}"/>
 
             <Button x:Name="ChangeDestinationButton"
-                    Text="Wohin gehst du?"
+                    Text="Zmień kierunki"
                     HorizontalOptions="Center"
-                    IsVisible="{Binding ContainsMultiplyTrips}"/>
+                    IsVisible="{Binding ContainsMultiplyTrips}"
+                    Clicked="ChangeDestinationButton_Clicked"/>
+
+            <Grid x:Name="DestinationGrid">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Label x:Name="FirstStopNameLabel"
+                       Text="{Binding FirstStopName}"
+                       FontAttributes="Bold"
+                       Grid.Row="1"/>
+                <Label x:Name="DestinationStopNameLabel"
+                       Text="{Binding DestinationStopName}"
+                       Grid.Column="0"/>
+            </Grid>
 
             <ListView x:Name="JoinedTripsListView"
                       Margin="20, 0"

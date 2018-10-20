@@ -13,25 +13,29 @@ namespace DoCeluNaCzasMobile.Services
     {
         internal /*async*/ static void NewMasterPage(string pageToNavigate, string busLineName)
         {
-            var masterPage = new MainMasterPage();
-            masterPage.Title = App.Current.MainPage.Title;
+            App.Current.MainPage = new MainMasterPage
+            {
+                Title = App.Current.MainPage.Title,
+                Detail = GetDetailPage(pageToNavigate, busLineName)
+            };
+        }
 
+        private static Page GetDetailPage(string pageToNavigate, string busLineName)
+        {
             switch (pageToNavigate)
             {
                 case "RegisterPage":
-                    masterPage.Detail = new NavigationPage(new RegisterPage());
-                    break;
+                    return new NavigationPage(new RegisterPage());
 
                 case "UserAccountPage":
-                    masterPage.Detail = new NavigationPage(new UserAccountPage());
-                    break;
+                    return new NavigationPage(new UserAccountPage());
 
                 case "BusStopChoicePage":
-                    masterPage.Detail = new NavigationPage(new BusStopChoicePage(busLineName));
-                    break;
-            }
+                    return new NavigationPage(new BusStopChoicePage(busLineName));
 
-            App.Current.MainPage = masterPage;
+                default:
+                    return new NavigationPage(new Page());
+            }
         }
     }
 }
