@@ -28,7 +28,6 @@ namespace DoCeluNaCzasMobile.Services
             App.Current.Properties["JoinedTrips"] = TimeTableService.JoinedTripsMapper(data);
         }
 
-
         internal async static void GetBusStops()
         {
             var json = await PublicTransportRepository.GetBusStops();

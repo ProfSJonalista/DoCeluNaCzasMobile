@@ -1,5 +1,7 @@
 ﻿using DoCeluNaCzasMobile.Models;
+using DoCeluNaCzasMobile.Services;
 using DoCeluNaCzasMobile.ViewModels.TimeTable;
+using DoCeluNaCzasMobile.Views.DetailPages.TimeTable.TimeTablePage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -46,6 +48,14 @@ namespace DoCeluNaCzasMobile.Views.DetailPages.TimeTable
             FirstStopNameLabel.Text = Source.FirstStopName;
             DestinationStopNameLabel.Text = Source.DestinationStopName;
             JoinedTripsListView.ItemsSource = Source.Stops;
+        }
+
+        private void JoinedTripsListView_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            var busLineName = e.Item as StopTripViewModel;
+
+            var cos = busLineName.StopName;
+            NavigationService.Navigate(typeof(TimeTableTabbedPage), "");
         }
     }
 }

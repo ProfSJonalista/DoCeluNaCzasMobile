@@ -20,7 +20,7 @@ namespace DoCeluNaCzasMobile.ViewModels.UserLoggedIn
                 {
                     App.Current.Properties["user"] = new User();
 
-                    NavigationService.NewMasterPage("UserAccountPage", "");
+                    NavigationService.Navigate(typeof(UserAccountPage), "");
                 });
             }
         }

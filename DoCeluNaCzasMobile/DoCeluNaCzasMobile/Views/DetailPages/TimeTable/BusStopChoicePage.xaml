@@ -36,13 +36,12 @@
 
             <ListView x:Name="JoinedTripsListView"
                       Margin="20, 0"
-                      HorizontalOptions="FillAndExpand">
+                      HorizontalOptions="FillAndExpand"
+                      ItemTapped="JoinedTripsListView_ItemTapped">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Label Text="{Binding StopName}">
-
-                            </Label>
+                            <Label Text="{Binding StopName}"/>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>

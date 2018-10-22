@@ -28,7 +28,7 @@ namespace DoCeluNaCzasMobile.ViewModels.TimeTable.Commands
         {
             var busLine = (RouteViewModel) parameter;
 
-            NavigationService.NewMasterPage("BusStopChoicePage", busLine.Name);
+            NavigationService.Navigate(typeof(BusStopChoicePage), busLine.Name);
         }
     }
 }

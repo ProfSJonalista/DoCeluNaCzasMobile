@@ -1,6 +1,7 @@
 ﻿using DoCeluNaCzasMobile.Views;
 using DoCeluNaCzasMobile.Views.DetailPages;
 using DoCeluNaCzasMobile.Views.DetailPages.TimeTable;
+using DoCeluNaCzasMobile.Views.DetailPages.TimeTable.TimeTablePage;
 using DoCeluNaCzasMobile.Views.DetailPages.UserAccount;
 using System;
 using System.Collections.Generic;
@@ -11,30 +12,32 @@ namespace DoCeluNaCzasMobile.Services
 {
     public class NavigationService
     {
-        internal /*async*/ static void NewMasterPage(string pageToNavigate, string busLineName)
+        internal async static void Navigate(Type targetType, string busLineName)
         {
-            App.Current.MainPage = new MainMasterPage
+            if (targetType != typeof(UserAccountPage))
             {
-                Title = App.Current.MainPage.Title,
-                Detail = GetDetailPage(pageToNavigate, busLineName)
-            };
-        }
+                var masterDetailPage = App.Current.MainPage as MasterDetailPage;
+                var page = (Page)Activator.CreateInstance(targetType);
 
-        private static Page GetDetailPage(string pageToNavigate, string busLineName)
-        {
-            switch (pageToNavigate)
+                if (targetType == typeof(BusStopChoicePage))
+                {
+                    await masterDetailPage.Detail.Navigation.PushAsync(new BusStopChoicePage(busLineName));
+                }
+                else if (targetType == typeof(RegisterPage))
+                {
+                    await masterDetailPage.Detail.Navigation.PushAsync(new RegisterPage());
+                }
+                else if(targetType == typeof(TimeTableTabbedPage))
+                {
+                    await masterDetailPage.Detail.Navigation.PushAsync(new TimeTableTabbedPage());
+                }
+            }
+            else
             {
-                case "RegisterPage":
-                    return new NavigationPage(new RegisterPage());
-
-                case "UserAccountPage":
-                    return new NavigationPage(new UserAccountPage());
-
-                case "BusStopChoicePage":
-                    return new NavigationPage(new BusStopChoicePage(busLineName));
-
-                default:
-                    return new NavigationPage(new Page());
+                App.Current.MainPage = new MainMasterPage()
+                {
+                    Detail = new NavigationPage(new UserAccountPage())
+                };
             }
         }
     }
