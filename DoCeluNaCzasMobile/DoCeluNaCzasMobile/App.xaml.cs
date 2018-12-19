@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using DoCeluNaCzasMobile.Views;
 using DoCeluNaCzasMobile.Services;
 using DLToolkit.Forms.Controls;
 
 namespace DoCeluNaCzasMobile
 {
-	public partial class App : Application
+    public partial class App : Application
 	{
 		public App ()
 		{
