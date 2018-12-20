@@ -12,7 +12,7 @@ namespace DoCeluNaCzasMobile.Services
 {
     public class NavigationService
     {
-        internal async static void Navigate(Type targetType, string busLineName)
+        internal async void Navigate(Type targetType, string busLineName)
         {
             if (targetType != typeof(UserAccountPage))
             {

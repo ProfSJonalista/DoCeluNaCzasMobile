@@ -11,7 +11,8 @@ namespace DoCeluNaCzasMobile.ViewModels.Login
 {
     public class LoginViewModel
     {
-        private ApiServices _apiServices = new ApiServices();
+        AuthService _apiServices = new AuthService();
+        NavigationService _navigationService = new NavigationService();
         public string Username { get; set; }
         public string Password { get; set; }
         public ICommand LoginCommand
@@ -31,7 +32,7 @@ namespace DoCeluNaCzasMobile.ViewModels.Login
             {
                 return new Command(() =>
                 {
-                    NavigationService.Navigate(typeof(RegisterPage), "");
+                    _navigationService.Navigate(typeof(RegisterPage), "");
                 });
             }
         }

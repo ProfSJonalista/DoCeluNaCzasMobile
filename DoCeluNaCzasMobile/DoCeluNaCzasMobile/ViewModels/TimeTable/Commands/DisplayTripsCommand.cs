@@ -11,7 +11,7 @@ namespace DoCeluNaCzasMobile.ViewModels.TimeTable.Commands
     public class DisplayTripsCommand : ICommand
     {
         private TimeTableViewModel timeTableViewModel;
-
+        NavigationService _navigationService = new NavigationService();
         public DisplayTripsCommand(TimeTableViewModel timeTableViewModel)
         {
             this.timeTableViewModel = timeTableViewModel;
@@ -28,7 +28,7 @@ namespace DoCeluNaCzasMobile.ViewModels.TimeTable.Commands
         {
             var busLine = (RouteViewModel) parameter;
 
-            NavigationService.Navigate(typeof(BusStopChoicePage), busLine.Name);
+            _navigationService.Navigate(typeof(BusStopChoicePage), busLine.Name);
         }
     }
 }

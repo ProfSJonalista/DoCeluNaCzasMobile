@@ -11,7 +11,7 @@ namespace DoCeluNaCzasMobile.ViewModels.TimeTable
     public class TimeTableViewModel : INotifyPropertyChanged
     {
         private GroupedRouteModel _oldRoutes;
-
+        TimeTableService _timeTableService;
         public event PropertyChangedEventHandler PropertyChanged;
 
         public ObservableCollection<GroupedRouteModel> GroupedRoutes { get; set; }
@@ -19,12 +19,12 @@ namespace DoCeluNaCzasMobile.ViewModels.TimeTable
         public TimeTableViewModel()
         {
             DisplayTripsCommand = new DisplayTripsCommand(this);
-
+            _timeTableService = new TimeTableService();
             GroupedRoutes = new ObservableCollection<GroupedRouteModel>()
             {
-                TimeTableService.GetVehicles("Autobusy", "buses"),
-                TimeTableService.GetVehicles("Tramwaje", "trams"),
-                TimeTableService.GetVehicles("Trolejbusy", "trolleys")
+                _timeTableService.GetVehicles("Autobusy", "buses"),
+                _timeTableService.GetVehicles("Tramwaje", "trams"),
+                _timeTableService.GetVehicles("Trolejbusy", "trolleys")
             };
         }
 

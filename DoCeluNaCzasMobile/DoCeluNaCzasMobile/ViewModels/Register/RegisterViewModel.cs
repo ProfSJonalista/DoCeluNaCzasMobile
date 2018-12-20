@@ -11,7 +11,8 @@ namespace DoCeluNaCzasMobile.ViewModels.Register
 {
     class RegisterViewModel
     {
-        ApiServices _apiServices = new ApiServices();
+        AuthService _apiServices = new AuthService();
+        NavigationService _navigationService = new NavigationService();
         public string Email { get; set; }
         public string Password { get; set; }
         public string ConfirmPassword { get; set; }
@@ -26,7 +27,7 @@ namespace DoCeluNaCzasMobile.ViewModels.Register
 
                     if (isSuccess)
                     {
-                        NavigationService.Navigate(typeof(UserAccountPage), "");
+                        _navigationService.Navigate(typeof(UserAccountPage), "");
                     }
                 });
             }
@@ -38,7 +39,7 @@ namespace DoCeluNaCzasMobile.ViewModels.Register
             {
                 return new Command(() =>
                 {
-                    NavigationService.Navigate(typeof(UserAccountPage), "");
+                    _navigationService.Navigate(typeof(UserAccountPage), "");
                 });
             }
         }

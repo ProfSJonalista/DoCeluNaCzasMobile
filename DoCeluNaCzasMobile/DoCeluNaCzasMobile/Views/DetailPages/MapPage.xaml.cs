@@ -28,24 +28,9 @@ namespace DoCeluNaCzasMobile.Views.DetailPages
 
             var position = await locator.GetPositionAsync();
             var center = new Position(position.Latitude, position.Longitude);
-            //var stops = await PublicTransportService.GetBusStops();
 
-            var busStopData = new BusStopData();
-            try
-            {
-                busStopData = (BusStopData)App.Current.Properties["BusStops"];
-            } catch (Exception e)
-            {
-
-            }
+            var busStopData = (BusStopData)App.Current.Properties["BusStops"];
             
-
-            if (busStopData != null && !DateTime.Now.ToString("yyyy-MM-dd").Equals(busStopData.Day))
-            {
-                PublicTransportService.GetBusStops();
-                busStopData = (BusStopData)App.Current.Properties["BusStops"];
-            }
-
             DisplayInMap(busStopData);
 
             locationsMap.MoveToRegion(MapSpan.FromCenterAndRadius(center, Distance.FromKilometers(distance)));

@@ -16,38 +16,40 @@ namespace DoCeluNaCzasMobile.Views.DetailPages.TimeTable
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class BusStopChoicePage : ContentPage
 	{
-        JoinedTripsViewModel joinedTrips;
-        StopTripDataViewModel Source { get; set; }
-		public BusStopChoicePage()
+        JoinedTripsViewModel _joinedTrips;
+        StopTripDataViewModel _source { get; set; }
+        NavigationService _navigationService;
+        public BusStopChoicePage()
 		{
-			InitializeComponent ();
-		}
+			InitializeComponent();
+            _navigationService = new NavigationService();
+        }
 
         public BusStopChoicePage(string busLineName)
         {
             InitializeComponent();
             var allJoinedTrips = (List<JoinedTripsViewModel>) App.Current.Properties["JoinedTrips"];
 
-            joinedTrips = allJoinedTrips.Where(x => x.BusLineName.Equals(busLineName)).SingleOrDefault();
+            _joinedTrips = allJoinedTrips.Where(x => x.BusLineName.Equals(busLineName)).SingleOrDefault();
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
 
-            JoinedTripsStackLayout.BindingContext = joinedTrips;
-            Source = joinedTrips.JoinedTrips.FirstOrDefault();
-            FirstStopNameLabel.Text = Source.FirstStopName;
-            DestinationStopNameLabel.Text = Source.DestinationStopName;
-            JoinedTripsListView.ItemsSource = Source.Stops;
+            JoinedTripsStackLayout.BindingContext = _joinedTrips;
+            _source = _joinedTrips.JoinedTrips.FirstOrDefault();
+            FirstStopNameLabel.Text = _source.FirstStopName;
+            DestinationStopNameLabel.Text = _source.DestinationStopName;
+            JoinedTripsListView.ItemsSource = _source.Stops;
         }
 
         private void ChangeDestinationButton_Clicked(object sender, EventArgs e)
         {
-            Source = joinedTrips.JoinedTrips.Where(x => !x.DestinationStopName.Equals(Source.DestinationStopName)).SingleOrDefault();
-            FirstStopNameLabel.Text = Source.FirstStopName;
-            DestinationStopNameLabel.Text = Source.DestinationStopName;
-            JoinedTripsListView.ItemsSource = Source.Stops;
+            _source = _joinedTrips.JoinedTrips.Where(x => !x.DestinationStopName.Equals(_source.DestinationStopName)).SingleOrDefault();
+            FirstStopNameLabel.Text = _source.FirstStopName;
+            DestinationStopNameLabel.Text = _source.DestinationStopName;
+            JoinedTripsListView.ItemsSource = _source.Stops;
         }
 
         private void JoinedTripsListView_ItemTapped(object sender, ItemTappedEventArgs e)
@@ -55,7 +57,7 @@ namespace DoCeluNaCzasMobile.Views.DetailPages.TimeTable
             var busLineName = e.Item as StopTripViewModel;
 
             var cos = busLineName.StopName;
-            NavigationService.Navigate(typeof(TimeTableTabbedPage), "");
+            _navigationService.Navigate(typeof(TimeTableTabbedPage), "");
         }
     }
 }

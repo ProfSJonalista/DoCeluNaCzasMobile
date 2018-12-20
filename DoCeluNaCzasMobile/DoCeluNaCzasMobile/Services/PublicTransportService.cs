@@ -9,28 +9,37 @@ namespace DoCeluNaCzasMobile.Services
 {
     public class PublicTransportService
     {
-        public static void GetData()
+        PublicTransportRepository _publicTransportRepository;
+        TimeTableService _timeTableService;
+
+        public PublicTransportService()
+        {
+            _publicTransportRepository = new PublicTransportRepository();
+            _timeTableService = new TimeTableService();
+        }
+
+        public void GetData()
         {
             GetJoinedTrips();
             GetBusStops();
             GetBusLines();
         }
 
-        internal async static void GetJoinedTrips()
+        internal async void GetJoinedTrips()
         {
-            var json = await PublicTransportRepository.GetJoinedTrips();
+            var json = await _publicTransportRepository.GetJoinedTrips();
             var joinedTrips = (string)JsonConvert.DeserializeObject(json);
 
             var data = JsonConvert.DeserializeObject<List<JoinedTripsModel>>(joinedTrips);
 
             data = data.OrderBy(x => x.BusLineName).ToList();
 
-            App.Current.Properties["JoinedTrips"] = TimeTableService.JoinedTripsMapper(data);
+            App.Current.Properties["JoinedTrips"] = _timeTableService.JoinedTripsMapper(data);
         }
 
-        internal async static void GetBusStops()
+        internal async void GetBusStops()
         {
-            var json = await PublicTransportRepository.GetBusStops();
+            var json = await _publicTransportRepository.GetBusStops();
             var busStopData = (string) JsonConvert.DeserializeObject(json);
 
             var data = JsonConvert.DeserializeObject<BusStopData>(busStopData);
@@ -38,9 +47,9 @@ namespace DoCeluNaCzasMobile.Services
             App.Current.Properties["BusStops"] = data;
         }
 
-        internal async static void GetBusLines()
+        internal async void GetBusLines()
         {
-            var json = await PublicTransportRepository.GetBusLines();
+            var json = await _publicTransportRepository.GetBusLines();
             var busLineData = (string)JsonConvert.DeserializeObject(json);
 
             var data = JsonConvert.DeserializeObject<BusLineData>(busLineData);
@@ -50,7 +59,7 @@ namespace DoCeluNaCzasMobile.Services
             SortBusLines(data);
         }
 
-        private static void SortBusLines(BusLineData data)
+        private void SortBusLines(BusLineData data)
         {
             List<Route> buses = data.Routes.Where(x => x.AgencyId == 1 
                                                     || x.AgencyId == 6

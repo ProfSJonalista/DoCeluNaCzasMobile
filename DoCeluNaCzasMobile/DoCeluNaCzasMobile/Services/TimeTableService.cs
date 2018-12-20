@@ -11,7 +11,7 @@ namespace DoCeluNaCzasMobile.Services
         readonly static Char[] CharactersToDeleteFromString = new Char[] { ' ', '+' };
         readonly static string ParenthesisToDelete = "(\\[.*\\])|(\".*\")|('.*')|(\\(.*\\))";
 
-        internal static GroupedRouteModel GetVehicles(string longName, string shortName)
+        internal GroupedRouteModel GetVehicles(string longName, string shortName)
         {
             var groupedVM = new GroupedRouteModel()
             {
@@ -26,7 +26,7 @@ namespace DoCeluNaCzasMobile.Services
             return groupedVM;
         }
 
-        public static List<JoinedTripsViewModel> JoinedTripsMapper(List<JoinedTripsModel> joinedTripsModelList)
+        public List<JoinedTripsViewModel> JoinedTripsMapper(List<JoinedTripsModel> joinedTripsModelList)
         {
             List<JoinedTripsViewModel> listToReturn = new List<JoinedTripsViewModel>();
 
@@ -35,17 +35,17 @@ namespace DoCeluNaCzasMobile.Services
             return listToReturn;
         }
 
-        private static JoinedTripsViewModel JoinTripsMapper(JoinedTripsModel trips)
+        private JoinedTripsViewModel JoinTripsMapper(JoinedTripsModel trips)
         {
             return new JoinedTripsViewModel()
             {
                 BusLineName = trips.BusLineName,
-                ContainsMultiplyTrips = trips.JoinedTrips.Count > 1,
-                JoinedTrips = StopTripDataMapper(trips.JoinedTrips)
+                ContainsMultiplyTrips = trips.Trips.Count > 1,
+                JoinedTrips = StopTripDataMapper(trips.Trips)
             };
         }
 
-        private static List<StopTripDataViewModel> StopTripDataMapper(List<StopTripDataModel> joinedTrips)
+        private List<StopTripDataViewModel> StopTripDataMapper(List<StopTripDataModel> joinedTrips)
         {
             List<StopTripDataViewModel> listToReturn = new List<StopTripDataViewModel>();
 
@@ -71,7 +71,7 @@ namespace DoCeluNaCzasMobile.Services
             return listToReturn;
         }
 
-        private static string GetFirstStopName(string tripHeadsign)
+        private string GetFirstStopName(string tripHeadsign)
         {
             var belongsToGdynia = tripHeadsign.Contains(">");
             var index = 0;
@@ -88,7 +88,7 @@ namespace DoCeluNaCzasMobile.Services
             return Regex.Replace(input, ParenthesisToDelete, "");
         }
 
-        private static string GetDestinationStopName(string tripHeadsign)
+        private string GetDestinationStopName(string tripHeadsign)
         {
             var belongsToGdynia = tripHeadsign.Contains(">");
             var index = 0;
@@ -105,7 +105,7 @@ namespace DoCeluNaCzasMobile.Services
             return Regex.Replace(input, ParenthesisToDelete, "");
         }
 
-        private static List<StopTripViewModel> StopsMapper(List<StopTripModel> stops)
+        private List<StopTripViewModel> StopsMapper(List<StopTripModel> stops)
         {
             List<StopTripViewModel> stopsViewModelList = new List<StopTripViewModel>();
 
