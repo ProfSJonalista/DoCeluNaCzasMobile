@@ -1,7 +1,7 @@
 ﻿using Xamarin.Forms;
 using DoCeluNaCzasMobile.Views;
-using DoCeluNaCzasMobile.Services;
 using DLToolkit.Forms.Controls;
+using DoCeluNaCzasMobile.Services.PublicTransportServices;
 
 namespace DoCeluNaCzasMobile
 {
@@ -18,7 +18,8 @@ namespace DoCeluNaCzasMobile
 		protected override void OnStart ()
 		{
             // Handle when your app starts
-            new PublicTransportService().GetData();
+            PublicTransportService publicTransportService = new PublicTransportService();
+            publicTransportService.GetDataWithSignalRAsync();
         }
 
 		protected override void OnSleep ()

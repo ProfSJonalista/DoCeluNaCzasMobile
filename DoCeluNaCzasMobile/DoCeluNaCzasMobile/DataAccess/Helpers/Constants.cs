@@ -6,6 +6,8 @@ namespace DoCeluNaCzasMobile.DataAccess.Helpers
 {
     public class Constants
     {
+        public static string HUB_CONNECTION = "http://docelunaczaswebapi.com/";
+
         public static string TOKEN = "http://docelunaczaswebapi.com/Token";
         public static string REGISTER = "http://docelunaczaswebapi.com/api/Account/Register";
         public static string AUTHORIZED_VALUES = "http://docelunaczaswebapi.com/api/AuthorizedValues";

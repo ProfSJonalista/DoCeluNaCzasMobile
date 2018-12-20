@@ -5,7 +5,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DoCeluNaCzasMobile.DataAccess
+namespace DoCeluNaCzasMobile.DataAccess.Repository
 {
     public class PublicTransportRepository
     {
