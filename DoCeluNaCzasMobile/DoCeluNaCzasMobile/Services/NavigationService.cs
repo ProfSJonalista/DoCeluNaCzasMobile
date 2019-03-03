@@ -4,8 +4,6 @@ using DoCeluNaCzasMobile.Views.DetailPages.TimeTable;
 using DoCeluNaCzasMobile.Views.DetailPages.TimeTable.TimeTablePage;
 using DoCeluNaCzasMobile.Views.DetailPages.UserAccount;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using Xamarin.Forms;
 
 namespace DoCeluNaCzasMobile.Services
@@ -27,7 +25,7 @@ namespace DoCeluNaCzasMobile.Services
                 {
                     await masterDetailPage.Detail.Navigation.PushAsync(new RegisterPage());
                 }
-                else if(targetType == typeof(TimeTableTabbedPage))
+                else if (targetType == typeof(TimeTableTabbedPage))
                 {
                     await masterDetailPage.Detail.Navigation.PushAsync(new TimeTableTabbedPage());
                 }
