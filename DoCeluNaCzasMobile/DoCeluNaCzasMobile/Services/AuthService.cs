@@ -1,17 +1,12 @@
-﻿using DoCeluNaCzasMobile.Models;
+﻿using DoCeluNaCzasMobile.DataAccess.Helpers;
+using DoCeluNaCzasMobile.Models;
+using DoCeluNaCzasMobile.Views.DetailPages;
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
-using System.Diagnostics;
+using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Text;
 using System.Threading.Tasks;
-using System.Linq;
-using DoCeluNaCzasMobile.Views.DetailPages;
-using DoCeluNaCzasMobile.Views;
-using Xamarin.Forms;
-using DoCeluNaCzasMobile.DataAccess.Helpers;
 
 namespace DoCeluNaCzasMobile.Services
 {
@@ -41,7 +36,7 @@ namespace DoCeluNaCzasMobile.Services
                 {
                     content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
-                    var response = await client.PostAsync(Constants.REGISTER, content);
+                    var response = await client.PostAsync(Urls.REGISTER, content);
 
                     return response.IsSuccessStatusCode;
                 }
@@ -59,10 +54,11 @@ namespace DoCeluNaCzasMobile.Services
 
             var content = string.Empty;
 
-            using(var request = new HttpRequestMessage(HttpMethod.Post, Constants.TOKEN)
+            using (var request = new HttpRequestMessage(HttpMethod.Post, Urls.TOKEN)
             {
                 Content = new FormUrlEncodedContent(keyValues)
             })
+
             using (var client = new HttpClient())
             {
                 var response = await client.SendAsync(request);
@@ -81,14 +77,9 @@ namespace DoCeluNaCzasMobile.Services
 
         private string RemoveChars(string content)
         {
-            var charsToRemove = new string[] { "." };
+            var charsToRemove = new[] { "." };
 
-            foreach (var c in charsToRemove)
-            {
-                content = content.Replace(c, string.Empty);
-            }
-
-            return content;
+            return charsToRemove.Aggregate(content, (current, c) => current.Replace(c, string.Empty));
         }
 
         public async Task<string[]> GetData(string accessToken)
@@ -97,7 +88,7 @@ namespace DoCeluNaCzasMobile.Services
             {
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
 
-                var json = await client.GetStringAsync(Constants.AUTHORIZED_VALUES);
+                var json = await client.GetStringAsync(Urls.AUTHORIZED_VALUES);
 
                 var data = JsonConvert.DeserializeObject<string[]>(json);
 

@@ -74,12 +74,6 @@ namespace DoCeluNaCzasMobile.ViewModels.TimeTable
 
     public class RouteViewModel
     {
-        public RouteViewModel(int id, string name)
-        {
-            Id = id;
-            Name = name;
-        }
-
         public int Id { get; set; }
         public string Name { get; set; }
     }

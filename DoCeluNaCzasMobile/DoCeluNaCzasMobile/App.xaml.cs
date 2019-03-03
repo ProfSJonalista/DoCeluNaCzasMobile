@@ -1,7 +1,7 @@
-﻿using Xamarin.Forms;
-using DoCeluNaCzasMobile.Views;
-using DLToolkit.Forms.Controls;
+﻿using DLToolkit.Forms.Controls;
 using DoCeluNaCzasMobile.Services.PublicTransportServices;
+using DoCeluNaCzasMobile.Views;
+using Xamarin.Forms;
 
 namespace DoCeluNaCzasMobile
 {

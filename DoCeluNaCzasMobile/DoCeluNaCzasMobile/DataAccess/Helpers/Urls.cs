@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace DoCeluNaCzasMobile.DataAccess.Helpers
+﻿namespace DoCeluNaCzasMobile.DataAccess.Helpers
 {
-    public class Constants
+    public class Urls
     {
         public static string HUB_CONNECTION = "http://docelunaczaswebapi.com/";
 
