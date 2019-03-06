@@ -1,6 +1,6 @@
-﻿using DoCeluNaCzasMobile.DataAccess.Helpers;
-using System.Net.Http;
+﻿using System.Net.Http;
 using System.Threading.Tasks;
+using DoCeluNaCzasMobile.DataAccess.Repository.Helpers;
 
 namespace DoCeluNaCzasMobile.DataAccess.Repository
 {

@@ -1,6 +1,7 @@
 ﻿using DoCeluNaCzasMobile.DataAccess.Repository;
 using DoCeluNaCzasMobile.Models;
 using DoCeluNaCzasMobile.Services.HubServices;
+using DoCeluNaCzasMobile.Services.HubServices.Helpers;
 using DoCeluNaCzasMobile.ViewModels.TimeTable;
 using Newtonsoft.Json;
 using System;
@@ -17,23 +18,23 @@ namespace DoCeluNaCzasMobile.Services.PublicTransportServices.Helpers
         private readonly HubService _hubService;
         private readonly PublicTransportRepository _publicTransportRepository;
 
-        public PublicTransportHelper(HubService hubService, PublicTransportRepository publicTransportRepository)
+        public PublicTransportHelper(HubService hubService)
         {
             _hubService = hubService;
-            _publicTransportRepository = publicTransportRepository;
+            _publicTransportRepository = new PublicTransportRepository();
         }
 
-        public async Task<BusStopData> GetBusStopDataAsync()
+        public async Task<BusStopDataModel> GetBusStopDataAsync()
         {
-            for (int i = 1; i <= NumberOfRetries; ++i)
+            for (var i = 1; i <= NumberOfRetries; ++i)
             {
                 try
                 {
-                    return await _hubService.GetBusStopData();
+                    return await _hubService.GetBusStopData<BusStopDataModel>(HubNames.GET_BUS_STOP_DATA);
                 }
                 catch(InvalidOperationException ioe)
                 {
-                    break;
+                    await Task.Delay(DelayOnRetry);
                 }
                 catch (Exception e) when (i < NumberOfRetries)
                 {
@@ -41,19 +42,14 @@ namespace DoCeluNaCzasMobile.Services.PublicTransportServices.Helpers
                 }
             }
 
-            return await GetBusStops();
+            var json = await _publicTransportRepository.GetBusStops();
+            return JsonConvert.DeserializeObject<BusStopDataModel>(json);
         }
 
-        public async Task<List<JoinedTripsViewModel>> GetJoinedTripListAsync()
+        public async Task<List<GroupedJoinedModel>> GetJoinedTripListAsync()
         {
             var json = await _publicTransportRepository.GetJoinedTrips();
-            return JsonConvert.DeserializeObject<List<JoinedTripsViewModel>>(json);
-        }
-
-        public async Task<BusStopData> GetBusStops()
-        {
-            var json = await _publicTransportRepository.GetBusStops();
-            return JsonConvert.DeserializeObject<BusStopData>(json);
+            return JsonConvert.DeserializeObject<List<GroupedJoinedModel>>(json);
         }
     }
 }

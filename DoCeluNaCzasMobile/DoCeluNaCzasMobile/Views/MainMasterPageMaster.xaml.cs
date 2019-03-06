@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -28,7 +23,7 @@ namespace DoCeluNaCzasMobile.Views
         class MainMasterPageMasterViewModel : INotifyPropertyChanged
         {
             public ObservableCollection<MainMasterPageMenuItem> MenuItems { get; set; }
-            
+
             public MainMasterPageMasterViewModel()
             {
                 MenuItems = new ObservableCollection<MainMasterPageMenuItem>(new[]
@@ -41,15 +36,13 @@ namespace DoCeluNaCzasMobile.Views
                     new MainMasterPageMenuItem { Id = 5, Title = "Ustawienia" },
                 });
             }
-            
+
             #region INotifyPropertyChanged Implementation
             public event PropertyChangedEventHandler PropertyChanged;
-            void OnPropertyChanged([CallerMemberName] string propertyName = "")
-            {
-                if (PropertyChanged == null)
-                    return;
 
-                PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            private void OnPropertyChanged([CallerMemberName] string propertyName = "")
+            {
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
             }
             #endregion
         }

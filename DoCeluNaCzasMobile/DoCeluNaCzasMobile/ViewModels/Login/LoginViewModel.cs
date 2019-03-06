@@ -1,9 +1,5 @@
 ﻿using DoCeluNaCzasMobile.Services;
-using DoCeluNaCzasMobile.Views;
 using DoCeluNaCzasMobile.Views.DetailPages.UserAccount;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -11,10 +7,12 @@ namespace DoCeluNaCzasMobile.ViewModels.Login
 {
     public class LoginViewModel
     {
-        AuthService _apiServices = new AuthService();
-        NavigationService _navigationService = new NavigationService();
+        private readonly AuthService _apiServices = new AuthService();
+        private readonly NavigationService _navigationService = new NavigationService();
+
         public string Username { get; set; }
         public string Password { get; set; }
+
         public ICommand LoginCommand
         {
             get

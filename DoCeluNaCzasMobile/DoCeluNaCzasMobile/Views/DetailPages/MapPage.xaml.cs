@@ -29,7 +29,7 @@ namespace DoCeluNaCzasMobile.Views.DetailPages
             var position = await locator.GetPositionAsync();
             var center = new Position(position.Latitude, position.Longitude);
 
-            var busStopData = (BusStopData)App.Current.Properties["BusStops"];
+            var busStopData = (BusStopDataModel)App.Current.Properties["BusStops"];
             
             DisplayInMap(busStopData);
 
@@ -45,7 +45,7 @@ namespace DoCeluNaCzasMobile.Views.DetailPages
             await locator.StopListeningAsync();
         }
 
-        private void DisplayInMap(BusStopData stops)
+        private void DisplayInMap(BusStopDataModel stops)
         {
             foreach (var stop in stops.Stops)
             {

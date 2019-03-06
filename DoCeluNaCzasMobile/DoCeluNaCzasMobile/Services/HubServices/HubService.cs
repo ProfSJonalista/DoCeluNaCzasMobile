@@ -1,16 +1,15 @@
 ﻿using DoCeluNaCzasMobile.Models;
 using DoCeluNaCzasMobile.Services.HubServices.Helpers;
-using DoCeluNaCzasMobile.ViewModels.TimeTable;
 using Microsoft.AspNet.SignalR.Client;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace DoCeluNaCzasMobile.Services.HubServices
 {
     public class HubService
     {
-        HubConnection _hubConnection;
-        IHubProxy _hubProxy;
+        private readonly HubConnection _hubConnection;
+        private readonly IHubProxy _hubProxy;
+
         public HubService(string hubConnectionUrl, string hubName)
         {
             _hubConnection = new HubConnection(hubConnectionUrl);
@@ -22,14 +21,9 @@ namespace DoCeluNaCzasMobile.Services.HubServices
             await _hubConnection.Start();
         }
 
-        public async Task<BusStopData> GetBusStopData()
+        public async Task<T> GetBusStopData<T>(string hubName)
         {
-            return await _hubProxy.Invoke<BusStopData>(HubNames.GET_BUS_STOP_DATA);
-        }
-
-        public async Task<List<JoinedTripsViewModel>> GetJoinedTrips()
-        {
-            return await _hubProxy.Invoke<List<JoinedTripsViewModel>>(HubNames.GET_JOINED_TRIPS_MODEL_DATA);
+            return await _hubProxy.Invoke<T>(hubName);
         }
     }
 }
