@@ -1,17 +1,13 @@
 ﻿using DoCeluNaCzasMobile.Services;
 using DoCeluNaCzasMobile.ViewModels.TimeTable.Commands;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Text;
 
 namespace DoCeluNaCzasMobile.ViewModels.TimeTable
 {
     public class TimeTableViewModel : INotifyPropertyChanged
     {
         private GroupedRouteModel _oldRoutes;
-        TimeTableService _timeTableService;
         public event PropertyChangedEventHandler PropertyChanged;
 
         public ObservableCollection<GroupedRouteModel> GroupedRoutes { get; set; }
@@ -19,12 +15,12 @@ namespace DoCeluNaCzasMobile.ViewModels.TimeTable
         public TimeTableViewModel()
         {
             DisplayTripsCommand = new DisplayTripsCommand(this);
-            _timeTableService = new TimeTableService();
+            var timeTableService = new TimeTableService();
             GroupedRoutes = new ObservableCollection<GroupedRouteModel>()
             {
-                _timeTableService.GetVehicles("Autobusy", "buses"),
-                _timeTableService.GetVehicles("Tramwaje", "trams"),
-                _timeTableService.GetVehicles("Trolejbusy", "trolleys")
+                timeTableService.GetVehicles("Autobusy", Group.Buses),
+                timeTableService.GetVehicles("Tramwaje", Group.Trams),
+                timeTableService.GetVehicles("Trolejbusy", Group.Trolleys)
             };
         }
 
@@ -74,7 +70,6 @@ namespace DoCeluNaCzasMobile.ViewModels.TimeTable
 
     public class RouteViewModel
     {
-        public int Id { get; set; }
         public string Name { get; set; }
     }
 }

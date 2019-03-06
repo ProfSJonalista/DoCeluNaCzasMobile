@@ -1,4 +1,4 @@
-﻿namespace DoCeluNaCzasMobile.DataAccess.Helpers
+﻿namespace DoCeluNaCzasMobile.DataAccess.Repository.Helpers
 {
     public class Urls
     {

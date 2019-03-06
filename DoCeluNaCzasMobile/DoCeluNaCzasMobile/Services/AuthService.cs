@@ -1,5 +1,4 @@
-﻿using DoCeluNaCzasMobile.DataAccess.Helpers;
-using DoCeluNaCzasMobile.Models;
+﻿using DoCeluNaCzasMobile.Models;
 using DoCeluNaCzasMobile.Views.DetailPages;
 using Newtonsoft.Json;
 using System.Collections.Generic;
@@ -7,12 +6,13 @@ using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using DoCeluNaCzasMobile.DataAccess.Repository.Helpers;
 
 namespace DoCeluNaCzasMobile.Services
 {
     public class AuthService
     {
-        readonly NavigationService _navigationService;
+        private readonly NavigationService _navigationService;
 
         public AuthService()
         {
@@ -52,7 +52,7 @@ namespace DoCeluNaCzasMobile.Services
                 new KeyValuePair<string, string>("grant_type", "password")
             };
 
-            var content = string.Empty;
+            string content;
 
             using (var request = new HttpRequestMessage(HttpMethod.Post, Urls.TOKEN)
             {
