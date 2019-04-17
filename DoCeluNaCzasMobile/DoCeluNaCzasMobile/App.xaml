@@ -4,7 +4,28 @@
              x:Class="DoCeluNaCzasMobile.App">
 	<Application.Resources>
 
-		<!-- Application resource dictionary -->
+        <ResourceDictionary>
+            <!-- Set Icons -->
+            <x:String x:Key="Sort">&#xE8CB;</x:String>
 
-	</Application.Resources>
+            <!--Set static colors-->
+            <!--Turquoise-->
+            <Color x:Key="Turquoise">#007b7d</Color>
+            <!--Gray-->
+            <Color x:Key="Gray">#ccc</Color>
+            <!--Light Turquoise -->
+            <Color x:Key="Light-Turquoise">#a5b7b7</Color>
+            <!--White-->
+            <Color x:Key="White">#FFF</Color>
+
+
+            <!-- Change navigation bar color -->
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="#007b7d"/>
+                <Setter Property="BarTextColor" Value="Color.White"/>
+            </Style>
+
+        </ResourceDictionary>
+
+    </Application.Resources>
 </Application>

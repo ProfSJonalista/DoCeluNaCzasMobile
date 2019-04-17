@@ -2,8 +2,52 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DoCeluNaCzasMobile.Views.MainMasterPageDetail"
-             Title="Detail">
-  <StackLayout Padding="10">
-    <Label Text="This is a main page. To get the 'triple' line icon on each platform add a icon to each platform and update the 'Master' page with an Icon that references it."/>
-  </StackLayout>
+             Title="Detail"
+             Padding="10"
+             BackgroundColor="White">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="45" />
+            <RowDefinition Height="45" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Entry Placeholder="Od"
+               BackgroundColor="{StaticResource White}"
+               Grid.Row="0" Grid.Column="0"
+               Grid.ColumnSpan="3"
+               />
+
+        <Entry Placeholder="Do"
+               BackgroundColor="{StaticResource White}"
+               Grid.Row="1" Grid.Column="0"
+               Grid.ColumnSpan="3"
+               />
+
+        <Button x:Name="SearchRouteButton"
+              Clicked="SearchRouteButton_Clicked"
+              Text="Szukaj trasy"
+              Grid.Row="2"
+              Grid.Column="0"
+              Grid.ColumnSpan="2"
+              BackgroundColor="{StaticResource Turquoise}"
+                TextColor="White"
+                BorderRadius="5"
+              />
+
+        <Button x:Name="Swap"
+              Clicked="SwapButton_Clicked"
+              Text="Zamień"
+              Grid.Row="2"
+              Grid.Column="2"
+              BackgroundColor="{StaticResource Turquoise}"
+                TextColor="White"
+                BorderRadius="5"/>
+
+    </Grid>
 </ContentPage>
