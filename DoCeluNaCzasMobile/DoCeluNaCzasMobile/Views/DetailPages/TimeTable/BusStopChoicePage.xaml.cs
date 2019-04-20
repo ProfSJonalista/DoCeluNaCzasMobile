@@ -23,13 +23,13 @@ namespace DoCeluNaCzasMobile.Views.DetailPages.TimeTable
         public BusStopChoicePage()
 		{
 			InitializeComponent();
-            _navigationService = new NavigationService();
         }
 
         public BusStopChoicePage(string busLineName)
         {
             InitializeComponent();
             //TODO change to sqldb
+            _navigationService = new NavigationService();
             var allJoinedTrips = (List<GroupedJoinedModel>) App.Current.Properties["JoinedTrips"];
             var groupedModel = allJoinedTrips.SingleOrDefault(x => x.JoinedTripModels.Any(y => y.BusLineName.Equals(busLineName)));
             _joinedTrips = groupedModel.JoinedTripModels.SingleOrDefault(x => x.BusLineName.Equals(busLineName));

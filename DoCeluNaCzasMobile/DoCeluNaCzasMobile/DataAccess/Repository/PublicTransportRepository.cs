@@ -15,12 +15,7 @@ namespace DoCeluNaCzasMobile.DataAccess.Repository
         {
             return await DownloadData(Urls.BUS_STOPS);
         }
-
-        public async Task<string> GetBusLines()
-        {
-            return await DownloadData(Urls.BUS_LINES);
-        }
-
+        
         private async Task<string> DownloadData(string url)
         {
             var data = "";
