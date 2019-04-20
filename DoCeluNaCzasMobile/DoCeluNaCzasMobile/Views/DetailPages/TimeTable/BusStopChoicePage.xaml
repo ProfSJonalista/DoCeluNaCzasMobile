@@ -3,49 +3,105 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DoCeluNaCzasMobile.Views.DetailPages.TimeTable.BusStopChoicePage">
     <ContentPage.Content>
-        <StackLayout x:Name="JoinedTripsStackLayout">
+        <Grid x:Name="JoinedTripsStackLayout">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100" /> <!--frame grid-->
+                <RowDefinition Height="*" /> <!--listview grid-->
+                
 
-            <Label x:Name="BusLineNameLabel"
-                   HorizontalOptions="Center"
-                   Text="{Binding BusLineName}"/>
+            </Grid.RowDefinitions>
 
-            <Button x:Name="ChangeDestinationButton"
-                    Text="Zmień kierunki"
-                    HorizontalOptions="Center"
-                    IsVisible="{Binding ContainsMultiplyTrips}"
-                    Clicked="ChangeDestinationButton_Clicked"/>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" /> <!--frame-->
+                <ColumnDefinition Width="*" /> <!--listview-->
+            </Grid.ColumnDefinitions>
 
-            <Grid x:Name="DestinationGrid">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
+            <Frame
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="7">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="28" />
+                        <RowDefinition Height="28" />
+                        <RowDefinition Height="28" />
+                        <RowDefinition Height="18" />
+                        <RowDefinition Height="18" />
+                    </Grid.RowDefinitions>
 
-                <Label x:Name="DestinationStopNameLabel"
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30" />
+                        <ColumnDefinition Width="10" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label x:Name="BusLineNameLabel"
+                           Grid.Row="0"
+                           Grid.RowSpan="2"
+                           Grid.Column="0"
+                           FontSize="Medium"
+                           HorizontalTextAlignment="Center"
+                           VerticalTextAlignment="Center"
+                           Text="{Binding BusLineName}"
+                           />
+
+                    <Button x:Name="ChangeDestinationButton"
+                            Text="Zamień"
+                            Grid.Row="0"
+                            Grid.RowSpan="1"
+                            Grid.Column="4"
+                            FontSize="10"
+                            TextColor="White"
+                            Padding="0"
+                            BackgroundColor="{StaticResource Turquoise}"
+                            IsVisible="{Binding ContainsMultiplyTrips}"
+                            Clicked="ChangeDestinationButton_Clicked"
+                            />
+
+                    <Label x:Name="DestinationStopNameLabel"
                        Text="{Binding DestinationStopName}"
                        FontAttributes="Bold"
-                       Grid.Row="1"/>
-                <Label x:Name="FirstStopNameLabel"
+                       Grid.Row="0"
+                           Grid.ColumnSpan="2"
+                           Grid.Column="2"
+                           FontSize="12"
+                           HorizontalTextAlignment="Center"
+                           VerticalTextAlignment="Center"/>
+                    
+                    <Label x:Name="FirstStopNameLabel"
                        Text="{Binding FirstStopName}"
-                       Grid.Column="0"/>
-            </Grid>
+                        Grid.Row="1"
+                           Grid.ColumnSpan="2"
+                       Grid.Column="2"
+                           FontSize="12"
+                           HorizontalTextAlignment="Center"
+                           VerticalTextAlignment="Center"/>
+
+                </Grid>
+            </Frame>
+
 
             <ListView x:Name="JoinedTripsListView"
-                      Margin="20, 0"
                       HorizontalOptions="FillAndExpand"
-                      ItemTapped="JoinedTripsListView_ItemTapped">
+                      Margin="10,0"
+                      ItemTapped="JoinedTripsListView_ItemTapped"
+                      Grid.Row="1"
+                      Grid.Column="0"
+                      Grid.ColumnSpan="7"
+                      >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Label Text="{Binding Name}"/>
+                            <Label 
+                                Margin="0,10"
+                                VerticalTextAlignment="Center"
+                                Text="{Binding Name}"/>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-        </StackLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
