@@ -30,7 +30,7 @@ namespace DoCeluNaCzasMobile.ViewModels.Login
             {
                 return new Command(() =>
                 {
-                    _navigationService.Navigate(typeof(RegisterPage), "");
+                    _navigationService.Navigate(typeof(RegisterPage));
                 });
             }
         }

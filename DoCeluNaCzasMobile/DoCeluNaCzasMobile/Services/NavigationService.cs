@@ -4,20 +4,26 @@ using DoCeluNaCzasMobile.Views.DetailPages.TimeTable;
 using DoCeluNaCzasMobile.Views.DetailPages.TimeTable.TimeTablePage;
 using DoCeluNaCzasMobile.Views.DetailPages.UserAccount;
 using System;
+using DoCeluNaCzasMobile.Views.DetailPages.Delays;
 using Xamarin.Forms;
 
 namespace DoCeluNaCzasMobile.Services
 {
     public class NavigationService
     {
-        internal async void Navigate(Type targetType, string busLineName)
+        internal async void Navigate(Type targetType, string busLineName = "")
         {
             if (targetType != typeof(UserAccountPage))
             {
                 var masterDetailPage = App.Current.MainPage as MasterDetailPage;
                 var page = (Page)Activator.CreateInstance(targetType);
 
-                if (targetType == typeof(BusStopChoicePage))
+
+                if (targetType == typeof(AddBusStopPage))
+                {
+                    await masterDetailPage.Detail.Navigation.PushAsync(new AddBusStopPage());
+                }
+                else if (targetType == typeof(BusStopChoicePage))
                 {
                     await masterDetailPage.Detail.Navigation.PushAsync(new BusStopChoicePage(busLineName));
                 }

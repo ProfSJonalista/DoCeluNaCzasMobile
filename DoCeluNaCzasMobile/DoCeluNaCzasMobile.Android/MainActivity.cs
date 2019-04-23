@@ -1,12 +1,8 @@
-﻿using System;
-
+﻿using Android;
 using Android.App;
 using Android.Content.PM;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using Android.OS;
-using Android;
+using System.IO;
 
 namespace DoCeluNaCzasMobile.Droid
 {
@@ -27,7 +23,12 @@ namespace DoCeluNaCzasMobile.Droid
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
             Xamarin.FormsMaps.Init(this, bundle);
-            LoadApplication(new App());
+
+            const string dbName = "dcnc_db.sqlite";
+            var folderPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
+            var fullPath = Path.Combine(folderPath, dbName);
+
+            LoadApplication(new App(fullPath));
         }
     }
 }

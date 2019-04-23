@@ -25,7 +25,7 @@ namespace DoCeluNaCzasMobile.ViewModels.Register
 
                     if (isSuccess)
                     {
-                        _navigationService.Navigate(typeof(UserAccountPage), "");
+                        _navigationService.Navigate(typeof(UserAccountPage));
                     }
                 });
             }
@@ -37,7 +37,7 @@ namespace DoCeluNaCzasMobile.ViewModels.Register
             {
                 return new Command(() =>
                 {
-                    _navigationService.Navigate(typeof(UserAccountPage), "");
+                    _navigationService.Navigate(typeof(UserAccountPage));
                 });
             }
         }

@@ -1,11 +1,6 @@
 ﻿using DoCeluNaCzasMobile.Views.DetailPages;
+using DoCeluNaCzasMobile.Views.DetailPages.Delays;
 using DoCeluNaCzasMobile.Views.DetailPages.TimeTable;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -48,7 +43,7 @@ namespace DoCeluNaCzasMobile.Views
                     break;
 
                 case "Opóźnienia":
-                    page = new DelaysPage();
+                    page = new DelaysBusStopChoosePage();
                     break;
 
                 case "Mapa":

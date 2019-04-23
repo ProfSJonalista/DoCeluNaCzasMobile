@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using DoCeluNaCzasMobile.DataAccess.Repository.Net;
 
 namespace DoCeluNaCzasMobile.Services.PublicTransportServices.Helpers
 {

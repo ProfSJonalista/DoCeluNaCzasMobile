@@ -6,7 +6,9 @@ using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
-using DoCeluNaCzasMobile.DataAccess.Repository.Helpers;
+using DoCeluNaCzasMobile.DataAccess.Repository.Net.Helpers;
+using DoCeluNaCzasMobile.Services.Cache;
+using DoCeluNaCzasMobile.Services.Cache.Keys;
 
 namespace DoCeluNaCzasMobile.Services
 {
@@ -70,9 +72,9 @@ namespace DoCeluNaCzasMobile.Services
 
             var user = JsonConvert.DeserializeObject<User>(content);
 
-            App.Current.Properties["user"] = user;
+            CacheService.Save(user, CacheKeys.USER);
 
-            _navigationService.Navigate(typeof(UserAccountPage), "");
+            _navigationService.Navigate(typeof(UserAccountPage));
         }
 
         private string RemoveChars(string content)

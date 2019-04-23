@@ -1,8 +1,8 @@
 ﻿using System.Net.Http;
 using System.Threading.Tasks;
-using DoCeluNaCzasMobile.DataAccess.Repository.Helpers;
+using DoCeluNaCzasMobile.DataAccess.Repository.Net.Helpers;
 
-namespace DoCeluNaCzasMobile.DataAccess.Repository
+namespace DoCeluNaCzasMobile.DataAccess.Repository.Net
 {
     public class PublicTransportRepository
     {
