@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
+﻿using DoCeluNaCzasMobile.ViewModels.Delay.AddBusStop;
 using System.Linq;
-using System.Threading.Tasks;
 using DoCeluNaCzasMobile.Models.Delay;
-using DoCeluNaCzasMobile.Services.Cache;
-using DoCeluNaCzasMobile.Services.Cache.Keys;
-using DoCeluNaCzasMobile.ViewModels.Delay.AddBusStop;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -24,12 +18,13 @@ namespace DoCeluNaCzasMobile.Views.DetailPages.Delays
             MyListView.ItemsSource = AddBusStopViewModel.Items;
         }
 
-        async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
+        void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             if (e.Item == null)
                 return;
 
-            await DisplayAlert("Item Tapped", "An item was tapped.", "OK");
+            var item = (ChooseBusStopModel)e.Item;
+            AddBusStopViewModel.SaveToDb(item);
 
             //Deselect Item
             ((ListView)sender).SelectedItem = null;
@@ -44,7 +39,7 @@ namespace DoCeluNaCzasMobile.Views.DetailPages.Delays
             else
             {
                 MyListView.ItemsSource = AddBusStopViewModel.Items.Where(x =>
-                    x.BusLineNames.Contains(e.NewTextValue) || x.StopDesc.Contains(e.NewTextValue));
+                    x.BusLineNames.ToLower().Contains(e.NewTextValue.ToLower()) || x.StopDesc.ToLower().Contains(e.NewTextValue.ToLower()));
             }
         }
     }

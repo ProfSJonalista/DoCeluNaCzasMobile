@@ -12,12 +12,12 @@ using System.Text;
 
 namespace DoCeluNaCzasMobile.Services.Delay
 {
-    public class DelayService
+    public class ChooseBusStopDelayService
     {
         private readonly NavigationService _navigationService;
         private readonly DatabaseRepository _databaseRepository;
 
-        public DelayService()
+        public ChooseBusStopDelayService()
         {
             _navigationService = new NavigationService();
             _databaseRepository = new DatabaseRepository();
@@ -28,9 +28,9 @@ namespace DoCeluNaCzasMobile.Services.Delay
             return _databaseRepository.GetUserBusStopObservableCollection();
         }
 
-        public void Navigate(Type pageType)
+        public void Navigate(Type pageType, int stopId = 0)
         {
-            _navigationService.Navigate(pageType);
+            _navigationService.Navigate(pageType, null, stopId);
         }
 
         public void SetChooseBusStopModelCollection()
@@ -78,6 +78,16 @@ namespace DoCeluNaCzasMobile.Services.Delay
             }).ToList();
 
             CacheService.Save(new ObservableCollection<ChooseBusStopModel>(chooseBusStopCollection), CacheKeys.CHOOSE_BUS_STOP_MODEL_OBSERVABALE_COLLECTION);
+        }
+
+        public void SaveToDb(ChooseBusStopModel item)
+        {
+            _databaseRepository.SaveStopModel(item);
+        }
+
+        public void DeleteFromDb(ChooseBusStopModel item)
+        {
+            _databaseRepository.Delete(item);
         }
     }
 }

@@ -31,7 +31,7 @@ namespace DoCeluNaCzasMobile.Services.PublicTransportServices.Helpers
             {
                 try
                 {
-                    return await _hubService.GetBusStopData<BusStopDataModel>(HubNames.GET_BUS_STOP_DATA);
+                    return await _hubService.GetData<BusStopDataModel>(HubNames.GET_BUS_STOP_DATA);
                 }
                 catch(InvalidOperationException ioe)
                 {

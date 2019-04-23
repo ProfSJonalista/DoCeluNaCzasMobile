@@ -3,19 +3,21 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DoCeluNaCzasMobile.Views.DetailPages.TimeTable.BusStopChoicePage">
     <ContentPage.Content>
-        <Grid x:Name="JoinedTripsStackLayout">
+        <Grid x:Name="JoinedTripsGrid">
             <Grid.RowDefinitions>
-                <RowDefinition Height="100" /> <!--frame grid-->
-                <RowDefinition Height="*" /> <!--listview grid-->
-                
+                <RowDefinition Height="100" />
+                <!--frame grid-->
+                <RowDefinition Height="*" />
+                <!--listview grid-->
+
 
             </Grid.RowDefinitions>
-
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" /> <!--frame-->
-                <ColumnDefinition Width="*" /> <!--listview-->
+                <ColumnDefinition Width="*" />
+                <!--frame-->
+                <ColumnDefinition Width="*" />
+                <!--listview-->
             </Grid.ColumnDefinitions>
-
             <Frame
                 Grid.Row="0"
                 Grid.Column="0"
@@ -69,7 +71,7 @@
                            FontSize="12"
                            HorizontalTextAlignment="Center"
                            VerticalTextAlignment="Center"/>
-                    
+
                     <Label x:Name="FirstStopNameLabel"
                        Text="{Binding FirstStopName}"
                         Grid.Row="1"
@@ -81,8 +83,6 @@
 
                 </Grid>
             </Frame>
-
-
             <ListView x:Name="JoinedTripsListView"
                       HorizontalOptions="FillAndExpand"
                       Margin="10,0"

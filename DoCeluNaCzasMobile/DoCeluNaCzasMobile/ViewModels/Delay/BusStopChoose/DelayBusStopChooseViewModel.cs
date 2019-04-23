@@ -8,25 +8,25 @@ namespace DoCeluNaCzasMobile.ViewModels.Delay.BusStopChoose
 {
     public class DelayBusStopChooseViewModel
     {
-        public static ObservableCollection<ChooseBusStopModel> ChooseBusStopModelObservableCollection { get; set; }
+        public ObservableCollection<ChooseBusStopModel> Items { get; set; }
         public NavigateToAddPageCommand NavToAddPageCommand { get; set; }
 
-        public static DelayService DelayService = new DelayService();
+        public static ChooseBusStopDelayService ChooseBusStopDelayService = new ChooseBusStopDelayService();
 
         public DelayBusStopChooseViewModel()
         {
             NavToAddPageCommand = new NavigateToAddPageCommand(this);
         }
 
-        public static ObservableCollection<ChooseBusStopModel> GetUserBusStops()
+        public ObservableCollection<ChooseBusStopModel> GetUserBusStops()
         {
-            ChooseBusStopModelObservableCollection = DelayService.GetUserBusStops();
-            return ChooseBusStopModelObservableCollection;
+            Items = ChooseBusStopDelayService.GetUserBusStops();
+            return Items;
         }
 
         public void NavigateToAddPage()
         {
-            DelayService.Navigate(typeof(AddBusStopPage));
+            ChooseBusStopDelayService.Navigate(typeof(AddBusStopPage));
         }
     }
 }

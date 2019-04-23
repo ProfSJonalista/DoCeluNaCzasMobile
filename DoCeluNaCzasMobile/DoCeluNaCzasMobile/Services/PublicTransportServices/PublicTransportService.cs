@@ -12,12 +12,12 @@ namespace DoCeluNaCzasMobile.Services.PublicTransportServices
     public class PublicTransportService
     {
         private readonly HubService _hubService;
-        private readonly DelayService _delayService;
+        private readonly ChooseBusStopDelayService _chooseBusStopDelayService;
         private readonly PublicTransportHelper _publicTransportHelper;
 
         public PublicTransportService()
         {
-            _delayService = new DelayService();
+            _chooseBusStopDelayService = new ChooseBusStopDelayService();
             _hubService = new HubService(Urls.HUB_CONNECTION, HubNames.PUBLIC_TRANSPORT_HUB);
             _publicTransportHelper = new PublicTransportHelper(_hubService);
         }
@@ -28,7 +28,9 @@ namespace DoCeluNaCzasMobile.Services.PublicTransportServices
 
             await GetBusStopData();
             await GetJoinedTripList();
-            _delayService.SetChooseBusStopModelCollection();
+            _chooseBusStopDelayService.SetChooseBusStopModelCollection();
+
+            _hubService.Dispose();
         }
 
         private async Task GetBusStopData()

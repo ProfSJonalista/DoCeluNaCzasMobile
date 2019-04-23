@@ -1,6 +1,4 @@
-﻿using DoCeluNaCzasMobile.Models;
-using DoCeluNaCzasMobile.Services.HubServices.Helpers;
-using Microsoft.AspNet.SignalR.Client;
+﻿using Microsoft.AspNet.SignalR.Client;
 using System.Threading.Tasks;
 
 namespace DoCeluNaCzasMobile.Services.HubServices
@@ -21,9 +19,15 @@ namespace DoCeluNaCzasMobile.Services.HubServices
             await _hubConnection.Start();
         }
 
-        public async Task<T> GetBusStopData<T>(string hubName)
+        public async Task<T> GetData<T>(string hubName)
         {
             return await _hubProxy.Invoke<T>(hubName);
+        }
+
+        public void Dispose()
+        {
+            if (_hubConnection.State == ConnectionState.Connected)
+                _hubConnection.Dispose();
         }
     }
 }

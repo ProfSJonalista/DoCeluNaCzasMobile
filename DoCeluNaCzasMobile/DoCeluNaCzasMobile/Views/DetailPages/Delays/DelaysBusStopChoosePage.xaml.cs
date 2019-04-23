@@ -1,9 +1,6 @@
-﻿using DoCeluNaCzasMobile.Models;
-using DoCeluNaCzasMobile.Services.Delay;
-using System;
-using System.Collections.ObjectModel;
-using DoCeluNaCzasMobile.ViewModels.Delay;
-using DoCeluNaCzasMobile.ViewModels.Delay.BusStopChoose;
+﻿using DoCeluNaCzasMobile.ViewModels.Delay.BusStopChoose;
+using System.Linq;
+using DoCeluNaCzasMobile.Models.Delay;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -12,10 +9,13 @@ namespace DoCeluNaCzasMobile.Views.DetailPages.Delays
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DelaysBusStopChoosePage : ContentPage
     {
+        public DelayBusStopChooseViewModel DelayBusStopChooseViewModel { get; set; }
+
         public DelaysBusStopChoosePage()
         {
             InitializeComponent();
-            BindingContext = new DelayBusStopChooseViewModel();
+            DelayBusStopChooseViewModel = new DelayBusStopChooseViewModel();
+            BindingContext = DelayBusStopChooseViewModel;
         }
 
         protected override void OnAppearing()
@@ -30,16 +30,27 @@ namespace DoCeluNaCzasMobile.Views.DetailPages.Delays
             MyListView.ItemsSource = items;
         }
 
+        private void SearchBar_OnTextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(e.NewTextValue))
+            {
+                MyListView.ItemsSource = DelayBusStopChooseViewModel.Items;
+            }
+            else
+            {
+                MyListView.ItemsSource = DelayBusStopChooseViewModel.Items.Where(x =>
+                    x.BusLineNames.ToLower().Contains(e.NewTextValue.ToLower()) || x.StopDesc.ToLower().Contains(e.NewTextValue.ToLower()));
+            }
+        }
         //przenosi do DelaysPage z odpowiednim stopId
-        async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
+        void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             if (e.Item == null)
                 return;
 
-            await DisplayAlert("Item Tapped", "An item was tapped.", "OK");
+            var stop = (ChooseBusStopModel) e.Item;
 
-            //Deselect Item
-            ((ListView)sender).SelectedItem = null;
+            DelayBusStopChooseViewModel.ChooseBusStopDelayService.Navigate(typeof(DelaysPage), stop.StopId);
         }
     }
 }

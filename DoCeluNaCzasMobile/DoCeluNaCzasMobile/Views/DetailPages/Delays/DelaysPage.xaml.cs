@@ -17,6 +17,11 @@ namespace DoCeluNaCzasMobile.Views.DetailPages.Delays
         public DelaysPage()
         {
             InitializeComponent();
+        }
+
+        public DelaysPage(int stopId)
+        {
+            InitializeComponent();
 
             Items = new ObservableCollection<string>
             {
@@ -26,8 +31,8 @@ namespace DoCeluNaCzasMobile.Views.DetailPages.Delays
                 "Item 4",
                 "Item 5"
             };
-			
-			MyListView.ItemsSource = Items;
+
+            MyListView.ItemsSource = Items;
         }
 
         async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)

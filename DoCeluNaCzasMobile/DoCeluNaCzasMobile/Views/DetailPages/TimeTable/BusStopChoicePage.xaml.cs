@@ -37,7 +37,7 @@ namespace DoCeluNaCzasMobile.Views.DetailPages.TimeTable
         {
             base.OnAppearing();
 
-            JoinedTripsStackLayout.BindingContext = _joinedTrips;
+            JoinedTripsGrid.BindingContext = _joinedTrips;
             Source = _joinedTrips.JoinedTrips.FirstOrDefault();
             FirstStopNameLabel.Text = Source.FirstStopName;
             DestinationStopNameLabel.Text = Source.DestinationStopName;
