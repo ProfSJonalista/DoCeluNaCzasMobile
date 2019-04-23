@@ -1,8 +1,7 @@
-﻿using DoCeluNaCzasMobile.ViewModels.Delay;
-using System;
+﻿using System;
 using System.Windows.Input;
 
-namespace DoCeluNaCzasMobile.Views.DetailPages.Delays.Commands
+namespace DoCeluNaCzasMobile.ViewModels.Delay.BusStopChoose.Commands
 {
     public class NavigateToAddPageCommand : ICommand
     {

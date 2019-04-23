@@ -1,11 +1,10 @@
-﻿using DoCeluNaCzasMobile.Services.Delay;
-using DoCeluNaCzasMobile.Views.DetailPages.Delays.Commands;
-using System;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using DoCeluNaCzasMobile.Models.Delay;
+using DoCeluNaCzasMobile.Services.Delay;
+using DoCeluNaCzasMobile.ViewModels.Delay.BusStopChoose.Commands;
 using DoCeluNaCzasMobile.Views.DetailPages.Delays;
 
-namespace DoCeluNaCzasMobile.ViewModels.Delay
+namespace DoCeluNaCzasMobile.ViewModels.Delay.BusStopChoose
 {
     public class DelayBusStopChooseViewModel
     {

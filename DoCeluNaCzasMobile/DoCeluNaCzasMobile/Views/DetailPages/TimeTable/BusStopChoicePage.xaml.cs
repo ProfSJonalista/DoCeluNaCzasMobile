@@ -26,9 +26,9 @@ namespace DoCeluNaCzasMobile.Views.DetailPages.TimeTable
         public BusStopChoicePage(string busLineName)
         {
             InitializeComponent();
-            //TODO change to sqldb
+            
             _navigationService = new NavigationService();
-            var allJoinedTrips = CacheService.Get<List<GroupedJoinedModel>>(CacheKeys.JOINED_TRIPS);
+            var allJoinedTrips = CacheService.Get<List<GroupedJoinedModel>>(CacheKeys.GROUPED_JOINED_MODEL_LIST);
             var groupedModel = allJoinedTrips.SingleOrDefault(x => x.JoinedTripModels.Any(y => y.BusLineName.Equals(busLineName)));
             _joinedTrips = groupedModel.JoinedTripModels.SingleOrDefault(x => x.BusLineName.Equals(busLineName));
         }

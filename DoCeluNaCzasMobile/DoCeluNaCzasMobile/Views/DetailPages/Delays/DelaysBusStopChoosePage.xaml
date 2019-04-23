@@ -25,6 +25,8 @@
                         <StackLayout>
                             <Label Text="{Binding StopDesc}" 
                                    Style="{DynamicResource ListItemTextStyle}" />
+                            <Label Text="{Binding BusLineNames}"
+                                   Style="{DynamicResource ListItemDetailTextStyle}"/>
                             <Label Text="{Binding DestinationHeadsigns}"
                                    Style="{DynamicResource ListItemDetailTextStyle}"/>
                         </StackLayout>

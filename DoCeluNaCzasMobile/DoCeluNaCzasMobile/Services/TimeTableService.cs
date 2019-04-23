@@ -18,7 +18,7 @@ namespace DoCeluNaCzasMobile.Services
             };
 
 
-            var joinedTrips = CacheService.Get<List<GroupedJoinedModel>>(CacheKeys.JOINED_TRIPS);
+            var joinedTrips = CacheService.Get<List<GroupedJoinedModel>>(CacheKeys.GROUPED_JOINED_MODEL_LIST);
             var trips = joinedTrips.SingleOrDefault(x => x.Group == group);
             
             trips.JoinedTripModels.ForEach(x => groupedVm.Add(new RouteViewModel()

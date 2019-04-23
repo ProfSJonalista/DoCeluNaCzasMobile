@@ -19,7 +19,7 @@ namespace DoCeluNaCzasMobile.Views.DetailPages
             InitializeComponent();
         }
 
-        protected async override void OnAppearing()
+        protected override async void OnAppearing()
         {
             base.OnAppearing();
 
@@ -30,7 +30,7 @@ namespace DoCeluNaCzasMobile.Views.DetailPages
             var position = await locator.GetPositionAsync();
             var center = new Position(position.Latitude, position.Longitude);
 
-            var busStopData = CacheService.Get<BusStopDataModel>(CacheKeys.BUS_STOPS);
+            var busStopData = CacheService.Get<BusStopDataModel>(CacheKeys.BUS_STOP_DATA_MODEL);
             
             DisplayInMap(busStopData);
 

@@ -80,4 +80,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ViewModels\Delay\AddBusStop\Commands\" />
+    <Folder Include="ViewModels\Delay\Delays\Commands\" />
+  </ItemGroup>
 </Project>

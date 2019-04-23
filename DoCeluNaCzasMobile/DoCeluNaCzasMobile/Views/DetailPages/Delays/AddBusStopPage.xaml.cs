@@ -3,7 +3,10 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
-
+using DoCeluNaCzasMobile.Models.Delay;
+using DoCeluNaCzasMobile.Services.Cache;
+using DoCeluNaCzasMobile.Services.Cache.Keys;
+using DoCeluNaCzasMobile.ViewModels.Delay.AddBusStop;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -12,22 +15,13 @@ namespace DoCeluNaCzasMobile.Views.DetailPages.Delays
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddBusStopPage : ContentPage
     {
-        public ObservableCollection<string> Items { get; set; }
+        public AddBusStopViewModel AddBusStopViewModel { get; set; }
 
         public AddBusStopPage()
         {
             InitializeComponent();
-
-            Items = new ObservableCollection<string>
-            {
-                "Item 1",
-                "Item 2",
-                "Item 3",
-                "Item 4",
-                "Item 5"
-            };
-			
-			MyListView.ItemsSource = Items;
+            AddBusStopViewModel = new AddBusStopViewModel();
+            MyListView.ItemsSource = AddBusStopViewModel.Items;
         }
 
         async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
@@ -39,6 +33,19 @@ namespace DoCeluNaCzasMobile.Views.DetailPages.Delays
 
             //Deselect Item
             ((ListView)sender).SelectedItem = null;
+        }
+
+        private void SearchBar_OnTextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(e.NewTextValue))
+            {
+                MyListView.ItemsSource = AddBusStopViewModel.Items;
+            }
+            else
+            {
+                MyListView.ItemsSource = AddBusStopViewModel.Items.Where(x =>
+                    x.BusLineNames.Contains(e.NewTextValue) || x.StopDesc.Contains(e.NewTextValue));
+            }
         }
     }
 }

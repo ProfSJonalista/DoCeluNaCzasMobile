@@ -3,6 +3,7 @@ using DoCeluNaCzasMobile.Services.Delay;
 using System;
 using System.Collections.ObjectModel;
 using DoCeluNaCzasMobile.ViewModels.Delay;
+using DoCeluNaCzasMobile.ViewModels.Delay.BusStopChoose;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 

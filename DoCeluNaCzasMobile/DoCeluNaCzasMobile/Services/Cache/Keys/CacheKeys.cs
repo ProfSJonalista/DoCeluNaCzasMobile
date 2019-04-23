@@ -3,7 +3,8 @@
     public static class CacheKeys
     {
         public static string USER = "User";
-        public static string BUS_STOPS = "BusStops";
-        public static string JOINED_TRIPS = "JoinedTrips";
+        public static string BUS_STOP_DATA_MODEL = "BusStopDataModel";
+        public static string GROUPED_JOINED_MODEL_LIST = "GroupedJoinedModelList";
+        public static string CHOOSE_BUS_STOP_MODEL_OBSERVABALE_COLLECTION = "ChooseBusStopModelObservableCollection";
     }
 }
