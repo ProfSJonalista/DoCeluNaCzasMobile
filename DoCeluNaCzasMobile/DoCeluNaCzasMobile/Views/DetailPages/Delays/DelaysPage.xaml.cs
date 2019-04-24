@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Linq;
+﻿using System.Collections.ObjectModel;
 using System.Threading.Tasks;
-
+using DoCeluNaCzasMobile.ViewModels.Delay.Delays;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -12,8 +9,7 @@ namespace DoCeluNaCzasMobile.Views.DetailPages.Delays
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DelaysPage : ContentPage
     {
-        public ObservableCollection<string> Items { get; set; }
-
+        public DelayViewModel DelayViewModel { get; set; }
         public DelaysPage()
         {
             InitializeComponent();
@@ -22,28 +18,32 @@ namespace DoCeluNaCzasMobile.Views.DetailPages.Delays
         public DelaysPage(int stopId)
         {
             InitializeComponent();
-
-            Items = new ObservableCollection<string>
-            {
-                "Item 1",
-                "Item 2",
-                "Item 3",
-                "Item 4",
-                "Item 5"
-            };
-
-            MyListView.ItemsSource = Items;
+            DelayViewModel = new DelayViewModel(stopId);
+            MyListView.ItemsSource = DelayViewModel.Items;
+            BindingContext = DelayViewModel;
         }
 
-        async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
+        void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             if (e.Item == null)
                 return;
-
-            await DisplayAlert("Item Tapped", "An item was tapped.", "OK");
-
             //Deselect Item
             ((ListView)sender).SelectedItem = null;
+        }
+
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+            await DelayViewModel.StartConnection();
+            DelayViewModel.SetTimer();
+            DelayViewModel.SetItems();
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            DelayViewModel.StopConnection();
+            DelayViewModel.StopTimer();
         }
     }
 }

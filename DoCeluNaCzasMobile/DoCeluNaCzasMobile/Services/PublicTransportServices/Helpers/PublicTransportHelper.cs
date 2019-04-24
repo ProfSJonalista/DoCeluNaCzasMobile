@@ -1,4 +1,4 @@
-﻿using DoCeluNaCzasMobile.DataAccess.Repository;
+﻿using DoCeluNaCzasMobile.DataAccess.Repository.Net;
 using DoCeluNaCzasMobile.Models;
 using DoCeluNaCzasMobile.Services.HubServices;
 using DoCeluNaCzasMobile.Services.HubServices.Helpers;
@@ -7,15 +7,11 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using DoCeluNaCzasMobile.DataAccess.Repository.Net;
 
 namespace DoCeluNaCzasMobile.Services.PublicTransportServices.Helpers
 {
     public class PublicTransportHelper
     {
-        private const int NumberOfRetries = 3;
-        private const int DelayOnRetry = 1000;
-
         private readonly HubService _hubService;
         private readonly PublicTransportRepository _publicTransportRepository;
 
@@ -27,20 +23,9 @@ namespace DoCeluNaCzasMobile.Services.PublicTransportServices.Helpers
 
         public async Task<BusStopDataModel> GetBusStopDataAsync()
         {
-            for (var i = 1; i <= NumberOfRetries; ++i)
+            if (_hubService.IsConnected())
             {
-                try
-                {
-                    return await _hubService.GetData<BusStopDataModel>(HubNames.GET_BUS_STOP_DATA);
-                }
-                catch(InvalidOperationException ioe)
-                {
-                    await Task.Delay(DelayOnRetry);
-                }
-                catch (Exception e) when (i < NumberOfRetries)
-                {
-                    await Task.Delay(DelayOnRetry);
-                }
+                return await _hubService.GetData<BusStopDataModel>(HubNames.GET_BUS_STOP_DATA);
             }
 
             var json = await _publicTransportRepository.GetBusStops();

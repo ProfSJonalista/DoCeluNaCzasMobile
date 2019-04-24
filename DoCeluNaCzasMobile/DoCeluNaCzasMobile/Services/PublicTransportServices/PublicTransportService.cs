@@ -1,11 +1,11 @@
-﻿using System.Threading.Tasks;
-using DoCeluNaCzasMobile.DataAccess.Repository.Net.Helpers;
+﻿using DoCeluNaCzasMobile.DataAccess.Repository.Net.Helpers;
 using DoCeluNaCzasMobile.Services.Cache;
 using DoCeluNaCzasMobile.Services.Cache.Keys;
 using DoCeluNaCzasMobile.Services.Delay;
 using DoCeluNaCzasMobile.Services.HubServices;
 using DoCeluNaCzasMobile.Services.HubServices.Helpers;
 using DoCeluNaCzasMobile.Services.PublicTransportServices.Helpers;
+using System.Threading.Tasks;
 
 namespace DoCeluNaCzasMobile.Services.PublicTransportServices
 {
@@ -30,7 +30,7 @@ namespace DoCeluNaCzasMobile.Services.PublicTransportServices
             await GetJoinedTripList();
             _chooseBusStopDelayService.SetChooseBusStopModelCollection();
 
-            _hubService.Dispose();
+            _hubService.StopConnection();
         }
 
         private async Task GetBusStopData()

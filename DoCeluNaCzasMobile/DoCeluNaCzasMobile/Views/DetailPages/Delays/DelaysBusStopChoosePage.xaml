@@ -14,9 +14,6 @@
                HorizontalOptions="CenterAndExpand"
                VerticalOptions="CenterAndExpand"/>
 
-        <SearchBar Placeholder="Wprowadź nazwę linii lub przystanku"
-                   TextChanged="SearchBar_OnTextChanged"/>
-
         <ListView x:Name="MyListView"
                   ItemsSource="{Binding Items}"
                   ItemTapped="Handle_ItemTapped"

@@ -2,22 +2,35 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DoCeluNaCzasMobile.Views.DetailPages.Delays.DelaysPage">
-    <ListView x:Name="MyListView"
-            ItemsSource="{Binding Items}"
-            ItemTapped="Handle_ItemTapped"
-            CachingStrategy="RecycleElement">
 
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <ViewCell>
-                    <StackLayout>
-                        <Label Text="{Binding Text}" 
-                   Style="{DynamicResource ListItemTextStyle}" />
-                        <Label Text="{Binding Detail}" 
-                   Style="{DynamicResource ListItemDetailTextStyle}"/>
-                    </StackLayout>
-                </ViewCell>
-            </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
+    <StackLayout>
+
+        <Button Text="Dupa, chuj, nie działa >:|"/>
+
+        <ListView x:Name="MyListView"
+                  ItemsSource="{Binding Items}"
+                  ItemTapped="Handle_ItemTapped"
+                  CachingStrategy="RecycleElement"
+                  HasUnevenRows="True"
+                  BackgroundColor="Red">
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout>
+                            <Label Text="{Binding BusLineName}" 
+                               Style="{DynamicResource ListItemTextStyle}" 
+                               HorizontalOptions="Start"/>
+                            <Label Text="{Binding Headsign}" 
+                               Style="{DynamicResource ListItemTextStyle}" 
+                               HorizontalOptions="CenterAndExpand"/>
+                            <Label Text="{Binding DelayInSeconds}"
+                               Style="{DynamicResource ListItemTextStyle}" 
+                               HorizontalOptions="End"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
 </ContentPage>
