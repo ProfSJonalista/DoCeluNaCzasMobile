@@ -1,4 +1,4 @@
-﻿using DoCeluNaCzasMobile.DataAccess.Repository;
+﻿using DoCeluNaCzasMobile.DataAccess.Repository.Net;
 using DoCeluNaCzasMobile.Models;
 using DoCeluNaCzasMobile.Services.HubServices;
 using DoCeluNaCzasMobile.Services.HubServices.Helpers;
@@ -6,15 +6,14 @@ using DoCeluNaCzasMobile.ViewModels.TimeTable;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
+using DoCeluNaCzasMobile.Models.Delay;
 
 namespace DoCeluNaCzasMobile.Services.PublicTransportServices.Helpers
 {
     public class PublicTransportHelper
     {
-        private const int NumberOfRetries = 3;
-        private const int DelayOnRetry = 1000;
-
         private readonly HubService _hubService;
         private readonly PublicTransportRepository _publicTransportRepository;
 
@@ -26,30 +25,41 @@ namespace DoCeluNaCzasMobile.Services.PublicTransportServices.Helpers
 
         public async Task<BusStopDataModel> GetBusStopDataAsync()
         {
-            for (var i = 1; i <= NumberOfRetries; ++i)
+            var busStopDataModel = new BusStopDataModel();
+
+            if (_hubService.IsConnected())
             {
-                try
-                {
-                    return await _hubService.GetBusStopData<BusStopDataModel>(HubNames.GET_BUS_STOP_DATA);
-                }
-                catch(InvalidOperationException ioe)
-                {
-                    await Task.Delay(DelayOnRetry);
-                }
-                catch (Exception e) when (i < NumberOfRetries)
-                {
-                    await Task.Delay(DelayOnRetry);
-                }
+                busStopDataModel = await _hubService.GetData<BusStopDataModel>(HubNames.GET_BUS_STOP_DATA);
             }
 
-            var json = await _publicTransportRepository.GetBusStops();
-            return JsonConvert.DeserializeObject<BusStopDataModel>(json);
+            if (busStopDataModel?.Stops == null)
+            {
+                var json = await _publicTransportRepository.GetBusStops();
+                busStopDataModel = Deserialize<BusStopDataModel>(json);
+            }
+
+            return busStopDataModel;
         }
 
         public async Task<List<GroupedJoinedModel>> GetJoinedTripListAsync()
         {
             var json = await _publicTransportRepository.GetJoinedTrips();
-            return JsonConvert.DeserializeObject<List<GroupedJoinedModel>>(json);
+            var data = Deserialize<List<GroupedJoinedModel>>(json);
+
+            return data;
+        }
+
+        public async Task<ObservableCollection<ChooseBusStopModel>> GetChooseBusStopCollectionAsync()
+        {
+            var json = await _publicTransportRepository.GetChooseBusStopObservableCollection();
+            var data = Deserialize<ObservableCollection<ChooseBusStopModel>>(json);
+
+            return data;
+        }
+
+        private T Deserialize<T>(string json)
+        {
+            return JsonConvert.DeserializeObject<T>(json);
         }
     }
 }

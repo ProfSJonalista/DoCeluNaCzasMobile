@@ -2,7 +2,8 @@
 using DoCeluNaCzasMobile.Services;
 using Plugin.Geolocator;
 using System;
-
+using DoCeluNaCzasMobile.Services.Cache;
+using DoCeluNaCzasMobile.Services.Cache.Keys;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using Xamarin.Forms.Xaml;
@@ -18,7 +19,7 @@ namespace DoCeluNaCzasMobile.Views.DetailPages
             InitializeComponent();
         }
 
-        protected async override void OnAppearing()
+        protected override async void OnAppearing()
         {
             base.OnAppearing();
 
@@ -29,7 +30,7 @@ namespace DoCeluNaCzasMobile.Views.DetailPages
             var position = await locator.GetPositionAsync();
             var center = new Position(position.Latitude, position.Longitude);
 
-            var busStopData = (BusStopDataModel)App.Current.Properties["BusStops"];
+            var busStopData = CacheService.Get<BusStopDataModel>(CacheKeys.BUS_STOP_DATA_MODEL);
             
             DisplayInMap(busStopData);
 

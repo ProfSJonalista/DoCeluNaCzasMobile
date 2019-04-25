@@ -2,6 +2,8 @@
 using DoCeluNaCzasMobile.ViewModels.TimeTable;
 using System.Collections.Generic;
 using System.Linq;
+using DoCeluNaCzasMobile.Services.Cache;
+using DoCeluNaCzasMobile.Services.Cache.Keys;
 
 namespace DoCeluNaCzasMobile.Services
 {
@@ -16,7 +18,7 @@ namespace DoCeluNaCzasMobile.Services
             };
 
 
-            var joinedTrips = (List<GroupedJoinedModel>)App.Current.Properties["JoinedTrips"];
+            var joinedTrips = CacheService.Get<List<GroupedJoinedModel>>(CacheKeys.GROUPED_JOINED_MODEL_LIST);
             var trips = joinedTrips.SingleOrDefault(x => x.Group == group);
             
             trips.JoinedTripModels.ForEach(x => groupedVm.Add(new RouteViewModel()

@@ -1,19 +1,17 @@
-﻿using DoCeluNaCzasMobile.Models;
-using DoCeluNaCzasMobile.Services;
+﻿using DoCeluNaCzasMobile.Services;
 using DoCeluNaCzasMobile.ViewModels.TimeTable;
 using DoCeluNaCzasMobile.Views.DetailPages.TimeTable.TimeTablePage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+using DoCeluNaCzasMobile.Services.Cache;
+using DoCeluNaCzasMobile.Services.Cache.Keys;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace DoCeluNaCzasMobile.Views.DetailPages.TimeTable
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
+    [XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class BusStopChoicePage : ContentPage
 	{
         private readonly JoinedTripsModel _joinedTrips;
@@ -28,9 +26,9 @@ namespace DoCeluNaCzasMobile.Views.DetailPages.TimeTable
         public BusStopChoicePage(string busLineName)
         {
             InitializeComponent();
-            //TODO change to sqldb
+            
             _navigationService = new NavigationService();
-            var allJoinedTrips = (List<GroupedJoinedModel>) App.Current.Properties["JoinedTrips"];
+            var allJoinedTrips = CacheService.Get<List<GroupedJoinedModel>>(CacheKeys.GROUPED_JOINED_MODEL_LIST);
             var groupedModel = allJoinedTrips.SingleOrDefault(x => x.JoinedTripModels.Any(y => y.BusLineName.Equals(busLineName)));
             _joinedTrips = groupedModel.JoinedTripModels.SingleOrDefault(x => x.BusLineName.Equals(busLineName));
         }
@@ -39,7 +37,7 @@ namespace DoCeluNaCzasMobile.Views.DetailPages.TimeTable
         {
             base.OnAppearing();
 
-            JoinedTripsStackLayout.BindingContext = _joinedTrips;
+            JoinedTripsGrid.BindingContext = _joinedTrips;
             Source = _joinedTrips.JoinedTrips.FirstOrDefault();
             FirstStopNameLabel.Text = Source.FirstStopName;
             DestinationStopNameLabel.Text = Source.DestinationStopName;
@@ -58,9 +56,7 @@ namespace DoCeluNaCzasMobile.Views.DetailPages.TimeTable
         {
             var busLineName = e.Item as JoinedStopModel;
 
-            
-
-            _navigationService.Navigate(typeof(TimeTableTabbedPage), "");
+            _navigationService.Navigate(typeof(TimeTableTabbedPage));
         }
     }
 }

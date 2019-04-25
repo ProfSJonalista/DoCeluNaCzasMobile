@@ -7,15 +7,26 @@ namespace DoCeluNaCzasMobile
 {
     public partial class App : Application
 	{
-		public App ()
+        public static string DatabaseLocation = string.Empty;
+
+        public App ()
 		{
 			InitializeComponent();
-            FlowListView.Init();
 
+            FlowListView.Init();
             MainPage = new MainMasterPage();
         }
 
-		protected override void OnStart ()
+        public App(string databaseLocation)
+        {
+            InitializeComponent();
+
+            DatabaseLocation = databaseLocation;
+            FlowListView.Init();
+            MainPage = new MainMasterPage();
+        }
+
+        protected override void OnStart ()
 		{
             // Handle when your app starts
             var publicTransportService = new PublicTransportService();

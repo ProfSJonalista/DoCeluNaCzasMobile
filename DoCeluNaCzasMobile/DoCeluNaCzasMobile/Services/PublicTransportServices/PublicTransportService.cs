@@ -1,7 +1,10 @@
-﻿using DoCeluNaCzasMobile.DataAccess.Repository.Helpers;
+﻿using DoCeluNaCzasMobile.DataAccess.Repository.Net.Helpers;
+using DoCeluNaCzasMobile.Services.Cache;
+using DoCeluNaCzasMobile.Services.Cache.Keys;
 using DoCeluNaCzasMobile.Services.HubServices;
 using DoCeluNaCzasMobile.Services.HubServices.Helpers;
 using DoCeluNaCzasMobile.Services.PublicTransportServices.Helpers;
+using System.Threading.Tasks;
 
 namespace DoCeluNaCzasMobile.Services.PublicTransportServices
 {
@@ -20,22 +23,29 @@ namespace DoCeluNaCzasMobile.Services.PublicTransportServices
         {
             await _hubService.StartConnection();
 
-            GetBusStopData();
-            GetJoinedTripList();
+            await GetBusStopData();
+            await GetJoinedTripList();
+            await GetChooseBusStopModelCollection();
+
+            _hubService.StopConnection();
         }
 
-        private async void GetBusStopData()
+        private async Task GetChooseBusStopModelCollection()
+        {
+            var chooseBusStopModelCollection = await _publicTransportHelper.GetChooseBusStopCollectionAsync();
+            CacheService.Save(chooseBusStopModelCollection, CacheKeys.CHOOSE_BUS_STOP_MODEL_OBSERVABALE_COLLECTION);
+        }
+
+        private async Task GetBusStopData()
         {
             var busStopData = await _publicTransportHelper.GetBusStopDataAsync();
-            //todo save to sqldb
-            App.Current.Properties["BusStops"] = busStopData;
+            CacheService.Save(busStopData, CacheKeys.BUS_STOP_DATA_MODEL);
         }
 
-        private async void GetJoinedTripList()
+        private async Task GetJoinedTripList()
         {
             var joinedTripsViewModelList = await _publicTransportHelper.GetJoinedTripListAsync();
-            //todo save to sqldb
-            App.Current.Properties["JoinedTrips"] = joinedTripsViewModelList;
+            CacheService.Save(joinedTripsViewModelList, CacheKeys.GROUPED_JOINED_MODEL_LIST);
         }
     }
 }

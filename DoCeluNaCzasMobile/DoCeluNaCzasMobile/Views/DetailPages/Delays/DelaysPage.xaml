@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DoCeluNaCzasMobile.Views.DetailPages.Delays.DelaysPage">
+
+    <StackLayout Margin="10">
+
+        <Label x:Name="NoDelaysLabel"
+               Text="Brak opóźnień"
+               HorizontalOptions="CenterAndExpand"
+               VerticalOptions="CenterAndExpand"/>
+
+        <ListView x:Name="DelayListView"
+                  ItemsSource="{Binding Items}"
+                  ItemTapped="Handle_ItemTapped"
+                  CachingStrategy="RecycleElement"
+                  HasUnevenRows="True">
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Text="{Binding BusLineName}" 
+                               Style="{DynamicResource ListItemTextStyle}" 
+                               Grid.Column="0"/>
+                            <Label Text="{Binding Headsign}" 
+                               Style="{DynamicResource ListItemTextStyle}" 
+                               Grid.Column="1"/>
+                            <Label Text="{Binding DelayMessage}"
+                               Style="{DynamicResource ListItemTextStyle}" 
+                               Grid.Column="2"/>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

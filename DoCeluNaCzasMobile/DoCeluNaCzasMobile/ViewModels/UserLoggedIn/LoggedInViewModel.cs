@@ -2,6 +2,8 @@
 using DoCeluNaCzasMobile.Services;
 using DoCeluNaCzasMobile.Views.DetailPages;
 using System.Windows.Input;
+using DoCeluNaCzasMobile.Services.Cache;
+using DoCeluNaCzasMobile.Services.Cache.Keys;
 using Xamarin.Forms;
 
 namespace DoCeluNaCzasMobile.ViewModels.UserLoggedIn
@@ -15,9 +17,8 @@ namespace DoCeluNaCzasMobile.ViewModels.UserLoggedIn
             {
                 return new Command(() =>
                 {
-                    App.Current.Properties["user"] = new User();
-
-                    _navigationService.Navigate(typeof(UserAccountPage), "");
+                    CacheService.Save(new User(), CacheKeys.USER);
+                    _navigationService.Navigate(typeof(UserAccountPage));
                 });
             }
         }
