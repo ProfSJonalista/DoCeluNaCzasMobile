@@ -6,6 +6,11 @@ namespace DoCeluNaCzasMobile.DataAccess.Repository.Net
 {
     public class PublicTransportRepository
     {
+        public async Task<string> GetChooseBusStopObservableCollection()
+        {
+            return await DownloadData(Urls.CHOOSE_BUS_STOP_OBSERVABLE_COLLECTION);
+        }
+
         public async Task<string> GetJoinedTrips()
         {
             return await DownloadData(Urls.JOINED_TRIPS);

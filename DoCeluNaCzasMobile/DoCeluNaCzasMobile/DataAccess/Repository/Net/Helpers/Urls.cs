@@ -10,5 +10,6 @@
 
         public static string BUS_STOPS = "http://docelunaczaswebapi.com/api/BusStop";
         public static string JOINED_TRIPS = "http://docelunaczaswebapi.com/api/JoinedTrips";
+        public static string CHOOSE_BUS_STOP_OBSERVABLE_COLLECTION = "http://docelunaczaswebapi.com/api/ChooseBusStop";
     }
 }

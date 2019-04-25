@@ -1,7 +1,6 @@
 ﻿using DoCeluNaCzasMobile.DataAccess.Repository.Net.Helpers;
 using DoCeluNaCzasMobile.Services.Cache;
 using DoCeluNaCzasMobile.Services.Cache.Keys;
-using DoCeluNaCzasMobile.Services.Delay;
 using DoCeluNaCzasMobile.Services.HubServices;
 using DoCeluNaCzasMobile.Services.HubServices.Helpers;
 using DoCeluNaCzasMobile.Services.PublicTransportServices.Helpers;
@@ -12,12 +11,10 @@ namespace DoCeluNaCzasMobile.Services.PublicTransportServices
     public class PublicTransportService
     {
         private readonly HubService _hubService;
-        private readonly ChooseBusStopDelayService _chooseBusStopDelayService;
         private readonly PublicTransportHelper _publicTransportHelper;
 
         public PublicTransportService()
         {
-            _chooseBusStopDelayService = new ChooseBusStopDelayService();
             _hubService = new HubService(Urls.HUB_CONNECTION, HubNames.PUBLIC_TRANSPORT_HUB);
             _publicTransportHelper = new PublicTransportHelper(_hubService);
         }
@@ -28,9 +25,15 @@ namespace DoCeluNaCzasMobile.Services.PublicTransportServices
 
             await GetBusStopData();
             await GetJoinedTripList();
-            _chooseBusStopDelayService.SetChooseBusStopModelCollection();
+            await GetChooseBusStopModelCollection();
 
             _hubService.StopConnection();
+        }
+
+        private async Task GetChooseBusStopModelCollection()
+        {
+            var chooseBusStopModelCollection = await _publicTransportHelper.GetChooseBusStopCollectionAsync();
+            CacheService.Save(chooseBusStopModelCollection, CacheKeys.CHOOSE_BUS_STOP_MODEL_OBSERVABALE_COLLECTION);
         }
 
         private async Task GetBusStopData()
