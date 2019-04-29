@@ -1,11 +1,10 @@
 ﻿using DoCeluNaCzasMobile.Services;
+using DoCeluNaCzasMobile.Services.Cache;
+using DoCeluNaCzasMobile.Services.Cache.Keys;
 using DoCeluNaCzasMobile.ViewModels.TimeTable;
-using DoCeluNaCzasMobile.Views.DetailPages.TimeTable.TimeTablePage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using DoCeluNaCzasMobile.Services.Cache;
-using DoCeluNaCzasMobile.Services.Cache.Keys;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -16,7 +15,6 @@ namespace DoCeluNaCzasMobile.Views.DetailPages.TimeTable
 	{
         private readonly JoinedTripsModel _joinedTrips;
         private JoinedTripModel Source { get; set; }
-        private readonly NavigationService _navigationService;
 
         public BusStopChoicePage()
 		{
@@ -27,10 +25,11 @@ namespace DoCeluNaCzasMobile.Views.DetailPages.TimeTable
         {
             InitializeComponent();
             
-            _navigationService = new NavigationService();
             var allJoinedTrips = CacheService.Get<List<GroupedJoinedModel>>(CacheKeys.GROUPED_JOINED_MODEL_LIST);
             var groupedModel = allJoinedTrips.SingleOrDefault(x => x.JoinedTripModels.Any(y => y.BusLineName.Equals(busLineName)));
-            _joinedTrips = groupedModel.JoinedTripModels.SingleOrDefault(x => x.BusLineName.Equals(busLineName));
+
+            if(groupedModel != null)
+                _joinedTrips = groupedModel.JoinedTripModels.SingleOrDefault(x => x.BusLineName.Equals(busLineName));
         }
 
         protected override void OnAppearing()
@@ -54,9 +53,10 @@ namespace DoCeluNaCzasMobile.Views.DetailPages.TimeTable
 
         private void JoinedTripsListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            var busLineName = e.Item as JoinedStopModel;
+            if(!(e.Item is JoinedStopModel bus))
+                return; 
 
-            _navigationService.Navigate(typeof(TimeTableTabbedPage));
+            NavigationService.Navigate(typeof(TimeTablePage.TimeTablePage), bus.RouteId);
         }
     }
 }

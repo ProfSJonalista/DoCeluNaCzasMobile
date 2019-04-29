@@ -7,12 +7,10 @@ namespace DoCeluNaCzasMobile.Services.Delay
 {
     public class ChooseBusStopDelayService
     {
-        private readonly NavigationService _navigationService;
         private readonly DatabaseRepository _databaseRepository;
 
         public ChooseBusStopDelayService()
         {
-            _navigationService = new NavigationService();
             _databaseRepository = new DatabaseRepository();
         }
 
@@ -23,7 +21,7 @@ namespace DoCeluNaCzasMobile.Services.Delay
 
         public void Navigate(Type pageType, int stopId = 0)
         {
-            _navigationService.Navigate(pageType, null, stopId);
+            NavigationService.Navigate(pageType, stopId);
         }
 
         public void SaveToDb(ChooseBusStopModel item)

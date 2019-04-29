@@ -1,4 +1,7 @@
-﻿using DoCeluNaCzasMobile.Models;
+﻿using DoCeluNaCzasMobile.DataAccess.Repository.Net.Helpers;
+using DoCeluNaCzasMobile.Models;
+using DoCeluNaCzasMobile.Services.Cache;
+using DoCeluNaCzasMobile.Services.Cache.Keys;
 using DoCeluNaCzasMobile.Views.DetailPages;
 using Newtonsoft.Json;
 using System.Collections.Generic;
@@ -6,21 +9,11 @@ using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
-using DoCeluNaCzasMobile.DataAccess.Repository.Net.Helpers;
-using DoCeluNaCzasMobile.Services.Cache;
-using DoCeluNaCzasMobile.Services.Cache.Keys;
 
 namespace DoCeluNaCzasMobile.Services
 {
     public class AuthService
     {
-        private readonly NavigationService _navigationService;
-
-        public AuthService()
-        {
-            _navigationService = new NavigationService();
-        }
-
         public async Task<bool> RegisterAsync(string email, string password, string confirmPassword)
         {
             using (var client = new HttpClient())
@@ -74,7 +67,7 @@ namespace DoCeluNaCzasMobile.Services
 
             CacheService.Save(user, CacheKeys.USER);
 
-            _navigationService.Navigate(typeof(UserAccountPage));
+            NavigationService.Navigate(typeof(UserAccountPage));
         }
 
         private string RemoveChars(string content)

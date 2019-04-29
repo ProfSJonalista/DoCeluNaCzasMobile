@@ -5,15 +5,13 @@ using Xamarin.Forms;
 
 namespace DoCeluNaCzasMobile.ViewModels.Register
 {
-    class RegisterViewModel
+    internal class RegisterViewModel
     {
         private readonly AuthService _apiServices = new AuthService();
-        private readonly NavigationService _navigationService = new NavigationService();
 
         public string Email { get; set; }
         public string Password { get; set; }
         public string ConfirmPassword { get; set; }
-        public string Message { get; set; }
 
         public ICommand RegisterCommand
         {
@@ -25,7 +23,7 @@ namespace DoCeluNaCzasMobile.ViewModels.Register
 
                     if (isSuccess)
                     {
-                        _navigationService.Navigate(typeof(UserAccountPage));
+                        NavigationService.Navigate(typeof(UserAccountPage));
                     }
                 });
             }
@@ -37,7 +35,7 @@ namespace DoCeluNaCzasMobile.ViewModels.Register
             {
                 return new Command(() =>
                 {
-                    _navigationService.Navigate(typeof(UserAccountPage));
+                    NavigationService.Navigate(typeof(UserAccountPage));
                 });
             }
         }

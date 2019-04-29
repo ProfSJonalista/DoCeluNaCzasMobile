@@ -17,14 +17,13 @@ namespace DoCeluNaCzasMobile.Services
                 ShortName = group.ToString()
             };
 
-
             var joinedTrips = CacheService.Get<List<GroupedJoinedModel>>(CacheKeys.GROUPED_JOINED_MODEL_LIST);
             var trips = joinedTrips.SingleOrDefault(x => x.Group == group);
-            
-            trips.JoinedTripModels.ForEach(x => groupedVm.Add(new RouteViewModel()
+
+            foreach (var trip in trips.JoinedTripModels)
             {
-                Name = x.BusLineName
-            }));
+                groupedVm.Add(new RouteViewModel { Name = trip.BusLineName });
+            }
 
             return groupedVm;
         }

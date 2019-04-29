@@ -10,7 +10,6 @@ namespace DoCeluNaCzasMobile.ViewModels.UserLoggedIn
 {
     public class LoggedInViewModel
     {
-        private readonly NavigationService _navigationService = new NavigationService();
         public ICommand LogoutCommand
         {
             get
@@ -18,7 +17,7 @@ namespace DoCeluNaCzasMobile.ViewModels.UserLoggedIn
                 return new Command(() =>
                 {
                     CacheService.Save(new User(), CacheKeys.USER);
-                    _navigationService.Navigate(typeof(UserAccountPage));
+                    NavigationService.Navigate(typeof(UserAccountPage));
                 });
             }
         }
