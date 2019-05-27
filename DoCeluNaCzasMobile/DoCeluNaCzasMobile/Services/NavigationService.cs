@@ -5,6 +5,7 @@ using DoCeluNaCzasMobile.Views.DetailPages.TimeTable;
 using DoCeluNaCzasMobile.Views.DetailPages.TimeTable.TimeTablePage;
 using DoCeluNaCzasMobile.Views.DetailPages.UserAccount;
 using System;
+using DoCeluNaCzasMobile.Models.TimeTable;
 using Xamarin.Forms;
 
 namespace DoCeluNaCzasMobile.Services
@@ -34,7 +35,7 @@ namespace DoCeluNaCzasMobile.Services
                 }
                 else if (targetType == typeof(TimeTablePage))
                 {
-                    await masterDetailPage.Detail.Navigation.PushAsync(new TimeTablePage((int)parameters[0]));
+                    await masterDetailPage.Detail.Navigation.PushAsync(new TimeTablePage((MinuteTimeTable)parameters[0]));
                 }
                 else if (targetType == typeof(DelaysPage))
                 {

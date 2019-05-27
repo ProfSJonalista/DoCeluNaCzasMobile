@@ -29,9 +29,6 @@
     <Compile Update="Views\DetailPages\TimeTable\BusStopChoicePage.xaml.cs">
       <DependentUpon>BusStopChoicePage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\DetailPages\TimeTable\TimeTablePage\TimeTablePage.xaml.cs">
-      <DependentUpon>TimeTablePage.xaml</DependentUpon>
-    </Compile>
     <Compile Update="Views\MainMasterPageMenuItem.cs">
       <SubType>Code</SubType>
     </Compile>

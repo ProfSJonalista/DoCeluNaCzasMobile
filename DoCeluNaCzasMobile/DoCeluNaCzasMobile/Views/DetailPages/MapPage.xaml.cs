@@ -2,6 +2,7 @@
 using DoCeluNaCzasMobile.Services;
 using Plugin.Geolocator;
 using System;
+using DoCeluNaCzasMobile.Models.General;
 using DoCeluNaCzasMobile.Services.Cache;
 using DoCeluNaCzasMobile.Services.Cache.Keys;
 using Xamarin.Forms;

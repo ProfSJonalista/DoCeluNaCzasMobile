@@ -20,8 +20,13 @@ namespace DoCeluNaCzasMobile.DataAccess.Repository.Net
         {
             return await DownloadData(Urls.BUS_STOPS);
         }
+
+        public async Task<string> GetMinuteTimeTables(string modifiedUrl)
+        {
+            return await DownloadData(modifiedUrl);
+        }
         
-        private async Task<string> DownloadData(string url)
+        static async Task<string> DownloadData(string url)
         {
             var data = "";
 

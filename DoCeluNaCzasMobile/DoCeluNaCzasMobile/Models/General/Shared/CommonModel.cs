@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DoCeluNaCzasMobile.Models.Shared
+namespace DoCeluNaCzasMobile.Models.General.Shared
 {
     public class CommonModel
     {

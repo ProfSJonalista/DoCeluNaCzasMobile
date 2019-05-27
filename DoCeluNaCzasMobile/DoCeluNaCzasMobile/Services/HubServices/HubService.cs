@@ -37,6 +37,11 @@ namespace DoCeluNaCzasMobile.Services.HubServices
                         return await _hubProxy1.Invoke<T>(methodName, args[0]);
                     return await _hubProxy1.Invoke<T>(methodName);
                 }
+                catch (InvalidOperationException ioe)
+                {
+                    var mes = ioe.Message;
+                    await Task.Delay(DelayOnRetry);
+                }
                 catch (Exception e) when (i < NumberOfRetries)
                 {
                     var mes = e.Message;
