@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DoCeluNaCzasMobile.Views.DetailPages.TimeTable.TimeTablePage.Days.HourAndMinuteGridView">
+  <ContentView.Content>
+        <ScrollView>
+            <StackLayout Margin="20">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <!-- hours -->
+                        <ColumnDefinition Width="*" />
+                        <!-- minutes -->
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Label x:Name="H00Label" Text="00" Grid.Column="0" Grid.Row="0"/>
+                    <Label x:Name="H01Label" Text="01" Grid.Column="0" Grid.Row="1"/>
+                    <Label x:Name="H02Label" Text="02" Grid.Column="0" Grid.Row="2"/>
+                    <Label x:Name="H03Label" Text="03" Grid.Column="0" Grid.Row="3"/>
+                    <Label x:Name="H04Label" Text="04" Grid.Column="0" Grid.Row="4"/>
+                    <Label x:Name="H05Label" Text="05" Grid.Column="0" Grid.Row="5"/>
+                    <Label x:Name="H06Label" Text="06" Grid.Column="0" Grid.Row="6"/>
+                    <Label x:Name="H07Label" Text="07" Grid.Column="0" Grid.Row="7"/>
+                    <Label x:Name="H08Label" Text="08" Grid.Column="0" Grid.Row="8"/>
+                    <Label x:Name="H09Label" Text="09" Grid.Column="0" Grid.Row="9"/>
+                    <Label x:Name="H10Label" Text="10" Grid.Column="0" Grid.Row="10"/>
+                    <Label x:Name="H11Label" Text="11" Grid.Column="0" Grid.Row="11"/>
+                    <Label x:Name="H12Label" Text="12" Grid.Column="0" Grid.Row="12"/>
+                    <Label x:Name="H13Label" Text="13" Grid.Column="0" Grid.Row="13"/>
+                    <Label x:Name="H14Label" Text="14" Grid.Column="0" Grid.Row="14"/>
+                    <Label x:Name="H15Label" Text="15" Grid.Column="0" Grid.Row="15"/>
+                    <Label x:Name="H16Label" Text="16" Grid.Column="0" Grid.Row="16"/>
+                    <Label x:Name="H17Label" Text="17" Grid.Column="0" Grid.Row="17"/>
+                    <Label x:Name="H18Label" Text="18" Grid.Column="0" Grid.Row="18"/>
+                    <Label x:Name="H19Label" Text="19" Grid.Column="0" Grid.Row="19"/>
+                    <Label x:Name="H20Label" Text="20" Grid.Column="0" Grid.Row="20"/>
+                    <Label x:Name="H21Label" Text="21" Grid.Column="0" Grid.Row="21"/>
+                    <Label x:Name="H22Label" Text="22" Grid.Column="0" Grid.Row="22"/>
+                    <Label x:Name="H23Label" Text="23" Grid.Column="0" Grid.Row="23"/>
+
+                    <Label x:Name="M00Label" Text="{Binding Path=[0], StringFormat='{0}'}" Grid.Column="1" Grid.Row="0"/>
+                    <Label x:Name="M01Label" Text="{Binding Path=[1], StringFormat='{0}'}" Grid.Column="1" Grid.Row="1"/>
+                    <Label x:Name="M02Label" Text="{Binding Path=[2], StringFormat='{0}'}" Grid.Column="1" Grid.Row="2"/>
+                    <Label x:Name="M03Label" Text="{Binding Path=[3], StringFormat='{0}'}" Grid.Column="1" Grid.Row="3"/>
+                    <Label x:Name="M04Label" Text="{Binding Path=[4], StringFormat='{0}'}" Grid.Column="1" Grid.Row="4"/>
+                    <Label x:Name="M05Label" Text="{Binding Path=[5], StringFormat='{0}'}" Grid.Column="1" Grid.Row="5"/>
+                    <Label x:Name="M06Label" Text="{Binding Path=[6], StringFormat='{0}'}" Grid.Column="1" Grid.Row="6"/>
+                    <Label x:Name="M07Label" Text="{Binding Path=[7], StringFormat='{0}'}" Grid.Column="1" Grid.Row="7"/>
+                    <Label x:Name="M08Label" Text="{Binding Path=[8], StringFormat='{0}'}" Grid.Column="1" Grid.Row="8"/>
+                    <Label x:Name="M09Label" Text="{Binding Path=[9], StringFormat='{0}'}" Grid.Column="1" Grid.Row="9"/>
+                    <Label x:Name="M10Label" Text="{Binding Path=[10], StringFormat='{0}'}" Grid.Column="1" Grid.Row="10"/>
+                    <Label x:Name="M11Label" Text="{Binding Path=[11], StringFormat='{0}'}" Grid.Column="1" Grid.Row="11"/>
+                    <Label x:Name="M12Label" Text="{Binding Path=[12], StringFormat='{0}'}" Grid.Column="1" Grid.Row="12"/>
+                    <Label x:Name="M13Label" Text="{Binding Path=[13], StringFormat='{0}'}" Grid.Column="1" Grid.Row="13"/>
+                    <Label x:Name="M14Label" Text="{Binding Path=[14], StringFormat='{0}'}" Grid.Column="1" Grid.Row="14"/>
+                    <Label x:Name="M15Label" Text="{Binding Path=[15], StringFormat='{0}'}" Grid.Column="1" Grid.Row="15"/>
+                    <Label x:Name="M16Label" Text="{Binding Path=[16], StringFormat='{0}'}" Grid.Column="1" Grid.Row="16"/>
+                    <Label x:Name="M17Label" Text="{Binding Path=[17], StringFormat='{0}'}" Grid.Column="1" Grid.Row="17"/>
+                    <Label x:Name="M18Label" Text="{Binding Path=[18], StringFormat='{0}'}" Grid.Column="1" Grid.Row="18"/>
+                    <Label x:Name="M19Label" Text="{Binding Path=[19], StringFormat='{0}'}" Grid.Column="1" Grid.Row="19"/>
+                    <Label x:Name="M20Label" Text="{Binding Path=[20], StringFormat='{0}'}" Grid.Column="1" Grid.Row="20"/>
+                    <Label x:Name="M21Label" Text="{Binding Path=[21], StringFormat='{0}'}" Grid.Column="1" Grid.Row="21"/>
+                    <Label x:Name="M22Label" Text="{Binding Path=[22], StringFormat='{0}'}" Grid.Column="1" Grid.Row="22"/>
+                    <Label x:Name="M23Label" Text="{Binding Path=[23], StringFormat='{0}'}" Grid.Column="1" Grid.Row="23"/>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentView.Content>
+</ContentView>

@@ -1,14 +1,13 @@
-﻿using DoCeluNaCzasMobile.Models;
-using DoCeluNaCzasMobile.ViewModels.TimeTable;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using DoCeluNaCzasMobile.DataAccess.Repository.Net;
+﻿using DoCeluNaCzasMobile.DataAccess.Repository.Net;
 using DoCeluNaCzasMobile.DataAccess.Repository.Net.Helpers;
 using DoCeluNaCzasMobile.Models.TimeTable;
 using DoCeluNaCzasMobile.Services.Cache;
 using DoCeluNaCzasMobile.Services.Cache.Keys;
+using DoCeluNaCzasMobile.ViewModels.TimeTable;
 using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace DoCeluNaCzasMobile.Services
 {
