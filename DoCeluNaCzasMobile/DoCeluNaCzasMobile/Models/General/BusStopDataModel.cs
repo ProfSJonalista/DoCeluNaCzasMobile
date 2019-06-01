@@ -1,8 +1,8 @@
-﻿using DoCeluNaCzasMobile.Models.Shared;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using DoCeluNaCzasMobile.Models.General.Shared;
 
-namespace DoCeluNaCzasMobile.Models
+namespace DoCeluNaCzasMobile.Models.General
 {
     public class BusStopDataModel : CommonModel
     {

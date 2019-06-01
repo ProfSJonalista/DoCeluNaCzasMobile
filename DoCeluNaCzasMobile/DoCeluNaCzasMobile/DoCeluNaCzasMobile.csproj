@@ -53,7 +53,19 @@
     <EmbeddedResource Update="Views\DetailPages\TimeTable\BusStopChoicePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\DetailPages\TimeTable\TimeTablePage\TimeTableTabbedPage.xaml">
+    <EmbeddedResource Update="Views\DetailPages\TimeTable\TimeTablePage\Days\HourAndMinuteGridView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\DetailPages\TimeTable\TimeTablePage\Days\SaturdayPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\DetailPages\TimeTable\TimeTablePage\Days\SundayPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\DetailPages\TimeTable\TimeTablePage\TimeTablePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\DetailPages\TimeTable\TimeTablePage\Days\WeekdayPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\DetailPages\UserAccountPage.xaml">

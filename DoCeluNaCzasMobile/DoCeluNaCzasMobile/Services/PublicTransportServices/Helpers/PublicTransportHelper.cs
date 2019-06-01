@@ -9,13 +9,14 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using DoCeluNaCzasMobile.Models.Delay;
+using DoCeluNaCzasMobile.Models.General;
 
 namespace DoCeluNaCzasMobile.Services.PublicTransportServices.Helpers
 {
     public class PublicTransportHelper
     {
-        private readonly HubService _hubService;
-        private readonly PublicTransportRepository _publicTransportRepository;
+        readonly HubService _hubService;
+        readonly PublicTransportRepository _publicTransportRepository;
 
         public PublicTransportHelper(HubService hubService)
         {

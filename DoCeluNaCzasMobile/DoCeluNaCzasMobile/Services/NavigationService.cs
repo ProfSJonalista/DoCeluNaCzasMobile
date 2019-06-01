@@ -1,47 +1,50 @@
 ﻿using DoCeluNaCzasMobile.Views;
 using DoCeluNaCzasMobile.Views.DetailPages;
+using DoCeluNaCzasMobile.Views.DetailPages.Delays;
 using DoCeluNaCzasMobile.Views.DetailPages.TimeTable;
 using DoCeluNaCzasMobile.Views.DetailPages.TimeTable.TimeTablePage;
 using DoCeluNaCzasMobile.Views.DetailPages.UserAccount;
 using System;
-using DoCeluNaCzasMobile.Views.DetailPages.Delays;
+using DoCeluNaCzasMobile.Models.TimeTable;
 using Xamarin.Forms;
 
 namespace DoCeluNaCzasMobile.Services
 {
-    public class NavigationService
+    public static class NavigationService
     {
-        internal async void Navigate(Type targetType, string busLineName = null, int stopId = 0)
+        internal static async void Navigate(Type targetType, params object[] parameters)
         {
             if (targetType != typeof(UserAccountPage))
             {
-                var masterDetailPage = App.Current.MainPage as MasterDetailPage;
+                if (!(Application.Current.MainPage is MasterDetailPage masterDetailPage))
+                    return;
+
                 var page = (Page)Activator.CreateInstance(targetType);
 
                 if (targetType == typeof(AddBusStopPage))
                 {
                     await masterDetailPage.Detail.Navigation.PushAsync(new AddBusStopPage());
                 }
-                else if (targetType == typeof(BusStopChoicePage) && busLineName != null)
+                else if (targetType == typeof(BusStopChoicePage))
                 {
-                    await masterDetailPage.Detail.Navigation.PushAsync(new BusStopChoicePage(busLineName.ToString()));
+                    await masterDetailPage.Detail.Navigation.PushAsync(new BusStopChoicePage((string)parameters[0]));
                 }
                 else if (targetType == typeof(RegisterPage))
                 {
                     await masterDetailPage.Detail.Navigation.PushAsync(new RegisterPage());
                 }
-                else if (targetType == typeof(TimeTableTabbedPage))
+                else if (targetType == typeof(TimeTablePage))
                 {
-                    await masterDetailPage.Detail.Navigation.PushAsync(new TimeTableTabbedPage());
+                    await masterDetailPage.Detail.Navigation.PushAsync(new TimeTablePage((MinuteTimeTable)parameters[0]));
                 }
-                else if(targetType == typeof(DelaysPage) && stopId != 0)
+                else if (targetType == typeof(DelaysPage))
                 {
-                    await masterDetailPage.Detail.Navigation.PushAsync(new DelaysPage(stopId));
+                    await masterDetailPage.Detail.Navigation.PushAsync(new DelaysPage((int)parameters[0]));
                 }
             }
             else
             {
-                App.Current.MainPage = new MainMasterPage()
+                Application.Current.MainPage = new MainMasterPage()
                 {
                     Detail = new NavigationPage(new UserAccountPage())
                 };

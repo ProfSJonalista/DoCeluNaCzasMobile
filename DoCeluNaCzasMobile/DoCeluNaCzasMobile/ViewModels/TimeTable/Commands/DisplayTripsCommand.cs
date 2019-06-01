@@ -8,10 +8,10 @@ namespace DoCeluNaCzasMobile.ViewModels.TimeTable.Commands
     public class DisplayTripsCommand : ICommand
     {
         private TimeTableViewModel _timeTableViewModel;
-        private readonly NavigationService _navigationService = new NavigationService();
+
         public DisplayTripsCommand(TimeTableViewModel timeTableViewModel)
         {
-            this._timeTableViewModel = timeTableViewModel;
+            _timeTableViewModel = timeTableViewModel;
         }
 
         public event EventHandler CanExecuteChanged;
@@ -20,9 +20,10 @@ namespace DoCeluNaCzasMobile.ViewModels.TimeTable.Commands
 
         public void Execute(object parameter)
         {
-            var busLine = (RouteViewModel)parameter;
+            if(!(parameter is RouteViewModel busLine))
+                return;
 
-            _navigationService.Navigate(typeof(BusStopChoicePage), busLine.Name);
+            NavigationService.Navigate(typeof(BusStopChoicePage), busLine.Name);
         }
     }
 }
