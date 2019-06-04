@@ -1,15 +1,13 @@
-﻿using DoCeluNaCzasMobile.Models;
-using DoCeluNaCzasMobile.Services;
-using Plugin.Geolocator;
-using System;
+﻿using System;
 using DoCeluNaCzasMobile.Models.General;
 using DoCeluNaCzasMobile.Services.Cache;
 using DoCeluNaCzasMobile.Services.Cache.Keys;
+using Plugin.Geolocator;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using Xamarin.Forms.Xaml;
 
-namespace DoCeluNaCzasMobile.Views.DetailPages
+namespace DoCeluNaCzasMobile.Views.DetailPages.Map
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MapPage : ContentPage

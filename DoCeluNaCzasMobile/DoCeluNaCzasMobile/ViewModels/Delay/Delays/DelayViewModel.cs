@@ -15,7 +15,7 @@ namespace DoCeluNaCzasMobile.ViewModels.Delay.Delays
         public DelayViewModel(int stopId)
         {
             _stopId = stopId;
-            _hubService = new HubService(Urls.HUB_CONNECTION, HubNames.DELAYS_HUB);
+            _hubService = new HubService(Urls.SERVER_CONNECTION, HubNames.DELAYS_HUB);
         }
 
         public async Task<ObservableCollection<DelayModel>> SetItems()

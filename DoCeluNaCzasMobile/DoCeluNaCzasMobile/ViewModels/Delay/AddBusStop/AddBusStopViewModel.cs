@@ -9,7 +9,7 @@ namespace DoCeluNaCzasMobile.ViewModels.Delay.AddBusStop
     public class AddBusStopViewModel
     {
         public ObservableCollection<ChooseBusStopModel> Items { get; set; }
-        private ChooseBusStopDelayService _chooseBusStopDelayService = new ChooseBusStopDelayService();
+        readonly ChooseBusStopDelayService _chooseBusStopDelayService = new ChooseBusStopDelayService();
 
         public AddBusStopViewModel()
         {

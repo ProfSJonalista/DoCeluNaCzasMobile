@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using DoCeluNaCzasMobile.Services;
+using DoCeluNaCzasMobile.ViewModels.RouteSearch;
+using System;
+using DoCeluNaCzasMobile.Views.DetailPages.RouteSearch;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -12,19 +10,76 @@ namespace DoCeluNaCzasMobile.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainMasterPageDetail : ContentPage
     {
+        public static RouteSearchViewModel RouteSearchViewModel { get; set; }
+
         public MainMasterPageDetail()
         {
             InitializeComponent();
+            RouteSearchViewModel = new RouteSearchViewModel
+            {
+                Departure = true,
+                DesiredTime = DateTime.Now,
+                UserChosenDate = DateTime.Now,
+                UserChosenTime = DateTime.Now.TimeOfDay
+            };
         }
 
-        private void SwapButton_Clicked(Object sender, EventArgs e)
+        protected override void OnAppearing()
         {
+            base.OnAppearing();
+            BindingContext = RouteSearchViewModel;
 
+            SetLabels();
         }
 
-        private void SearchRouteButton_Clicked(Object sender, EventArgs e)
+        void SwapButton_Clicked(object sender, EventArgs e)
         {
+            var temp = RouteSearchViewModel.StartStop;
+            RouteSearchViewModel.StartStop = RouteSearchViewModel.DestStop;
+            RouteSearchViewModel.DestStop = temp;
 
+            SetLabels();
+        }
+
+        async void SearchRouteButton_Clicked(object sender, EventArgs e)
+        {
+            RouteSearchViewModel.SetDesiredTime();
+
+            if (RouteSearchViewModel.StartStop == null && RouteSearchViewModel.DestStop == null)
+            {
+                await DisplayAlert("Wybierz przystanek", "Wybierz przystanek początkowy i końcowy", "OK");
+                return;
+            }
+
+            if (RouteSearchViewModel.StartStop == null)
+            {
+                await DisplayAlert("Wybierz przystanek", "Wybierz przystanek początkowy", "OK");
+                return;
+            }
+
+            if (RouteSearchViewModel.DestStop == null)
+            {
+                await DisplayAlert("Wybierz przystanek", "Wybierz przystanek końcowy", "OK");
+                return;
+            }
+
+            RouteSearchViewModel.ViewRoutes();
+        }
+
+        void StartStopChooseButton_OnClicked(object sender, EventArgs e)
+        {
+            NavigationService.Navigate(typeof(ChooseStopPage), true);
+        }
+
+        void DestStopChooseButton_OnClicked(object sender, EventArgs e)
+        {
+            NavigationService.Navigate(typeof(ChooseStopPage), false);
+        }
+
+        void SetLabels()
+        {
+            StartLabel.Text = RouteSearchViewModel.StartStop?.StopDesc ?? "Od";
+            DestLabel.Text = RouteSearchViewModel.DestStop?.StopDesc ?? "Do";
         }
     }
 }

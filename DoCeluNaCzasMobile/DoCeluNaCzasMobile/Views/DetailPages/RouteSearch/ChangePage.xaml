@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DoCeluNaCzasMobile.Views.DetailPages.RouteSearch.ChangePage">
+    <StackLayout Margin="20">
+        <ListView x:Name="MyListView"
+            ItemsSource="{Binding Items}"
+            ItemTapped="Handle_ItemTapped"
+            CachingStrategy="RecycleElement"
+            HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label x:Name="BusesLabel"
+                                   Text="{Binding BusLineName}" 
+                                   Style="{DynamicResource ListItemTextStyle}" 
+                                   Grid.Row="0"
+                                   Grid.Column="0"/>
+
+                            <Label Text="Czas podróży"
+                                   Grid.Row="1"
+                                   Grid.Column="0"
+                                   Grid.ColumnSpan="2"/>
+
+                            <Label x:Name="TimeOfTravelLabel"
+                                   Text="{Binding TimeOfTravel, StringFormat='{}{0:hh\\:mm}'}"
+                                   Grid.Row="1"
+                                   Grid.Column="1"
+                                   Grid.ColumnSpan="2"/>
+
+                            <Label x:Name="DepartureLabel"
+                                   Text="Odjazd"
+                                   Grid.Row="2"
+                                   Grid.Column="0"/>
+
+                            <Label Text="{Binding DepartureTime, StringFormat='{}{0:hh\\:mm}'}"
+                                   Style="{DynamicResource ListItemDetailTextStyle}"
+                                   Grid.Row="2"
+                                   Grid.Column="1"/>
+
+                            <Label x:Name="ArrivalLabel"
+                                   Text="Przyjazd"
+                                   Grid.Row="2"
+                                   Grid.Column="2"/>
+
+                            <Label Text="{Binding ArrivalTime, StringFormat='{}{0:hh\\:mm}'}"
+                                   Style="{DynamicResource ListItemDetailTextStyle}"
+                                   Grid.Row="2"
+                                   Grid.Column="3"/>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>
