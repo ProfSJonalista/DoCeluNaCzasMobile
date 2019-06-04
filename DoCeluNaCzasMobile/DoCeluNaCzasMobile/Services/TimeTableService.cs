@@ -37,7 +37,7 @@ namespace DoCeluNaCzasMobile.Services
         public async Task<List<MinuteTimeTable>> GetMinuteTimeTables(string busLineName)
         {
             var url = string.Format(Urls.MINUTE_TIME_TABLES_BY_BUS_LINE_NAME, busLineName);
-            var json = await _publicTransportRepository.GetMinuteTimeTables(url);
+            var json = await _publicTransportRepository.GetData(url);
             var minuteTimeTableList = JsonConvert.DeserializeObject<List<MinuteTimeTable>>(json);
 
             return minuteTimeTableList;

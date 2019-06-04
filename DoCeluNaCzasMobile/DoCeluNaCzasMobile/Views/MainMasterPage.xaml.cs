@@ -1,5 +1,6 @@
 ﻿using DoCeluNaCzasMobile.Views.DetailPages;
 using DoCeluNaCzasMobile.Views.DetailPages.Delays;
+using DoCeluNaCzasMobile.Views.DetailPages.Map;
 using DoCeluNaCzasMobile.Views.DetailPages.TimeTable;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;

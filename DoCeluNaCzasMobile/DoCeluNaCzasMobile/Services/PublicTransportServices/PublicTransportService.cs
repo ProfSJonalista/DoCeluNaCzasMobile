@@ -15,7 +15,7 @@ namespace DoCeluNaCzasMobile.Services.PublicTransportServices
 
         public PublicTransportService()
         {
-            _hubService = new HubService(Urls.HUB_CONNECTION, HubNames.PUBLIC_TRANSPORT_HUB);
+            _hubService = new HubService(Urls.SERVER_CONNECTION, HubNames.PUBLIC_TRANSPORT_HUB);
             _publicTransportHelper = new PublicTransportHelper(_hubService);
         }
 
