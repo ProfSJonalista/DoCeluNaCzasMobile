@@ -1,6 +1,6 @@
 ﻿using DLToolkit.Forms.Controls;
 using DoCeluNaCzasMobile.Services.PublicTransport;
-using DoCeluNaCzasMobile.Views;
+using DoCeluNaCzasMobile.Views.MainPage;
 using Xamarin.Forms;
 
 namespace DoCeluNaCzasMobile

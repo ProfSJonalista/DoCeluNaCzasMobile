@@ -1,4 +1,6 @@
-﻿using DoCeluNaCzasMobile.Views.DetailPages.Delays;
+﻿using System.Threading.Tasks;
+using DoCeluNaCzasMobile.Models.MainPage;
+using DoCeluNaCzasMobile.Views.DetailPages.Delays;
 using DoCeluNaCzasMobile.Views.DetailPages.Map;
 using DoCeluNaCzasMobile.Views.DetailPages.Settings;
 using DoCeluNaCzasMobile.Views.DetailPages.TimeTable;
@@ -6,7 +8,7 @@ using DoCeluNaCzasMobile.Views.DetailPages.UserAccount;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace DoCeluNaCzasMobile.Views
+namespace DoCeluNaCzasMobile.Views.MainPage
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainMasterPage : MasterDetailPage
@@ -17,46 +19,45 @@ namespace DoCeluNaCzasMobile.Views
             MasterPage.ListView.ItemSelected += ListView_ItemSelected;
         }
 
-        private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            var item = e.SelectedItem as MainMasterPageMenuItem;
-            if (item == null)
+            if (!(e.SelectedItem is MainMasterPageMenuItem item))
                 return;
 
-            Detail = new NavigationPage(getDetailPage(item));
+            MasterPage.ListView.SelectedItem = null;
+
+            //wsadzone w to bo był widoczny lag - teraz jest mniejszy
+            await Task.Factory.StartNew(() =>
+            {
+                Detail = new NavigationPage(GetDetailPage(item));
+            });
 
             IsPresented = false;
-
-            MasterPage.ListView.SelectedItem = null;
         }
 
-        private Page getDetailPage(MainMasterPageMenuItem item)
+        static Page GetDetailPage(MainMasterPageMenuItem item)
         {
             Page page;
 
-            switch (item.Title)
+            switch (item.Id)
             {
-                case "Strona główna":
-                    page = new MainMasterPageDetail();
-                    break;
-
-                case "Rozkład jazdy":
+                case 1:
                     page = new BusChoicePage();
                     break;
 
-                case "Opóźnienia":
+                case 2:
                     page = new DelaysBusStopChoosePage();
                     break;
 
-                case "Mapa":
+                case 3:
                     page = new MapPage();
                     break;
 
-                case "Konto użytkownika":
+                case 4:
                     page = new UserAccountPage();
                     break;
 
-                case "Ustawienia":
+                case 5:
                     page = new SettingsPage();
                     break;
 

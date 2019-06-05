@@ -1,6 +1,7 @@
-﻿using System;
+﻿using DoCeluNaCzasMobile.Views.MainPage;
+using System;
 
-namespace DoCeluNaCzasMobile.Views
+namespace DoCeluNaCzasMobile.Models.MainPage
 {
 
     public class MainMasterPageMenuItem
@@ -9,6 +10,7 @@ namespace DoCeluNaCzasMobile.Views
         {
             TargetType = typeof(MainMasterPageDetail);
         }
+
         public int Id { get; set; }
         public string Title { get; set; }
 

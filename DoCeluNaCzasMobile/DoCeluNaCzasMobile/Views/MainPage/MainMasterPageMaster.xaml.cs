@@ -1,11 +1,11 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-
+using DoCeluNaCzasMobile.Models.MainPage;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace DoCeluNaCzasMobile.Views
+namespace DoCeluNaCzasMobile.Views.MainPage
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainMasterPageMaster : ContentPage
