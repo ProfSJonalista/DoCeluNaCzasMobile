@@ -1,9 +1,7 @@
-﻿using System.Collections.ObjectModel;
+﻿using DoCeluNaCzasMobile.Models.Delay;
 using DoCeluNaCzasMobile.ViewModels.Delay.Delays;
-using System.Collections.Specialized;
+using System.Collections.ObjectModel;
 using System.Timers;
-using System.Transactions;
-using DoCeluNaCzasMobile.Models.Delay;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -12,7 +10,7 @@ namespace DoCeluNaCzasMobile.Views.DetailPages.Delays
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DelaysPage : ContentPage
     {
-        private static Timer _timer;
+        static Timer _timer;
         public DelayViewModel DelayViewModel { get; set; }
         public ObservableCollection<DelayModel> Items { get; set; }
         public DelaysPage()
@@ -41,7 +39,7 @@ namespace DoCeluNaCzasMobile.Views.DetailPages.Delays
             await DelayViewModel.StartConnection();
             DelayListView.RefreshAllowed = true;
             Items = await DelayViewModel.SetItems();
-            
+
             var visible = Items.Count > 0;
 
             DelayListView.IsVisible = visible;
@@ -69,7 +67,7 @@ namespace DoCeluNaCzasMobile.Views.DetailPages.Delays
             _timer.Enabled = true;
         }
 
-        private async void UpdateDataEvent(object sender, ElapsedEventArgs e)
+        async void UpdateDataEvent(object sender, ElapsedEventArgs e)
         {
             Items = await DelayViewModel.SetItems();
 

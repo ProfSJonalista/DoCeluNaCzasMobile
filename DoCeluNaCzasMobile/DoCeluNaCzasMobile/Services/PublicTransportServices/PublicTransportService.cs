@@ -10,8 +10,8 @@ namespace DoCeluNaCzasMobile.Services.PublicTransportServices
 {
     public class PublicTransportService
     {
-        private readonly HubService _hubService;
-        private readonly PublicTransportHelper _publicTransportHelper;
+        readonly HubService _hubService;
+        readonly PublicTransportHelper _publicTransportHelper;
 
         public PublicTransportService()
         {
@@ -30,19 +30,19 @@ namespace DoCeluNaCzasMobile.Services.PublicTransportServices
             _hubService.StopConnection();
         }
 
-        private async Task GetChooseBusStopModelCollection()
+        async Task GetChooseBusStopModelCollection()
         {
             var chooseBusStopModelCollection = await _publicTransportHelper.GetChooseBusStopCollectionAsync();
             CacheService.Save(chooseBusStopModelCollection, CacheKeys.CHOOSE_BUS_STOP_MODEL_OBSERVABALE_COLLECTION);
         }
 
-        private async Task GetBusStopData()
+        async Task GetBusStopData()
         {
             var busStopData = await _publicTransportHelper.GetBusStopDataAsync();
             CacheService.Save(busStopData, CacheKeys.BUS_STOP_DATA_MODEL);
         }
 
-        private async Task GetJoinedTripList()
+        async Task GetJoinedTripList()
         {
             var joinedTripsViewModelList = await _publicTransportHelper.GetJoinedTripListAsync();
             CacheService.Save(joinedTripsViewModelList, CacheKeys.GROUPED_JOINED_MODEL_LIST);

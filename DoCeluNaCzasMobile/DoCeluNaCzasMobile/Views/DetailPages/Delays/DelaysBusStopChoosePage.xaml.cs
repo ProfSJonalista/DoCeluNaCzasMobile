@@ -1,6 +1,6 @@
-﻿using DoCeluNaCzasMobile.ViewModels.Delay.BusStopChoose;
+﻿using DoCeluNaCzasMobile.Models.Delay;
+using DoCeluNaCzasMobile.ViewModels.Delay.BusStopChoose;
 using System.Linq;
-using DoCeluNaCzasMobile.Models.Delay;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -48,7 +48,7 @@ namespace DoCeluNaCzasMobile.Views.DetailPages.Delays
             if (e.Item == null)
                 return;
 
-            var stop = (ChooseBusStopModel) e.Item;
+            var stop = (ChooseBusStopModel)e.Item;
 
             DelayBusStopChooseViewModel.ChooseBusStopDelayService.Navigate(typeof(DelaysPage), stop.StopId);
         }

@@ -1,7 +1,8 @@
-﻿using DoCeluNaCzasMobile.Views.DetailPages;
-using DoCeluNaCzasMobile.Views.DetailPages.Delays;
+﻿using DoCeluNaCzasMobile.Views.DetailPages.Delays;
 using DoCeluNaCzasMobile.Views.DetailPages.Map;
+using DoCeluNaCzasMobile.Views.DetailPages.Settings;
 using DoCeluNaCzasMobile.Views.DetailPages.TimeTable;
+using DoCeluNaCzasMobile.Views.DetailPages.UserAccount;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -38,7 +39,7 @@ namespace DoCeluNaCzasMobile.Views
                 case "Strona główna":
                     page = new MainMasterPageDetail();
                     break;
-                     
+
                 case "Rozkład jazdy":
                     page = new BusChoicePage();
                     break;

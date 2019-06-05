@@ -1,6 +1,6 @@
-﻿using System.Net.Http;
+﻿using DoCeluNaCzasMobile.DataAccess.Repository.Net.Helpers;
+using System.Net.Http;
 using System.Threading.Tasks;
-using DoCeluNaCzasMobile.DataAccess.Repository.Net.Helpers;
 
 namespace DoCeluNaCzasMobile.DataAccess.Repository.Net
 {
@@ -25,7 +25,7 @@ namespace DoCeluNaCzasMobile.DataAccess.Repository.Net
         {
             return await DownloadData(modifiedUrl);
         }
-        
+
         static async Task<string> DownloadData(string url)
         {
             var data = "";

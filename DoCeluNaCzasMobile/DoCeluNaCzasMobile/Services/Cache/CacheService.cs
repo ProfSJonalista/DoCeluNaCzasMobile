@@ -11,7 +11,7 @@ namespace DoCeluNaCzasMobile.Services.Cache
 
         public static T Get<T>(string cacheKey)
         {
-            return (T) Application.Current.Properties[cacheKey];
+            return (T)Application.Current.Properties[cacheKey];
         }
     }
 }

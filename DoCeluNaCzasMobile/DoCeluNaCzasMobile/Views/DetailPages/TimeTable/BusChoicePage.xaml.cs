@@ -12,7 +12,7 @@ namespace DoCeluNaCzasMobile.Views.DetailPages.TimeTable
             InitializeComponent();
         }
 
-        private void lstView_FlowItemTapped(object sender, ItemTappedEventArgs e)
+        void lstView_FlowItemTapped(object sender, ItemTappedEventArgs e)
         {
             var groupedRoutes = e.Item as GroupedRouteModel;
             var vm = BindingContext as TimeTableViewModel;

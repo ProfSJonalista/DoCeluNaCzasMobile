@@ -1,4 +1,4 @@
-﻿using DoCeluNaCzasMobile.Services;
+﻿using DoCeluNaCzasMobile.Services.Navigation;
 using DoCeluNaCzasMobile.Views.DetailPages.TimeTable;
 using System;
 using System.Windows.Input;
@@ -7,7 +7,7 @@ namespace DoCeluNaCzasMobile.ViewModels.TimeTable.Commands
 {
     public class DisplayTripsCommand : ICommand
     {
-        private TimeTableViewModel _timeTableViewModel;
+        TimeTableViewModel _timeTableViewModel;
 
         public DisplayTripsCommand(TimeTableViewModel timeTableViewModel)
         {
@@ -20,7 +20,7 @@ namespace DoCeluNaCzasMobile.ViewModels.TimeTable.Commands
 
         public void Execute(object parameter)
         {
-            if(!(parameter is RouteViewModel busLine))
+            if (!(parameter is RouteViewModel busLine))
                 return;
 
             NavigationService.Navigate(typeof(BusStopChoicePage), busLine.Name);

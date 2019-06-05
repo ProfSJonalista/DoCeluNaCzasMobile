@@ -1,10 +1,8 @@
-﻿using DoCeluNaCzasMobile.Models;
+﻿using DoCeluNaCzasMobile.Models.Delay;
+using DoCeluNaCzasMobile.Models.General;
 using SQLite;
 using System.Collections.ObjectModel;
 using System.Linq;
-using DoCeluNaCzasMobile.Models.Delay;
-using DoCeluNaCzasMobile.Models.General;
-using DoCeluNaCzasMobile.ViewModels.Delay;
 
 namespace DoCeluNaCzasMobile.DataAccess.Repository.Database
 {

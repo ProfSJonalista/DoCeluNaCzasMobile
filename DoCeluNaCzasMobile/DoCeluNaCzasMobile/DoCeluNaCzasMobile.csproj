@@ -56,7 +56,7 @@
     <EmbeddedResource Update="Views\DetailPages\RouteSearch\StopChangePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\DetailPages\SettingsPage.xaml">
+    <EmbeddedResource Update="Views\DetailPages\Settings\SettingsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\DetailPages\TimeTable\BusChoicePage.xaml">
@@ -80,7 +80,7 @@
     <EmbeddedResource Update="Views\DetailPages\TimeTable\TimeTablePage\Days\WeekdayPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\DetailPages\UserAccountPage.xaml">
+    <EmbeddedResource Update="Views\DetailPages\UserAccount\UserAccountPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\DetailPages\UserAccount\Views\LoginAndRegistrationView.xaml">

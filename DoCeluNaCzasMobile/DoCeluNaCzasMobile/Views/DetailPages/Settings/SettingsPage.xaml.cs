@@ -1,12 +1,12 @@
 ﻿using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace DoCeluNaCzasMobile.Views.DetailPages.UserAccount.Views
+namespace DoCeluNaCzasMobile.Views.DetailPages.Settings
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class LoginAndRegistrationView : ContentView
+    public partial class SettingsPage : ContentPage
     {
-        public LoginAndRegistrationView()
+        public SettingsPage()
         {
             InitializeComponent();
         }

@@ -1,12 +1,7 @@
-﻿using System;
+﻿using DoCeluNaCzasMobile.Models.RouteSearch;
+using DoCeluNaCzasMobile.Services.Navigation;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Linq;
-using System.Threading.Tasks;
-using DoCeluNaCzasMobile.Models.RouteSearch;
-using DoCeluNaCzasMobile.Services;
-using DoCeluNaCzasMobile.ViewModels.RouteSearch;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -19,7 +14,7 @@ namespace DoCeluNaCzasMobile.Views.DetailPages.RouteSearch
 
         public RoutesPage()
         {
-			InitializeComponent();
+            InitializeComponent();
         }
 
         public RoutesPage(List<Route> routeList)

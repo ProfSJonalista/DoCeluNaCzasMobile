@@ -1,6 +1,6 @@
 ﻿using DoCeluNaCzasMobile.Models.Delay;
-using System;
 using DoCeluNaCzasMobile.Services.RouteSearch;
+using System;
 
 namespace DoCeluNaCzasMobile.ViewModels.RouteSearch
 {

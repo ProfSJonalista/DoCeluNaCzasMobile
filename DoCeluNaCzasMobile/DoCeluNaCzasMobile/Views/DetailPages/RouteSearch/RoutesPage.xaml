@@ -31,7 +31,7 @@
                                    Style="{DynamicResource ListItemTextStyle}" 
                                    Grid.Row="0"
                                    Grid.Column="0"/>
-                            
+
                             <Label Text="Czas podróży"
                                    Grid.Row="1"
                                    Grid.Column="0"

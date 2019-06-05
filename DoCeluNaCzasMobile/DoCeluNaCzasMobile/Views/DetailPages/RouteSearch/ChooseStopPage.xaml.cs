@@ -1,9 +1,9 @@
-﻿using System.Collections.ObjectModel;
-using System.Linq;
-using DoCeluNaCzasMobile.Models.Delay;
-using DoCeluNaCzasMobile.Services;
+﻿using DoCeluNaCzasMobile.Models.Delay;
 using DoCeluNaCzasMobile.Services.Cache;
 using DoCeluNaCzasMobile.Services.Cache.Keys;
+using DoCeluNaCzasMobile.Services.Navigation;
+using System.Collections.ObjectModel;
+using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -45,7 +45,7 @@ namespace DoCeluNaCzasMobile.Views.DetailPages.RouteSearch
             NavigationService.ClosePage();
         }
 
-        private void SearchBar_OnTextChanged(object sender, TextChangedEventArgs e)
+        void SearchBar_OnTextChanged(object sender, TextChangedEventArgs e)
         {
             if (string.IsNullOrEmpty(e.NewTextValue))
             {

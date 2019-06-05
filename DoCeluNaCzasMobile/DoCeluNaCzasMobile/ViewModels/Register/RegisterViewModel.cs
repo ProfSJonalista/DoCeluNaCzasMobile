@@ -1,5 +1,6 @@
-﻿using DoCeluNaCzasMobile.Services;
-using DoCeluNaCzasMobile.Views.DetailPages;
+﻿using DoCeluNaCzasMobile.Services.Authorization;
+using DoCeluNaCzasMobile.Services.Navigation;
+using DoCeluNaCzasMobile.Views.DetailPages.UserAccount;
 using System.Windows.Input;
 using Xamarin.Forms;
 

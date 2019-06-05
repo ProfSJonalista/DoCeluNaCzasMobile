@@ -1,4 +1,4 @@
-﻿using DoCeluNaCzasMobile.Services;
+﻿using DoCeluNaCzasMobile.Services.TimeTable;
 using DoCeluNaCzasMobile.ViewModels.TimeTable.Commands;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -7,7 +7,7 @@ namespace DoCeluNaCzasMobile.ViewModels.TimeTable
 {
     public class TimeTableViewModel : INotifyPropertyChanged
     {
-        private GroupedRouteModel _oldRoutes;
+        GroupedRouteModel _oldRoutes;
         public event PropertyChangedEventHandler PropertyChanged;
 
         public ObservableCollection<GroupedRouteModel> GroupedRoutes { get; set; }
@@ -28,14 +28,14 @@ namespace DoCeluNaCzasMobile.ViewModels.TimeTable
 
         public void HideOrShowRoutes(GroupedRouteModel groupedRoutes)
         {
-            if(_oldRoutes == groupedRoutes)
+            if (_oldRoutes == groupedRoutes)
             {
                 groupedRoutes.IsVisible = false;
                 UpdateRoutes(groupedRoutes);
             }
             else
             {
-                if(_oldRoutes != null)
+                if (_oldRoutes != null)
                 {
                     _oldRoutes.IsVisible = false;
                     UpdateRoutes(_oldRoutes);
@@ -48,14 +48,14 @@ namespace DoCeluNaCzasMobile.ViewModels.TimeTable
             _oldRoutes = groupedRoutes;
         }
 
-        private void UpdateRoutes(GroupedRouteModel groupedRoutes)
+        void UpdateRoutes(GroupedRouteModel groupedRoutes)
         {
             var id = GroupedRoutes.IndexOf(groupedRoutes);
             GroupedRoutes.Remove(groupedRoutes);
             GroupedRoutes.Insert(id, groupedRoutes);
         }
 
-        private void OnPropertyChanged(string propertyName)
+        void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }

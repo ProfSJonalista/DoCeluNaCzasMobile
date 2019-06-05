@@ -1,15 +1,13 @@
 ﻿using DoCeluNaCzasMobile.DataAccess.Repository.Net;
-using DoCeluNaCzasMobile.Models;
+using DoCeluNaCzasMobile.Models.Delay;
+using DoCeluNaCzasMobile.Models.General;
 using DoCeluNaCzasMobile.Services.HubServices;
 using DoCeluNaCzasMobile.Services.HubServices.Helpers;
 using DoCeluNaCzasMobile.ViewModels.TimeTable;
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
-using DoCeluNaCzasMobile.Models.Delay;
-using DoCeluNaCzasMobile.Models.General;
 
 namespace DoCeluNaCzasMobile.Services.PublicTransportServices.Helpers
 {
@@ -33,11 +31,10 @@ namespace DoCeluNaCzasMobile.Services.PublicTransportServices.Helpers
                 busStopDataModel = await _hubService.GetData<BusStopDataModel>(HubNames.GET_BUS_STOP_DATA);
             }
 
-            if (busStopDataModel?.Stops == null)
-            {
-                var json = await _publicTransportRepository.GetBusStops();
-                busStopDataModel = Deserialize<BusStopDataModel>(json);
-            }
+            if (busStopDataModel?.Stops != null) return busStopDataModel;
+
+            var json = await _publicTransportRepository.GetBusStops();
+            busStopDataModel = Deserialize<BusStopDataModel>(json);
 
             return busStopDataModel;
         }
@@ -58,7 +55,7 @@ namespace DoCeluNaCzasMobile.Services.PublicTransportServices.Helpers
             return data;
         }
 
-        private T Deserialize<T>(string json)
+        static T Deserialize<T>(string json)
         {
             return JsonConvert.DeserializeObject<T>(json);
         }

@@ -1,8 +1,8 @@
-﻿using System.Collections.ObjectModel;
-using DoCeluNaCzasMobile.Models.Delay;
+﻿using DoCeluNaCzasMobile.Models.Delay;
 using DoCeluNaCzasMobile.Services.Delay;
 using DoCeluNaCzasMobile.ViewModels.Delay.BusStopChoose.Commands;
 using DoCeluNaCzasMobile.Views.DetailPages.Delays;
+using System.Collections.ObjectModel;
 
 namespace DoCeluNaCzasMobile.ViewModels.Delay.BusStopChoose
 {
