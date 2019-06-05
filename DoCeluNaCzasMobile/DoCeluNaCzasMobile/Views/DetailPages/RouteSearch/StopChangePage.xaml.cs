@@ -1,10 +1,6 @@
-﻿using System;
+﻿using DoCeluNaCzasMobile.Models.RouteSearch;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Linq;
-using System.Threading.Tasks;
-using DoCeluNaCzasMobile.Models.RouteSearch;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 

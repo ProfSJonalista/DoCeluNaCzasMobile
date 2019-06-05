@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
              x:Class="DoCeluNaCzasMobile.Views.DetailPages.Map.MapPage">
+
     <maps:Map x:Name="locationsMap"
               HorizontalOptions="FillAndExpand"
               VerticalOptions="FillAndExpand"

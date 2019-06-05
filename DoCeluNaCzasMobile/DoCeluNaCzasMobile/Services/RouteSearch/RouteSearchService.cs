@@ -1,6 +1,7 @@
 ﻿using DoCeluNaCzasMobile.DataAccess.Repository.Net;
 using DoCeluNaCzasMobile.DataAccess.Repository.Net.Helpers;
 using DoCeluNaCzasMobile.Models.RouteSearch;
+using DoCeluNaCzasMobile.Services.Navigation;
 using DoCeluNaCzasMobile.ViewModels.RouteSearch;
 using DoCeluNaCzasMobile.Views.DetailPages.RouteSearch;
 using Newtonsoft.Json;

@@ -14,12 +14,12 @@
                 Text="{Binding Email}"
                 Placeholder="emailEntry"
                 Keyboard="Email"/>
-        
+
         <Entry  x:Name="PasswordEntry"
                 Text="{Binding Password}"
                 Placeholder="passwordEntry"
                 IsPassword="True"/>
-        
+
         <Entry  x:Name="ConfirmPasswordEntry"
                 Text="{Binding ConfirmPassword}"
                 Placeholder="confirmPasswordEntry"
@@ -28,7 +28,7 @@
         <Button x:Name="RegisterButton"
                 Command="{Binding RegisterCommand}"
                 Text="Register"/>
-        
+
         <Button x:Name="NavigateButton"
                 Text="Go to Login Page"
                 Command="{Binding NavigateToLoginPageCommand}"/>

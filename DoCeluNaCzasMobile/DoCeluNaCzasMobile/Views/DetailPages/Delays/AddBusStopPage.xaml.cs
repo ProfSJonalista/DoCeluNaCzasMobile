@@ -1,6 +1,6 @@
-﻿using DoCeluNaCzasMobile.ViewModels.Delay.AddBusStop;
+﻿using DoCeluNaCzasMobile.Models.Delay;
+using DoCeluNaCzasMobile.ViewModels.Delay.AddBusStop;
 using System.Linq;
-using DoCeluNaCzasMobile.Models.Delay;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 

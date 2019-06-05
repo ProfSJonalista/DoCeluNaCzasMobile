@@ -1,6 +1,6 @@
-﻿using DoCeluNaCzasMobile.Models.TimeTable;
+﻿using DoCeluNaCzasMobile.Models.RouteSearch;
+using DoCeluNaCzasMobile.Models.TimeTable;
 using DoCeluNaCzasMobile.Views;
-using DoCeluNaCzasMobile.Views.DetailPages;
 using DoCeluNaCzasMobile.Views.DetailPages.Delays;
 using DoCeluNaCzasMobile.Views.DetailPages.RouteSearch;
 using DoCeluNaCzasMobile.Views.DetailPages.TimeTable;
@@ -8,11 +8,9 @@ using DoCeluNaCzasMobile.Views.DetailPages.TimeTable.TimeTablePage;
 using DoCeluNaCzasMobile.Views.DetailPages.UserAccount;
 using System;
 using System.Collections.Generic;
-using DoCeluNaCzasMobile.Models.RouteSearch;
-using DoCeluNaCzasMobile.ViewModels.RouteSearch;
 using Xamarin.Forms;
 
-namespace DoCeluNaCzasMobile.Services
+namespace DoCeluNaCzasMobile.Services.Navigation
 {
     public static class NavigationService
     {
@@ -22,9 +20,9 @@ namespace DoCeluNaCzasMobile.Services
             {
                 if (!(Application.Current.MainPage is MasterDetailPage masterDetailPage))
                     return;
-                
+
                 var page = (Page)Activator.CreateInstance(targetType);
-                
+
                 if (targetType == typeof(AddBusStopPage))
                 {
                     await masterDetailPage.Detail.Navigation.PushAsync(new AddBusStopPage());
@@ -49,7 +47,7 @@ namespace DoCeluNaCzasMobile.Services
                 {
                     await masterDetailPage.Detail.Navigation.PushAsync(new ChooseStopPage((bool)parameters[0]));
                 }
-                else if(targetType == typeof(RoutesPage))
+                else if (targetType == typeof(RoutesPage))
                 {
                     await masterDetailPage.Detail.Navigation.PushAsync(new RoutesPage((List<Route>)parameters[0]));
                 }

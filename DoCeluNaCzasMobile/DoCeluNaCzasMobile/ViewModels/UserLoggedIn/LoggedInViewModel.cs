@@ -1,9 +1,9 @@
-﻿using DoCeluNaCzasMobile.Models;
-using DoCeluNaCzasMobile.Services;
-using DoCeluNaCzasMobile.Views.DetailPages;
-using System.Windows.Input;
+﻿using DoCeluNaCzasMobile.Models.Authorization;
 using DoCeluNaCzasMobile.Services.Cache;
 using DoCeluNaCzasMobile.Services.Cache.Keys;
+using DoCeluNaCzasMobile.Services.Navigation;
+using DoCeluNaCzasMobile.Views.DetailPages.UserAccount;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace DoCeluNaCzasMobile.ViewModels.UserLoggedIn

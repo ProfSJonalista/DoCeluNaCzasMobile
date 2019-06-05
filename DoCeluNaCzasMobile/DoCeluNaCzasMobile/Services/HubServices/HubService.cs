@@ -6,10 +6,10 @@ namespace DoCeluNaCzasMobile.Services.HubServices
 {
     public class HubService
     {
-        private const int DelayOnRetry = 1000;
-        private const int NumberOfRetries = 3;
-        private readonly HubConnection _hubConnection;
-        private readonly IHubProxy _hubProxy1;
+        const int DelayOnRetry = 1000;
+        const int NumberOfRetries = 3;
+        readonly HubConnection _hubConnection;
+        readonly IHubProxy _hubProxy1;
 
         public HubService(string hubConnectionUrl, string hubName)
         {

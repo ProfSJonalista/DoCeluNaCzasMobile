@@ -1,5 +1,6 @@
 ﻿using DoCeluNaCzasMobile.DataAccess.Repository.Database;
 using DoCeluNaCzasMobile.Models.Delay;
+using DoCeluNaCzasMobile.Services.Navigation;
 using System;
 using System.Collections.ObjectModel;
 

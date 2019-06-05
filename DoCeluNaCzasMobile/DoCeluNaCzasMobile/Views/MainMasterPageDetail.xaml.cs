@@ -1,7 +1,7 @@
-﻿using DoCeluNaCzasMobile.Services;
+﻿using DoCeluNaCzasMobile.Services.Navigation;
 using DoCeluNaCzasMobile.ViewModels.RouteSearch;
-using System;
 using DoCeluNaCzasMobile.Views.DetailPages.RouteSearch;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 

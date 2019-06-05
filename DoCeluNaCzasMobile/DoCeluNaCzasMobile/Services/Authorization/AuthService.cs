@@ -1,8 +1,9 @@
 ﻿using DoCeluNaCzasMobile.DataAccess.Repository.Net.Helpers;
-using DoCeluNaCzasMobile.Models;
+using DoCeluNaCzasMobile.Models.Authorization;
 using DoCeluNaCzasMobile.Services.Cache;
 using DoCeluNaCzasMobile.Services.Cache.Keys;
-using DoCeluNaCzasMobile.Views.DetailPages;
+using DoCeluNaCzasMobile.Services.Navigation;
+using DoCeluNaCzasMobile.Views.DetailPages.UserAccount;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
-namespace DoCeluNaCzasMobile.Services
+namespace DoCeluNaCzasMobile.Services.Authorization
 {
     public class AuthService
     {

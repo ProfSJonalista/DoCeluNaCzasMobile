@@ -1,8 +1,8 @@
-﻿using System;
-using DoCeluNaCzasMobile.Models.General;
+﻿using DoCeluNaCzasMobile.Models.General;
 using DoCeluNaCzasMobile.Services.Cache;
 using DoCeluNaCzasMobile.Services.Cache.Keys;
 using Plugin.Geolocator;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using Xamarin.Forms.Xaml;
@@ -12,7 +12,8 @@ namespace DoCeluNaCzasMobile.Views.DetailPages.Map
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MapPage : ContentPage
     {
-        private double distance = 1.0;
+        double distance = 1.0;
+
         public MapPage()
         {
             InitializeComponent();
@@ -30,7 +31,7 @@ namespace DoCeluNaCzasMobile.Views.DetailPages.Map
             var center = new Position(position.Latitude, position.Longitude);
 
             var busStopData = CacheService.Get<BusStopDataModel>(CacheKeys.BUS_STOP_DATA_MODEL);
-            
+
             DisplayInMap(busStopData);
 
             locationsMap.MoveToRegion(MapSpan.FromCenterAndRadius(center, Distance.FromKilometers(distance)));
@@ -45,7 +46,7 @@ namespace DoCeluNaCzasMobile.Views.DetailPages.Map
             await locator.StopListeningAsync();
         }
 
-        private void DisplayInMap(BusStopDataModel stops)
+        void DisplayInMap(BusStopDataModel stops)
         {
             foreach (var stop in stops.Stops)
             {
@@ -73,7 +74,7 @@ namespace DoCeluNaCzasMobile.Views.DetailPages.Map
             }
         }
 
-        private void Locator_PositionChanged(object sender, Plugin.Geolocator.Abstractions.PositionEventArgs e)
+        void Locator_PositionChanged(object sender, Plugin.Geolocator.Abstractions.PositionEventArgs e)
         {
             var center = new Position(e.Position.Latitude, e.Position.Longitude);
             locationsMap.MoveToRegion(MapSpan.FromCenterAndRadius(center, Distance.FromKilometers(distance)));
