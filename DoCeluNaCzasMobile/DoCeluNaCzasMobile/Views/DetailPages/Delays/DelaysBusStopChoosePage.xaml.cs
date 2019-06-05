@@ -30,7 +30,7 @@ namespace DoCeluNaCzasMobile.Views.DetailPages.Delays
             MyListView.ItemsSource = items;
         }
 
-        private void SearchBar_OnTextChanged(object sender, TextChangedEventArgs e)
+        void SearchBar_OnTextChanged(object sender, TextChangedEventArgs e)
         {
             if (string.IsNullOrEmpty(e.NewTextValue))
             {
@@ -42,7 +42,7 @@ namespace DoCeluNaCzasMobile.Views.DetailPages.Delays
                     x.BusLineNames.ToLower().Contains(e.NewTextValue.ToLower()) || x.StopDesc.ToLower().Contains(e.NewTextValue.ToLower()));
             }
         }
-        //przenosi do DelaysPage z odpowiednim stopId
+        
         void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             if (e.Item == null)

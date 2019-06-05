@@ -30,7 +30,7 @@ namespace DoCeluNaCzasMobile.Views.DetailPages.Delays
             ((ListView)sender).SelectedItem = null;
         }
 
-        private void SearchBar_OnTextChanged(object sender, TextChangedEventArgs e)
+        void SearchBar_OnTextChanged(object sender, TextChangedEventArgs e)
         {
             if (string.IsNullOrEmpty(e.NewTextValue))
             {

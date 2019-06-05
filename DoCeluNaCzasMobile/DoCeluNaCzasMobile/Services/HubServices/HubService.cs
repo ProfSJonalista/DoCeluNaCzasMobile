@@ -9,12 +9,12 @@ namespace DoCeluNaCzasMobile.Services.HubServices
         const int DelayOnRetry = 1000;
         const int NumberOfRetries = 3;
         readonly HubConnection _hubConnection;
-        readonly IHubProxy _hubProxy1;
+        readonly IHubProxy _hubProxy;
 
         public HubService(string hubConnectionUrl, string hubName)
         {
             _hubConnection = new HubConnection(hubConnectionUrl);
-            _hubProxy1 = _hubConnection.CreateHubProxy(hubName);
+            _hubProxy = _hubConnection.CreateHubProxy(hubName);
         }
 
         public async Task StartConnection()
@@ -33,9 +33,7 @@ namespace DoCeluNaCzasMobile.Services.HubServices
             {
                 try
                 {
-                    if (args.Length > 0)
-                        return await _hubProxy1.Invoke<T>(methodName, args[0]);
-                    return await _hubProxy1.Invoke<T>(methodName);
+                    return await _hubProxy.Invoke<T>(methodName, args[0]);
                 }
                 catch (InvalidOperationException ioe)
                 {

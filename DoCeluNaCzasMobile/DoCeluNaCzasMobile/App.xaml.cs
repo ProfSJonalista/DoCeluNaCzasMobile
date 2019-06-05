@@ -1,5 +1,5 @@
 ﻿using DLToolkit.Forms.Controls;
-using DoCeluNaCzasMobile.Services.PublicTransportServices;
+using DoCeluNaCzasMobile.Services.PublicTransport;
 using DoCeluNaCzasMobile.Views;
 using Xamarin.Forms;
 
