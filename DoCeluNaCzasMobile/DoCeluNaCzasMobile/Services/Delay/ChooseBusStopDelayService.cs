@@ -8,7 +8,7 @@ namespace DoCeluNaCzasMobile.Services.Delay
 {
     public class ChooseBusStopDelayService
     {
-        private readonly DatabaseRepository _databaseRepository;
+        readonly IDatabaseRepository _databaseRepository;
 
         public ChooseBusStopDelayService()
         {
