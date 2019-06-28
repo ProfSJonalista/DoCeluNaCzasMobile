@@ -19,15 +19,15 @@ namespace DoCeluNaCzasMobile.ViewModels.Login
             {
                 return new Command(async () =>
                 {
-                    var user = await _apiServices.LoginAsync(Username, Password);
+                    var status = await _apiServices.LoginAsync(Username, Password);
 
-                    if (user != null)
+                    if (status)
                     {
                         NavigationService.Navigate(typeof(UserAccountPage));
                     }
                     else
                     {
-                        await Application.Current.MainPage.DisplayAlert("Nieudane logowanie", "Wystąpił błąd podczas logowania. Spróbuj ponownie później.", "OK");
+                        await Application.Current.MainPage.DisplayAlert("Nieudane logowanie", "Niepoprawny login lub hasło", "OK");
                     }
                 });
             }

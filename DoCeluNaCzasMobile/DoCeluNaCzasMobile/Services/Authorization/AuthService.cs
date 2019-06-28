@@ -39,7 +39,7 @@ namespace DoCeluNaCzasMobile.Services.Authorization
 
         }
 
-        public async Task<User> LoginAsync(string username, string password)
+        public async Task<bool> LoginAsync(string username, string password)
         {
             var keyValues = new List<KeyValuePair<string, string>>()
             {
@@ -55,7 +55,62 @@ namespace DoCeluNaCzasMobile.Services.Authorization
 
             var response = await Client.SendAsync(request);
 
-            return new User();
+            if (!response.IsSuccessStatusCode)
+                return false;
+
+            var content = await response.Content.ReadAsStringAsync();
+            content = RemoveChars(content);
+            var user = JsonConvert.DeserializeObject<User>(content);
+
+            CacheService.Save(user, CacheKeys.USER);
+
+
+            return true;
+        }
+
+        string RemoveChars(string content)
+        {
+            var charsToRemove = new[] { "." };
+
+            return charsToRemove.Aggregate(content, (current, c) => current.Replace(c, string.Empty));
         }
     }
 }
+
+//using (var request = new HttpRequestMessage(HttpMethod.Post, Urls.TOKEN)
+//{
+//Content = new FormUrlEncodedContent(keyValues)
+//})
+
+//using (var client = new HttpClient())
+//{
+//var response = await client.SendAsync(request);
+
+//content = await response.Content.ReadAsStringAsync();
+//}
+
+//content = RemoveChars(content);
+
+//var user = JsonConvert.DeserializeObject<User>(content);
+
+//CacheService.Save(user, CacheKeys.USER);
+
+//NavigationService.Navigate(typeof(UserAccountPage));
+//}
+
+//string RemoveChars(string content)
+//{
+//var charsToRemove = new[] { "." };
+
+//return charsToRemove.Aggregate(content, (current, c) => current.Replace(c, string.Empty));
+//}
+
+//public async Task<string[]> GetData(string accessToken)
+//{
+//Client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+
+//var json = await Client.GetStringAsync(Urls.AUTHORIZED_VALUES);
+//var data = JsonConvert.DeserializeObject<string[]>(json);
+
+//return data;
+//}
