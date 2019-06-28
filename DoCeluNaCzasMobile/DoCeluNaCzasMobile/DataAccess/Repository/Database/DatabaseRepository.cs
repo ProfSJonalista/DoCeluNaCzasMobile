@@ -8,20 +8,10 @@ namespace DoCeluNaCzasMobile.DataAccess.Repository.Database
 {
     public class DatabaseRepository : IDatabaseRepository
     {
-        public void InsertToDb<T>(T objectToInsert)
+        public void Delete(ChooseBusStopModel objectToDelete)
         {
             using (var db = new SQLiteConnection(App.DatabaseLocation))
             {
-                db.CreateTable<T>();
-                db.Insert(objectToInsert, typeof(T));
-            }
-        }
-
-        public void Delete<T>(T objectToDelete)
-        {
-            using (var db = new SQLiteConnection(App.DatabaseLocation))
-            {
-                db.CreateTable<T>();
                 db.Delete(objectToDelete);
             }
         }
@@ -34,10 +24,10 @@ namespace DoCeluNaCzasMobile.DataAccess.Repository.Database
 
                 var oldStopModel = db.Table<ChooseBusStopModel>().SingleOrDefault(stop => stop.StopId == stopModel.StopId);
 
-                if (oldStopModel == null || oldStopModel.StopId == 0)
-                {
-                    InsertToDb(stopModel);
-                }
+                if (oldStopModel != null && oldStopModel.StopId >= 0) return;
+
+                db.CreateTable<ChooseBusStopModel>();
+                db.Insert(stopModel);
             }
         }
 

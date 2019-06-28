@@ -25,32 +25,32 @@ namespace DoCeluNaCzasMobile.Views.DetailPages.Delays
             var items = DelayBusStopChooseViewModel.GetUserBusStops();
 
             var visible = items.Count > 0;
-            MyListView.IsVisible = visible;
+
             NoStopsLabel.IsVisible = !visible;
-            MyListView.ItemsSource = items;
+            BusStopListView.IsVisible = visible;
+            BusStopListView.ItemsSource = items;
         }
 
         void SearchBar_OnTextChanged(object sender, TextChangedEventArgs e)
         {
             if (string.IsNullOrEmpty(e.NewTextValue))
             {
-                MyListView.ItemsSource = DelayBusStopChooseViewModel.Items;
+                BusStopListView.ItemsSource = DelayBusStopChooseViewModel.Items;
             }
             else
             {
-                MyListView.ItemsSource = DelayBusStopChooseViewModel.Items.Where(x =>
-                    x.BusLineNames.ToLower().Contains(e.NewTextValue.ToLower()) || x.StopDesc.ToLower().Contains(e.NewTextValue.ToLower()));
+                BusStopListView.ItemsSource = DelayBusStopChooseViewModel.Items.Where(stop =>
+                       stop.ChooseBusStopModel.BusLineNames.ToLower().Contains(e.NewTextValue.ToLower())
+                    || stop.ChooseBusStopModel.StopDesc.ToLower().Contains(e.NewTextValue.ToLower()));
             }
         }
-        
+
         void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            if (e.Item == null)
+            if (!(e.Item is ChooseBusStopViewModel stop))
                 return;
 
-            var stop = (ChooseBusStopModel)e.Item;
-
-            DelayBusStopChooseViewModel.ChooseBusStopDelayService.Navigate(typeof(DelaysPage), stop.StopId);
+            DelayBusStopChooseViewModel.Navigate(typeof(DelaysPage), stop.ChooseBusStopModel.StopId);
         }
     }
 }

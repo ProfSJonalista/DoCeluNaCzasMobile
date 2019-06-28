@@ -14,7 +14,7 @@
                HorizontalOptions="CenterAndExpand"
                VerticalOptions="CenterAndExpand"/>
 
-        <ListView x:Name="MyListView"
+        <ListView x:Name="BusStopListView"
                   ItemsSource="{Binding Items}"
                   ItemTapped="Handle_ItemTapped"
                   CachingStrategy="RecycleElement"
@@ -24,19 +24,20 @@
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout>
-                            <Label Text="{Binding StopDesc}"
+                            <Label Text="{Binding ChooseBusStopModel.StopDesc}"
                                    Style="{DynamicResource ListItemTextStyle}"
                                    VerticalOptions="Start"
                                    FontSize="Large"/>
-                            <Label Text="{Binding BusLineNames}"
+                            <Label Text="{Binding ChooseBusStopModel.BusLineNames}"
                                    Style="{DynamicResource ListItemDetailTextStyle}"
                                    VerticalOptions="Fill"
                                    TextColor="Red"/>
-                            <Label Text="{Binding DestinationHeadsigns}"
+                            <Label Text="{Binding ChooseBusStopModel.DestinationHeadsigns}"
                                    Style="{DynamicResource ListItemDetailTextStyle}"
                                    VerticalOptions="Fill"/>
                             <Button x:Name="DeleteBusStop"
-                                    Text="Delete"/>
+                                    Text="Delete"
+                                    Command="{Binding DeleteStopCommand}"/>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>

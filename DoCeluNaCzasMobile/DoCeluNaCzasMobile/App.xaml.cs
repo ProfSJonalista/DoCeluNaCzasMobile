@@ -23,9 +23,7 @@ namespace DoCeluNaCzasMobile
 
             DatabaseLocation = databaseLocation;
             FlowListView.Init();
-
-            var publicTransportService = new PublicTransportService();
-            publicTransportService.GetDataWithSignalRAsync();
+            PublicTransportService.GetDataAsync();
 
             MainPage = new MainMasterPage();
         }

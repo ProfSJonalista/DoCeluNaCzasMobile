@@ -63,7 +63,6 @@ namespace DoCeluNaCzasMobile.Views.MainPage
 
                 default:
                     page = new MainMasterPageDetail();
-                    item.Title = "Strona główna";
                     break;
             }
 

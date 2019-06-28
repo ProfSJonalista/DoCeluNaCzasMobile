@@ -1,14 +1,13 @@
 ﻿using DoCeluNaCzasMobile.Models.RouteSearch;
 using DoCeluNaCzasMobile.Models.TimeTable;
-using DoCeluNaCzasMobile.Views;
 using DoCeluNaCzasMobile.Views.DetailPages.Delays;
 using DoCeluNaCzasMobile.Views.DetailPages.RouteSearch;
 using DoCeluNaCzasMobile.Views.DetailPages.TimeTable;
 using DoCeluNaCzasMobile.Views.DetailPages.TimeTable.TimeTablePage;
 using DoCeluNaCzasMobile.Views.DetailPages.UserAccount;
+using DoCeluNaCzasMobile.Views.MainPage;
 using System;
 using System.Collections.Generic;
-using DoCeluNaCzasMobile.Views.MainPage;
 using Xamarin.Forms;
 
 namespace DoCeluNaCzasMobile.Services.Navigation

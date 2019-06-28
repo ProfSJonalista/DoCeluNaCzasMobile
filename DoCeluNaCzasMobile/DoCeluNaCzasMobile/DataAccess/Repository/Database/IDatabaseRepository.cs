@@ -8,8 +8,7 @@ namespace DoCeluNaCzasMobile.DataAccess.Repository.Database
 {
     public interface IDatabaseRepository
     {
-        void InsertToDb<T>(T objectToInsert);
-        void Delete<T>(T objectToDelete);
+        void Delete(ChooseBusStopModel objectToDelete);
         void SaveStopModel(ChooseBusStopModel stopModel);
         ObservableCollection<ChooseBusStopModel> GetUserBusStopObservableCollection();
     }
