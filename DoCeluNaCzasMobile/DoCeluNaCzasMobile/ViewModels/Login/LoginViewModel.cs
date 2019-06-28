@@ -19,7 +19,16 @@ namespace DoCeluNaCzasMobile.ViewModels.Login
             {
                 return new Command(async () =>
                 {
-                    await _apiServices.LoginAsync(Username, Password);
+                    var user = await _apiServices.LoginAsync(Username, Password);
+
+                    if (user != null)
+                    {
+                        NavigationService.Navigate(typeof(UserAccountPage));
+                    }
+                    else
+                    {
+                        await Application.Current.MainPage.DisplayAlert("Nieudane logowanie", "Wystąpił błąd podczas logowania. Spróbuj ponownie później.", "OK");
+                    }
                 });
             }
         }
