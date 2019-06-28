@@ -8,7 +8,7 @@ namespace DoCeluNaCzasMobile.Services.Delay
 {
     public class ChooseBusStopDelayService
     {
-        private readonly DatabaseRepository _databaseRepository;
+        readonly IDatabaseRepository _databaseRepository;
 
         public ChooseBusStopDelayService()
         {
@@ -20,7 +20,7 @@ namespace DoCeluNaCzasMobile.Services.Delay
             return _databaseRepository.GetUserBusStopObservableCollection();
         }
 
-        public void Navigate(Type pageType, int stopId = 0)
+        public void Navigate(Type pageType, int stopId = -1)
         {
             NavigationService.Navigate(pageType, stopId);
         }

@@ -2,7 +2,7 @@
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DoCeluNaCzasMobile.App">
-	<Application.Resources>
+    <Application.Resources>
 
         <ResourceDictionary>
             <!-- Set Icons -->
@@ -18,14 +18,11 @@
             <!--White-->
             <Color x:Key="White">#FFF</Color>
 
-
             <!-- Change navigation bar color -->
             <Style TargetType="NavigationPage">
                 <Setter Property="BarBackgroundColor" Value="#007b7d"/>
                 <Setter Property="BarTextColor" Value="Color.White"/>
             </Style>
-
         </ResourceDictionary>
-
     </Application.Resources>
 </Application>

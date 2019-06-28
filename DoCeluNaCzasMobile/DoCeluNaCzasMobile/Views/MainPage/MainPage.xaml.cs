@@ -1,6 +1,6 @@
 ﻿using Xamarin.Forms;
 
-namespace DoCeluNaCzasMobile
+namespace DoCeluNaCzasMobile.Views.MainPage
 {
     public partial class MainPage : ContentPage
     {

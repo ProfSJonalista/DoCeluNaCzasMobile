@@ -1,6 +1,6 @@
 ﻿using DLToolkit.Forms.Controls;
-using DoCeluNaCzasMobile.Services.PublicTransportServices;
-using DoCeluNaCzasMobile.Views;
+using DoCeluNaCzasMobile.Services.PublicTransport;
+using DoCeluNaCzasMobile.Views.MainPage;
 using Xamarin.Forms;
 
 namespace DoCeluNaCzasMobile
@@ -23,9 +23,7 @@ namespace DoCeluNaCzasMobile
 
             DatabaseLocation = databaseLocation;
             FlowListView.Init();
-
-            var publicTransportService = new PublicTransportService();
-            publicTransportService.GetDataWithSignalRAsync();
+            PublicTransportService.GetDataAsync();
 
             MainPage = new MainMasterPage();
         }

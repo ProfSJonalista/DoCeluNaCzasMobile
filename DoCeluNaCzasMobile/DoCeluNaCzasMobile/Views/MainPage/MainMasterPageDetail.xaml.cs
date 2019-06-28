@@ -5,7 +5,7 @@ using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace DoCeluNaCzasMobile.Views
+namespace DoCeluNaCzasMobile.Views.MainPage
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainMasterPageDetail : ContentPage

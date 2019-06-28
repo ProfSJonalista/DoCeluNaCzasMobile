@@ -15,28 +15,28 @@ namespace DoCeluNaCzasMobile.Services.Authorization
 {
     public class AuthService
     {
+        static readonly HttpClient Client = new HttpClient();
+
         public async Task<bool> RegisterAsync(string email, string password, string confirmPassword)
         {
-            using (var client = new HttpClient())
+            var model = new RegisterBindingModel()
             {
-                var model = new RegisterBindingModel()
-                {
-                    Email = email,
-                    Password = password,
-                    ConfirmPassword = password
-                };
+                Email = email,
+                Password = password,
+                ConfirmPassword = password
+            };
 
-                var json = JsonConvert.SerializeObject(model);
+            var json = JsonConvert.SerializeObject(model);
 
-                using (var content = new StringContent(json))
-                {
-                    content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+            using (var content = new StringContent(json))
+            {
+                content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
-                    var response = await client.PostAsync(Urls.REGISTER, content);
+                var response = await Client.PostAsync(Urls.REGISTER, content);
 
-                    return response.IsSuccessStatusCode;
-                }
+                return response.IsSuccessStatusCode;
             }
+
         }
 
         public async Task LoginAsync(string username, string password)
@@ -71,7 +71,7 @@ namespace DoCeluNaCzasMobile.Services.Authorization
             NavigationService.Navigate(typeof(UserAccountPage));
         }
 
-        private string RemoveChars(string content)
+        string RemoveChars(string content)
         {
             var charsToRemove = new[] { "." };
 
@@ -80,16 +80,12 @@ namespace DoCeluNaCzasMobile.Services.Authorization
 
         public async Task<string[]> GetData(string accessToken)
         {
-            using (var client = new HttpClient())
-            {
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+            Client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
 
-                var json = await client.GetStringAsync(Urls.AUTHORIZED_VALUES);
+            var json = await Client.GetStringAsync(Urls.AUTHORIZED_VALUES);
+            var data = JsonConvert.DeserializeObject<string[]>(json);
 
-                var data = JsonConvert.DeserializeObject<string[]>(json);
-
-                return data;
-            }
+            return data;
         }
     }
 }

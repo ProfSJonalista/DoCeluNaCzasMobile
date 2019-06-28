@@ -48,7 +48,7 @@
                                    Grid.Row="2"
                                    Grid.Column="0"/>
 
-                            <Label Text="{Binding DepartureTime, StringFormat='{}{0:hh\\:mm}'}"
+                            <Label Text="{Binding DepartureTime, StringFormat='{}{0:HH\\:mm}'}"
                                    Style="{DynamicResource ListItemDetailTextStyle}"
                                    Grid.Row="2"
                                    Grid.Column="1"/>
@@ -58,7 +58,7 @@
                                    Grid.Row="2"
                                    Grid.Column="2"/>
 
-                            <Label Text="{Binding ArrivalTime, StringFormat='{}{0:hh\\:mm}'}"
+                            <Label Text="{Binding ArrivalTime, StringFormat='{}{0:HH\\:mm}'}"
                                    Style="{DynamicResource ListItemDetailTextStyle}"
                                    Grid.Row="2"
                                    Grid.Column="3"/>

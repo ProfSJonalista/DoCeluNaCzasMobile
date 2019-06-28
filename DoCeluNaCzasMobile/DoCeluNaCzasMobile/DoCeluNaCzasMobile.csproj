@@ -29,7 +29,7 @@
     <Compile Update="Views\DetailPages\TimeTable\BusStopChoicePage.xaml.cs">
       <DependentUpon>BusStopChoicePage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\MainMasterPageMenuItem.cs">
+    <Compile Update="Models\MainPage\MainMasterPageMenuItem.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -86,13 +86,13 @@
     <EmbeddedResource Update="Views\DetailPages\UserAccount\Views\LoginAndRegistrationView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\MainMasterPage.xaml">
+    <EmbeddedResource Update="Views\MainPage\MainMasterPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\MainMasterPageDetail.xaml">
+    <EmbeddedResource Update="Views\MainPage\MainMasterPageDetail.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\MainMasterPageMaster.xaml">
+    <EmbeddedResource Update="Views\MainPage\MainMasterPageMaster.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\DetailPages\Map\MapPage.xaml">

@@ -1,11 +1,11 @@
 ﻿using DoCeluNaCzasMobile.Models.RouteSearch;
 using DoCeluNaCzasMobile.Models.TimeTable;
-using DoCeluNaCzasMobile.Views;
 using DoCeluNaCzasMobile.Views.DetailPages.Delays;
 using DoCeluNaCzasMobile.Views.DetailPages.RouteSearch;
 using DoCeluNaCzasMobile.Views.DetailPages.TimeTable;
 using DoCeluNaCzasMobile.Views.DetailPages.TimeTable.TimeTablePage;
 using DoCeluNaCzasMobile.Views.DetailPages.UserAccount;
+using DoCeluNaCzasMobile.Views.MainPage;
 using System;
 using System.Collections.Generic;
 using Xamarin.Forms;
@@ -21,23 +21,15 @@ namespace DoCeluNaCzasMobile.Services.Navigation
                 if (!(Application.Current.MainPage is MasterDetailPage masterDetailPage))
                     return;
 
-                var page = (Page)Activator.CreateInstance(targetType);
+                var page = (Page)Activator.CreateInstance(targetType);//do tytułu strony
 
-                if (targetType == typeof(AddBusStopPage))
-                {
-                    await masterDetailPage.Detail.Navigation.PushAsync(new AddBusStopPage());
-                }
-                else if (targetType == typeof(BusStopChoicePage))
-                {
-                    await masterDetailPage.Detail.Navigation.PushAsync(new BusStopChoicePage((string)parameters[0]));
-                }
-                else if (targetType == typeof(RegisterPage))
+                if (targetType == typeof(RegisterPage))
                 {
                     await masterDetailPage.Detail.Navigation.PushAsync(new RegisterPage());
                 }
-                else if (targetType == typeof(TimeTablePage))
+                else if (targetType == typeof(AddBusStopPage))
                 {
-                    await masterDetailPage.Detail.Navigation.PushAsync(new TimeTablePage((MinuteTimeTable)parameters[0]));
+                    await masterDetailPage.Detail.Navigation.PushAsync(new AddBusStopPage());
                 }
                 else if (targetType == typeof(DelaysPage))
                 {
@@ -54,6 +46,14 @@ namespace DoCeluNaCzasMobile.Services.Navigation
                 else if (targetType == typeof(ChangePage))
                 {
                     await masterDetailPage.Detail.Navigation.PushAsync(new ChangePage((List<Change>)parameters[0]));
+                }
+                else if (targetType == typeof(BusStopChoicePage))
+                {
+                    await masterDetailPage.Detail.Navigation.PushAsync(new BusStopChoicePage((string)parameters[0]));
+                }
+                else if (targetType == typeof(TimeTablePage))
+                {
+                    await masterDetailPage.Detail.Navigation.PushAsync(new TimeTablePage((MinuteTimeTable)parameters[0]));
                 }
                 else if (targetType == typeof(StopChangePage))
                 {

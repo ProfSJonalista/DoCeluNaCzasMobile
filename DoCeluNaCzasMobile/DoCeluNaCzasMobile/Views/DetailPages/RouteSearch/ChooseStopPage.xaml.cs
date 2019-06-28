@@ -2,6 +2,7 @@
 using DoCeluNaCzasMobile.Services.Cache;
 using DoCeluNaCzasMobile.Services.Cache.Keys;
 using DoCeluNaCzasMobile.Services.Navigation;
+using DoCeluNaCzasMobile.Views.MainPage;
 using System.Collections.ObjectModel;
 using System.Linq;
 using Xamarin.Forms;

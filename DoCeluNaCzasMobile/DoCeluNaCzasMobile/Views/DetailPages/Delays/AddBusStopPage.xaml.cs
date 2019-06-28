@@ -18,19 +18,21 @@ namespace DoCeluNaCzasMobile.Views.DetailPages.Delays
             MyListView.ItemsSource = AddBusStopViewModel.Items;
         }
 
-        void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
+        async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            if (e.Item == null)
+            if(!(e.Item is ChooseBusStopModel stop))
                 return;
 
-            var item = (ChooseBusStopModel)e.Item;
-            AddBusStopViewModel.SaveToDb(item);
+            AddBusStopViewModel.SaveToDb(stop);
 
             //Deselect Item
             ((ListView)sender).SelectedItem = null;
+
+            var message = "Przystanek " + stop.StopDesc + " został dodany do listy";
+            await DisplayAlert("Przystanek dodany", message, "OK");
         }
 
-        private void SearchBar_OnTextChanged(object sender, TextChangedEventArgs e)
+        void SearchBar_OnTextChanged(object sender, TextChangedEventArgs e)
         {
             if (string.IsNullOrEmpty(e.NewTextValue))
             {

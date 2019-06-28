@@ -16,6 +16,8 @@ namespace DoCeluNaCzasMobile.Views.DetailPages.TimeTable.TimeTablePage
         {
             InitializeComponent();
 
+            Title = minuteTimeTable.BusLineName + " - " + minuteTimeTable.StopName;
+
             WeekdayPageTab.BindingContext = minuteTimeTable.ModMinuteDictionary[DayType.Weekday];
             SaturdayPageTab.BindingContext = minuteTimeTable.ModMinuteDictionary[DayType.Saturday];
             SundayPageTab.BindingContext = minuteTimeTable.ModMinuteDictionary[DayType.Sunday];
