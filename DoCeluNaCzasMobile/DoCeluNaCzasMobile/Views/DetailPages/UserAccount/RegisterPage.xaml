@@ -29,8 +29,16 @@
                 Command="{Binding RegisterCommand}"
                 Text="Register"/>
 
-        <Button x:Name="NavigateButton"
-                Text="Go to Login Page"
-                Command="{Binding NavigateToLoginPageCommand}"/>
+        <Label x:Name="NavigateButton"
+               Text="Go to Login Page"
+               HorizontalOptions="CenterAndExpand"
+               FontSize="Medium"
+               TextColor="DodgerBlue">
+
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding NavigateToLoginPageCommand}" />
+            </Label.GestureRecognizers>
+
+        </Label>
     </StackLayout>
 </ContentPage>

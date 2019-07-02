@@ -67,6 +67,9 @@ namespace DoCeluNaCzasMobile.Views.DetailPages.TimeTable
 
             var stopToView = _minuteTimeTableList.FirstOrDefault(x => x.StopId == stopModel.StopId);
 
+            if(stopToView == null) return;
+
+            CacheService.Save(stopToView, CacheKeys.MINUTE_TIME_TABLE);
             NavigationService.Navigate(typeof(TimeTablePage.TimeTablePage), stopToView);
         }
     }

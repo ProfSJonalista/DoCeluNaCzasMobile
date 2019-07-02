@@ -21,8 +21,6 @@ namespace DoCeluNaCzasMobile.Services.Navigation
                 if (!(Application.Current.MainPage is MasterDetailPage masterDetailPage))
                     return;
 
-                var page = (Page)Activator.CreateInstance(targetType);//do tytułu strony
-
                 if (targetType == typeof(RegisterPage))
                 {
                     await masterDetailPage.Detail.Navigation.PushAsync(new RegisterPage());

@@ -14,7 +14,7 @@ namespace DoCeluNaCzasMobile.Services.PublicTransport
 {
     public class PublicTransportService
     {
-        static readonly PublicTransportRepository _publicTransportRepository = new PublicTransportRepository();
+        static readonly PublicTransportRepository PublicTransportRepository = new PublicTransportRepository();
 
         public static async void GetDataAsync()
         {
@@ -43,7 +43,7 @@ namespace DoCeluNaCzasMobile.Services.PublicTransport
 
         static async Task<T> GetDataAsync<T>(string url)
         {
-            var json = await _publicTransportRepository.DownloadDataAsync(url);
+            var json = await PublicTransportRepository.DownloadDataAsync(url);
             var data = JsonConvert.DeserializeObject<T>(json);
 
             return data;
