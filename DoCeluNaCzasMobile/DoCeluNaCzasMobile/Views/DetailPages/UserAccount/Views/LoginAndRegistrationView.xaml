@@ -26,7 +26,8 @@
                     Command="{Binding LoginCommand}"
                     Text="Login"/>
 
-            <Label Text="Nie masz konta? Zarejestruj się!" 
+            <Label x:Name="NoAccountLabel"
+                   Text="Nie masz konta? Zarejestruj się!" 
                    HorizontalOptions="CenterAndExpand"
                    FontSize="Medium"
                    TextColor="DodgerBlue">

@@ -1,4 +1,7 @@
-﻿using Xamarin.Forms;
+﻿using DoCeluNaCzasMobile.Models.TimeTable;
+using DoCeluNaCzasMobile.Services.Cache;
+using DoCeluNaCzasMobile.Services.Cache.Keys;
+using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace DoCeluNaCzasMobile.Views.DetailPages.TimeTable.TimeTablePage.Days
@@ -9,7 +12,9 @@ namespace DoCeluNaCzasMobile.Views.DetailPages.TimeTable.TimeTablePage.Days
         public WeekdayPage()
         {
             InitializeComponent();
-            Content = new HourAndMinuteGridView();
+
+            var minuteTimeTable = CacheService.Get<MinuteTimeTable>(CacheKeys.MINUTE_TIME_TABLE);
+            Content = new HourAndMinuteGridView(minuteTimeTable.MinuteDictionary[DayType.Weekday], DayType.Weekday);
         }
     }
 }

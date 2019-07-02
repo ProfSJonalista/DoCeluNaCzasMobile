@@ -24,7 +24,7 @@ namespace DoCeluNaCzasMobile.Services.TimeTable
             };
 
             var joinedTrips = CacheService.Get<List<GroupedJoinedModel>>(CacheKeys.GROUPED_JOINED_MODEL_LIST);
-            var trips = joinedTrips.SingleOrDefault(x => x.Group == group);
+            var trips = joinedTrips.Single(x => x.Group == group);
 
             foreach (var trip in trips.JoinedTripModels)
             {
