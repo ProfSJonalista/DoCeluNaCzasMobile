@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using DoCeluNaCzasMobile.Models.TimeTable;
+﻿using DoCeluNaCzasMobile.Models.TimeTable;
 using DoCeluNaCzasMobile.Services.TimeTable;
+using System.Collections.Generic;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
