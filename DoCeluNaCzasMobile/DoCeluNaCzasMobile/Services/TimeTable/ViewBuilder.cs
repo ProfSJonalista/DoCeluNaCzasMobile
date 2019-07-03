@@ -10,16 +10,13 @@ namespace DoCeluNaCzasMobile.Services.TimeTable
     {
         public ScrollView Build(Dictionary<int, List<int>> minuteDictionary, DayType dayType)
         {
-            var grid = new Grid();
+            var grid = new Grid { Margin = 20 };
 
             CreateColumns(grid, minuteDictionary);
             CreateRows(grid);
             InsertData(grid, minuteDictionary, dayType);
 
-            var stackLayout = new StackLayout { Margin = 20 };
-            stackLayout.Children.Add(grid);
-
-            return new ScrollView { Content = stackLayout };
+            return new ScrollView { Content = grid };
         }
 
         static void CreateColumns(Grid grid, Dictionary<int, List<int>> minuteDictionary)
