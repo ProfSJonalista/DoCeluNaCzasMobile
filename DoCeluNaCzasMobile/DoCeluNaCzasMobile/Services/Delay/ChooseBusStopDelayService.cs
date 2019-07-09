@@ -3,6 +3,7 @@ using DoCeluNaCzasMobile.Models.Delay;
 using DoCeluNaCzasMobile.Services.Navigation;
 using System;
 using System.Collections.ObjectModel;
+using DoCeluNaCzasMobile.ViewModels.Delay.BusStopChoose;
 
 namespace DoCeluNaCzasMobile.Services.Delay
 {
@@ -20,9 +21,9 @@ namespace DoCeluNaCzasMobile.Services.Delay
             return _databaseRepository.GetUserBusStopObservableCollection();
         }
 
-        public void Navigate(Type pageType, int stopId = -1)
+        public void Navigate(Type pageType, ChooseBusStopModel stop = null)
         {
-            NavigationService.Navigate(pageType, stopId);
+            NavigationService.Navigate(pageType, stop);
         }
 
         public void SaveToDb(ChooseBusStopModel item)

@@ -8,6 +8,7 @@ using DoCeluNaCzasMobile.Views.DetailPages.UserAccount;
 using DoCeluNaCzasMobile.Views.MainPage;
 using System;
 using System.Collections.Generic;
+using DoCeluNaCzasMobile.Models.Delay;
 using Xamarin.Forms;
 
 namespace DoCeluNaCzasMobile.Services.Navigation
@@ -31,7 +32,7 @@ namespace DoCeluNaCzasMobile.Services.Navigation
                 }
                 else if (targetType == typeof(DelaysPage))
                 {
-                    await masterDetailPage.Detail.Navigation.PushAsync(new DelaysPage((int)parameters[0]));
+                    await masterDetailPage.Detail.Navigation.PushAsync(new DelaysPage((ChooseBusStopModel)parameters[0]));
                 }
                 else if (targetType == typeof(ChooseStopPage))
                 {

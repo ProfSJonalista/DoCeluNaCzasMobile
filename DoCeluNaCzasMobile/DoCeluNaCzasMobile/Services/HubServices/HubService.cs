@@ -8,8 +8,8 @@ namespace DoCeluNaCzasMobile.Services.HubServices
     {
         const int DelayOnRetry = 1000;
         const int NumberOfRetries = 3;
-        readonly HubConnection _hubConnection;
         readonly IHubProxy _hubProxy;
+        readonly HubConnection _hubConnection;
 
         public HubService(string hubConnectionUrl, string hubName)
         {
@@ -17,15 +17,11 @@ namespace DoCeluNaCzasMobile.Services.HubServices
             _hubProxy = _hubConnection.CreateHubProxy(hubName);
         }
 
-        public async Task StartConnection()
-        {
-            await _hubConnection.Start();
-        }
+        public async Task StartConnection() => await _hubConnection.Start();
 
-        public bool IsConnected()
-        {
-            return _hubConnection.State == ConnectionState.Connected; ;
-        }
+        public bool IsConnected() => _hubConnection.State == ConnectionState.Connected;
+
+        public void StopConnection() => _hubConnection.Stop();
 
         public async Task<T> GetData<T>(string methodName, params int[] args) where T : new()
         {
@@ -48,11 +44,6 @@ namespace DoCeluNaCzasMobile.Services.HubServices
             }
 
             return new T();
-        }
-
-        public void StopConnection()
-        {
-            _hubConnection.Stop();
         }
     }
 }
