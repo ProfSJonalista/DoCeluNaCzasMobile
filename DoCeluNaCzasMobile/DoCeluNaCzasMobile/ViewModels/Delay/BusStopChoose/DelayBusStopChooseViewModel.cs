@@ -36,15 +36,9 @@ namespace DoCeluNaCzasMobile.ViewModels.Delay.BusStopChoose
             return Items;
         }
 
-        public void NavigateToAddPage()
-        {
-            ChooseBusStopDelayService.Navigate(typeof(AddBusStopPage));
-        }
+        public void NavigateToAddPage() => ChooseBusStopDelayService.Navigate(typeof(AddBusStopPage));
 
-        public void Navigate(Type type, int stopId)
-        {
-            ChooseBusStopDelayService.Navigate(type, stopId);
-        }
+        public void Navigate(Type type, ChooseBusStopModel stop) => ChooseBusStopDelayService.Navigate(type, stop);
 
         public void DeleteStop(ChooseBusStopModel stopToDelete)
         {

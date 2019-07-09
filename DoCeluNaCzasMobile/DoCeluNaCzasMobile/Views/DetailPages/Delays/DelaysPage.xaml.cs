@@ -2,6 +2,7 @@
 using DoCeluNaCzasMobile.ViewModels.Delay.Delays;
 using System.Collections.ObjectModel;
 using System.Timers;
+using DoCeluNaCzasMobile.ViewModels.Delay.BusStopChoose;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -13,16 +14,15 @@ namespace DoCeluNaCzasMobile.Views.DetailPages.Delays
         static Timer _timer;
         public DelayViewModel DelayViewModel { get; set; }
         public ObservableCollection<DelayModel> Items { get; set; }
-        public DelaysPage()
-        {
-            InitializeComponent();
-        }
 
-        public DelaysPage(int stopId)
+        public DelaysPage() => InitializeComponent();
+
+        public DelaysPage(ChooseBusStopModel stop)
         {
             InitializeComponent();
-            DelayViewModel = new DelayViewModel(stopId);
+            Title = stop.StopDesc;
             Items = new ObservableCollection<DelayModel>();
+            DelayViewModel = new DelayViewModel(stop.StopId);
         }
 
         void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
@@ -58,7 +58,7 @@ namespace DoCeluNaCzasMobile.Views.DetailPages.Delays
             StopTimer();
         }
 
-        public void SetTimer()
+        void SetTimer()
         {
             const int timeInMilliseconds = 20000; //20 seconds
             _timer = new Timer(timeInMilliseconds);
@@ -77,9 +77,6 @@ namespace DoCeluNaCzasMobile.Views.DetailPages.Delays
             });
         }
 
-        public void StopTimer()
-        {
-            _timer.Stop();
-        }
+        public void StopTimer() => _timer.Stop();
     }
 }

@@ -50,7 +50,7 @@ namespace DoCeluNaCzasMobile.Views.DetailPages.Delays
             if (!(e.Item is ChooseBusStopViewModel stop))
                 return;
 
-            DelayBusStopChooseViewModel.Navigate(typeof(DelaysPage), stop.ChooseBusStopModel.StopId);
+            DelayBusStopChooseViewModel.Navigate(typeof(DelaysPage), stop.ChooseBusStopModel);
         }
     }
 }

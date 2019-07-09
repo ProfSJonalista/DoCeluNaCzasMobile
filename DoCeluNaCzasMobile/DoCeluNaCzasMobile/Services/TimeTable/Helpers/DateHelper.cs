@@ -33,9 +33,9 @@ namespace DoCeluNaCzasMobile.Services.TimeTable.Helpers
                 }
             }
 
-            dtList = dtList.Where(time => time >= DateTime.Now.TimeOfDay).ToList();
+            var filteredDtList = dtList.Where(time => time >= DateTime.Now.TimeOfDay).ToList();
 
-            return dtList.First();
+            return filteredDtList.FirstOrDefault();
         }
     }
 }

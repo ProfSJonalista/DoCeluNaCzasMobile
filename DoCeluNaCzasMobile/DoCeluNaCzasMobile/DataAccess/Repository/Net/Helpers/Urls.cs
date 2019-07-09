@@ -9,11 +9,11 @@
         public static string AUTHORIZED_VALUES = SERVER_CONNECTION + "api/AuthorizedValues";
 
         public static string BUS_STOP_DATA_MODEL = SERVER_CONNECTION + "api/BusStop";
-        public static string JOINED_TRIPS = SERVER_CONNECTION + "api/JoinedTrips";
+        public static string GROUPED_JOINED_MODEL_LIST = SERVER_CONNECTION + "api/JoinedTrips";
         public static string CHOOSE_BUS_STOP_OBSERVABLE_COLLECTION = SERVER_CONNECTION + "api/ChooseBusStop";
 
         public static string MINUTE_TIME_TABLES_BY_BUS_LINE_NAME = SERVER_CONNECTION + "api/TimeTable?busLineName={0}";
 
-        public static string ROUTE_SEARCH = SERVER_CONNECTION +"api/RouteSearch?startStopId={0}&destStopId={1}&departure={2}&desiredTime={3}";
+        public static string ROUTE_SEARCH = SERVER_CONNECTION + "api/RouteSearch?startStopId={0}&destStopId={1}&departure={2}&desiredTime={3}";
     }
 }

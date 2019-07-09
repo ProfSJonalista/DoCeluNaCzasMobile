@@ -23,30 +23,21 @@ namespace DoCeluNaCzasMobile.Services.PublicTransport
             await GetChooseBusStopModelCollection();
         }
 
-        static async Task GetChooseBusStopModelCollection()
-        {
-            var chooseBusStopModelCollection = await GetDataAsync<ObservableCollection<ChooseBusStopModel>>(Urls.CHOOSE_BUS_STOP_OBSERVABLE_COLLECTION);
-            CacheService.Save(chooseBusStopModelCollection, CacheKeys.CHOOSE_BUS_STOP_MODEL_OBSERVABALE_COLLECTION);
-        }
+        static async Task GetChooseBusStopModelCollection() =>
+            await GetDataAsync<ObservableCollection<ChooseBusStopModel>>(Urls.CHOOSE_BUS_STOP_OBSERVABLE_COLLECTION, CacheKeys.CHOOSE_BUS_STOP_MODEL_OBSERVABALE_COLLECTION);
 
-        static async Task GetBusStopData()
-        {
-            var busStopData = await GetDataAsync<BusStopDataModel>(Urls.BUS_STOP_DATA_MODEL);
-            CacheService.Save(busStopData, CacheKeys.BUS_STOP_DATA_MODEL);
-        }
+        static async Task GetBusStopData() =>
+            await GetDataAsync<BusStopDataModel>(Urls.BUS_STOP_DATA_MODEL, CacheKeys.BUS_STOP_DATA_MODEL);
 
-        static async Task GetJoinedTripList()
-        {
-            var joinedTripsViewModelList = await GetDataAsync<List<GroupedJoinedModel>>(Urls.JOINED_TRIPS);
-            CacheService.Save(joinedTripsViewModelList, CacheKeys.GROUPED_JOINED_MODEL_LIST);
-        }
+        static async Task GetJoinedTripList() =>
+            await GetDataAsync<List<GroupedJoinedModel>>(Urls.GROUPED_JOINED_MODEL_LIST, CacheKeys.GROUPED_JOINED_MODEL_LIST);
 
-        static async Task<T> GetDataAsync<T>(string url)
+        static async Task GetDataAsync<T>(string url, string cacheKey)
         {
             var json = await PublicTransportRepository.DownloadDataAsync(url);
             var data = JsonConvert.DeserializeObject<T>(json);
 
-            return data;
+            CacheService.Save(data, cacheKey);
         }
     }
 }
