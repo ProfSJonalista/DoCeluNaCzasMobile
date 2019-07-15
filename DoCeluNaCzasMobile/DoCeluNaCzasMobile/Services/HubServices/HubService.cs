@@ -23,27 +23,27 @@ namespace DoCeluNaCzasMobile.Services.HubServices
 
         public void StopConnection() => _hubConnection.Stop();
 
-        public async Task<T> GetData<T>(string methodName, params int[] args) where T : new()
+        public async Task<TDataType> GetData<TDataType, TParamType>(string methodName, params object[] args) where TDataType : new()
         {
             for (var i = 1; i <= NumberOfRetries; ++i)
             {
                 try
                 {
-                    return await _hubProxy.Invoke<T>(methodName, args[0]);
+                    if(args.Length > 0)
+                        return await _hubProxy.Invoke<TDataType>(methodName, (TParamType) args[0]);
+                    return await _hubProxy.Invoke<TDataType>(methodName);
                 }
                 catch (InvalidOperationException ioe)
                 {
-                    var mes = ioe.Message;
                     await Task.Delay(DelayOnRetry);
                 }
                 catch (Exception e) when (i < NumberOfRetries)
                 {
-                    var mes = e.Message;
                     await Task.Delay(DelayOnRetry);
                 }
             }
 
-            return new T();
+            return new TDataType();
         }
     }
 }

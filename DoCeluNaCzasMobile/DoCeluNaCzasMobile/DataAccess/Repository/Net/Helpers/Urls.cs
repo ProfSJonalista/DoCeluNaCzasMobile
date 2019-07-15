@@ -6,7 +6,7 @@
 
         public static string TOKEN = SERVER_CONNECTION + "Token";
         public static string REGISTER = SERVER_CONNECTION + "api/Account/Register";
-        public static string AUTHORIZED_VALUES = SERVER_CONNECTION + "api/AuthorizedValues";
+        public static string EMAIL_EXIST = SERVER_CONNECTION + "api/Account/EmailExist?email={0}";
 
         public static string BUS_STOP_DATA_MODEL = SERVER_CONNECTION + "api/BusStop";
         public static string GROUPED_JOINED_MODEL_LIST = SERVER_CONNECTION + "api/JoinedTrips";

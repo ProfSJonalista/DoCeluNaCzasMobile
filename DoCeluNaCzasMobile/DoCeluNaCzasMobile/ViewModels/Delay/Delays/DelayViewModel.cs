@@ -26,7 +26,7 @@ namespace DoCeluNaCzasMobile.ViewModels.Delay.Delays
         {
             if (_hubService.IsConnected())
             {
-                return await _hubService.GetData<ObservableCollection<DelayModel>>(HubNames.GET_DELAYS, _stopId);
+                return await _hubService.GetData<ObservableCollection<DelayModel>, int>(HubNames.GET_DELAYS, _stopId);
             }
 
             return new ObservableCollection<DelayModel>();

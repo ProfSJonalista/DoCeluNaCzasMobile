@@ -18,19 +18,7 @@ namespace DoCeluNaCzasMobile.ViewModels.Register
         {
             get
             {
-                return new Command(async () =>
-                {
-                    var isSuccess = await _authService.RegisterAsync(Email, Password, ConfirmPassword);
-
-                    if (isSuccess)
-                    {
-                        NavigationService.Navigate(typeof(UserAccountPage));
-                    }
-                    else
-                    {
-                        await Application.Current.MainPage.DisplayAlert("Nieudana rejestracja", "Wystąpił błąd podczas rejestracji. Spróbuj ponownie później.", "OK");
-                    }
-                });
+                return new Command(async () => { await _authService.Register(Email, Password, ConfirmPassword); });
             }
         }
 
