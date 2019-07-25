@@ -20,7 +20,7 @@ namespace DoCeluNaCzasMobile.Views.DetailPages.UserAccount
             try
             {
                 var user = CacheService.Get<User>(CacheKeys.USER);
-                userLoggedIn = user != null && !string.IsNullOrEmpty(user.access_token);
+                userLoggedIn = user != null && !string.IsNullOrEmpty(user.AccessToken);
             }
             catch (Exception e)
             {

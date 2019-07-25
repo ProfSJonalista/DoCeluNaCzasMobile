@@ -15,21 +15,14 @@ namespace DoCeluNaCzasMobile.ViewModels.Delay.Delays
         public DelayViewModel(int stopId)
         {
             _stopId = stopId;
-            _hubService = new HubService(Urls.SERVER_CONNECTION, HubNames.DELAYS_HUB);
+            _hubService = new HubService(HubNames.DELAYS_HUB);
         }
 
         public async Task StartConnection() => await _hubService.StartConnection();
 
         public void StopConnection() => _hubService.StopConnection();
 
-        public async Task<ObservableCollection<DelayModel>> SetItems()
-        {
-            if (_hubService.IsConnected())
-            {
-                return await _hubService.GetData<ObservableCollection<DelayModel>, int>(HubNames.GET_DELAYS, _stopId);
-            }
-
-            return new ObservableCollection<DelayModel>();
-        }
+        public async Task<ObservableCollection<DelayModel>> SetItems() => 
+            await _hubService.GetData<ObservableCollection<DelayModel>, int>(HubNames.GET_DELAYS_METHOD, _stopId);
     }
 }

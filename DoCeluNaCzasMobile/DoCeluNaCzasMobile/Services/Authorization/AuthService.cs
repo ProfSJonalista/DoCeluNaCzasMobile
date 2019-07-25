@@ -16,10 +16,8 @@ namespace DoCeluNaCzasMobile.Services.Authorization
 {
     public class AuthService
     {
-
         static readonly HttpClient Client = new HttpClient();
         readonly PublicTransportRepository _publicTransportRepository = new PublicTransportRepository();
-        //TODO WYMAGANIA CO DO HASŁA
 
         public async Task<bool> EmailExist(string email)
         {
@@ -44,15 +42,16 @@ namespace DoCeluNaCzasMobile.Services.Authorization
             {
                 content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
-                var response = await Client.PostAsync(Urls.REGISTER, content);
-
-                return response.IsSuccessStatusCode;
+                using (var response = await Client.PostAsync(Urls.REGISTER, content))
+                {
+                    return response.IsSuccessStatusCode;
+                }
             }
         }
 
         public async Task<bool> LoginAsync(string username, string password)
         {
-            var keyValues = new List<KeyValuePair<string, string>>()
+            var keyValues = new List<KeyValuePair<string, string>>
             {
                 new KeyValuePair<string, string>("username", username),
                 new KeyValuePair<string, string>("password", password),
@@ -64,17 +63,18 @@ namespace DoCeluNaCzasMobile.Services.Authorization
                 Content = new FormUrlEncodedContent(keyValues)
             };
 
-            var response = await Client.SendAsync(request);
+            using (var response = await Client.SendAsync(request))
+            {
+                if (!response.IsSuccessStatusCode)
+                    return false;
 
-            if (!response.IsSuccessStatusCode)
-                return false;
+                var content = await response.Content.ReadAsStringAsync();
+                var user = JsonConvert.DeserializeObject<User>(content);
 
-            var content = await response.Content.ReadAsStringAsync();
-            var user = JsonConvert.DeserializeObject<User>(content);
+                CacheService.Save(user, CacheKeys.USER);
 
-            CacheService.Save(user, CacheKeys.USER);
-
-            return true;
+                return true;
+            }
         }
 
         public async Task<bool> CheckCredentials(string email, string password, string confirmPassword)
@@ -92,13 +92,11 @@ namespace DoCeluNaCzasMobile.Services.Authorization
                 return false;
             }
 
-            if (password.Length < 6)
-            {
-                await DisplayAlert("Hasło musi mieć co najmniej 6 znaków długości");
-                return false;
-            }
+            if (password.Length >= 6) return true;
 
-            return true;
+            await DisplayAlert("Hasło musi mieć co najmniej 6 znaków długości");
+            return false;
+
         }
 
         public async Task Register(string email, string password, string confirmPassword)
