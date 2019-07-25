@@ -40,15 +40,19 @@ namespace DoCeluNaCzasMobile.Views.DetailPages.Delays
             DelayListView.RefreshAllowed = true;
             Items = await DelayViewModel.SetItems();
 
+            SetVisibility();
+            BindingContext = DelayViewModel;
+            SetTimer();
+        }
+
+        void SetVisibility()
+        {
             var visible = Items.Count > 0;
 
             DelayListView.IsVisible = visible;
             DelayListView.ItemsSource = Items;
 
             NoDelaysLabel.IsVisible = !visible;
-
-            BindingContext = DelayViewModel;
-            SetTimer();
         }
 
         protected override void OnDisappearing()
@@ -73,6 +77,7 @@ namespace DoCeluNaCzasMobile.Views.DetailPages.Delays
 
             Device.BeginInvokeOnMainThread(() =>
             {
+                SetVisibility();
                 DelayListView.ItemsSource = Items;
             });
         }
