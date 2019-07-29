@@ -7,7 +7,7 @@ namespace DoCeluNaCzasMobile
 {
     public partial class App : Application
     {
-        public static string DatabaseLocation = string.Empty;
+        public static string DATABASE_LOCATION = string.Empty;
 
         public App()
         {
@@ -19,11 +19,11 @@ namespace DoCeluNaCzasMobile
 
         public App(string databaseLocation)
         {
-            InitializeComponent();
-
-            DatabaseLocation = databaseLocation;
+            DATABASE_LOCATION = databaseLocation;
             FlowListView.Init();
             PublicTransportService.GetDataAsync();
+
+            InitializeComponent();
 
             MainPage = new MainMasterPage();
         }

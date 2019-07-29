@@ -10,20 +10,13 @@
     </ContentPage.BindingContext>
 
     <StackLayout Margin="10">
-        <Entry x:Name="searchEntry" 
-               Placeholder="Wprowadź numer linii lub nazwę przystanku"/>
-        <!--TODO
-        -rozwijana lista
-        -szukanie przystanków
-        -->
-        <flv:FlowListView x:Name ="lstView"
+        <flv:FlowListView x:Name ="GroupedListView"
                           FlowItemsSource="{Binding GroupedRoutes}"
                           IsGroupingEnabled="true"
                           FlowGroupDisplayBinding="{Binding Key}"
                           FlowGroupShortNameBinding="{Binding ShortName}"
                           FlowColumnCount="4"
                           FlowItemTappedCommand="{Binding DisplayTripsCommand}"
-                          
                           SeparatorVisibility="None">
 
             <flv:FlowListView.GroupHeaderTemplate>

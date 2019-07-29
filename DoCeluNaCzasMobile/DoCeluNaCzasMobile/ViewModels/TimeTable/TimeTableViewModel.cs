@@ -1,4 +1,5 @@
-﻿using DoCeluNaCzasMobile.Services.TimeTable;
+﻿using DoCeluNaCzasMobile.Models.TimeTable;
+using DoCeluNaCzasMobile.Services.TimeTable;
 using DoCeluNaCzasMobile.ViewModels.TimeTable.Commands;
 using System.Collections.ObjectModel;
 using System.ComponentModel;

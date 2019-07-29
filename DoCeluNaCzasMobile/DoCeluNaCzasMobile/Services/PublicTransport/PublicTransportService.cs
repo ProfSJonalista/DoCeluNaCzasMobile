@@ -2,9 +2,9 @@
 using DoCeluNaCzasMobile.DataAccess.Repository.Net.Helpers;
 using DoCeluNaCzasMobile.Models.Delay;
 using DoCeluNaCzasMobile.Models.General;
+using DoCeluNaCzasMobile.Models.TimeTable;
 using DoCeluNaCzasMobile.Services.Cache;
 using DoCeluNaCzasMobile.Services.Cache.Keys;
-using DoCeluNaCzasMobile.ViewModels.TimeTable;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

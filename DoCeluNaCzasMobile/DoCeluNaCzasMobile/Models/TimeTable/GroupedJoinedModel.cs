@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace DoCeluNaCzasMobile.ViewModels.TimeTable
+namespace DoCeluNaCzasMobile.Models.TimeTable
 {
     public class GroupedJoinedModel
     {

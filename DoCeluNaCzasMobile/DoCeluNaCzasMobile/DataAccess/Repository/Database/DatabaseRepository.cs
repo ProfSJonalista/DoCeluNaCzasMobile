@@ -10,7 +10,7 @@ namespace DoCeluNaCzasMobile.DataAccess.Repository.Database
     {
         public void Delete(ChooseBusStopModel objectToDelete)
         {
-            using (var db = new SQLiteConnection(App.DatabaseLocation))
+            using (var db = new SQLiteConnection(App.DATABASE_LOCATION))
             {
                 db.Delete(objectToDelete);
             }
@@ -18,7 +18,7 @@ namespace DoCeluNaCzasMobile.DataAccess.Repository.Database
 
         public void SaveStopModel(ChooseBusStopModel stopModel)
         {
-            using (var db = new SQLiteConnection(App.DatabaseLocation))
+            using (var db = new SQLiteConnection(App.DATABASE_LOCATION))
             {
                 db.CreateTable<StopModel>();
 
@@ -33,7 +33,7 @@ namespace DoCeluNaCzasMobile.DataAccess.Repository.Database
 
         public ObservableCollection<ChooseBusStopModel> GetUserBusStopObservableCollection()
         {
-            using (var db = new SQLiteConnection(App.DatabaseLocation))
+            using (var db = new SQLiteConnection(App.DATABASE_LOCATION))
             {
                 db.CreateTable<ChooseBusStopModel>();
                 var modelsToReturn = db.Table<ChooseBusStopModel>().ToList();
