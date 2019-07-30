@@ -18,7 +18,6 @@ namespace DoCeluNaCzasMobile.Views.MainPage
             RouteSearchViewModel = new RouteSearchViewModel
             {
                 Departure = true,
-                DesiredTime = DateTime.Now,
                 UserChosenDate = DateTime.Now,
                 UserChosenTime = DateTime.Now.TimeOfDay
             };
@@ -43,8 +42,6 @@ namespace DoCeluNaCzasMobile.Views.MainPage
 
         async void SearchRouteButton_Clicked(object sender, EventArgs e)
         {
-            RouteSearchViewModel.SetDesiredTime();
-
             if (RouteSearchViewModel.StartStop == null && RouteSearchViewModel.DestStop == null)
             {
                 await DisplayAlert("Wybierz przystanek", "Wybierz przystanek początkowy i końcowy", "OK");

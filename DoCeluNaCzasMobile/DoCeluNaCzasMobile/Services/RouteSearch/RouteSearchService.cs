@@ -26,10 +26,11 @@ namespace DoCeluNaCzasMobile.Services.RouteSearch
             var startStopId = _routeSearchViewModel.StartStop.StopId;
             var destStopId = _routeSearchViewModel.DestStop.StopId;
             var departure = _routeSearchViewModel.Departure;
-            var desiredTime = _routeSearchViewModel.DesiredTime;
-            var time = desiredTime.ToString("yyyy-MM-ddThh:mm:ss");
+            var desiredTime = _routeSearchViewModel.UserChosenDate.ToString("yyyy-MM-dd")
+                              + "T"
+                              + $"{_routeSearchViewModel.UserChosenTime:hh\\:mm\\:ss}";
 
-            var modifiedUrl = string.Format(Urls.ROUTE_SEARCH, startStopId, destStopId, departure, time);
+            var modifiedUrl = string.Format(Urls.ROUTE_SEARCH, startStopId, destStopId, departure, desiredTime);
             var json = await _publicTransportRepository.DownloadDataAsync(modifiedUrl);
 
             var routeList = JsonConvert.DeserializeObject<List<Route>>(json);
