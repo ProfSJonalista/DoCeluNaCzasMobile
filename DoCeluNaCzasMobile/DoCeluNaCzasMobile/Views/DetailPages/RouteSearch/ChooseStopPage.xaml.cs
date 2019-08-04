@@ -1,4 +1,4 @@
-﻿using DoCeluNaCzasMobile.Models.Delay;
+﻿using DoCeluNaCzasMobile.Models.General;
 using DoCeluNaCzasMobile.Services.Cache;
 using DoCeluNaCzasMobile.Services.Cache.Keys;
 using DoCeluNaCzasMobile.Services.Navigation;
@@ -15,7 +15,7 @@ namespace DoCeluNaCzasMobile.Views.DetailPages.RouteSearch
     {
         public bool Start { get; set; }
 
-        public ObservableCollection<ChooseBusStopModel> Items { get; set; }
+        public ObservableCollection<StopModel> Items { get; set; }
 
         public ChooseStopPage()
         {
@@ -26,13 +26,13 @@ namespace DoCeluNaCzasMobile.Views.DetailPages.RouteSearch
         {
             InitializeComponent();
             Start = start;
-            Items = CacheService.Get<ObservableCollection<ChooseBusStopModel>>(CacheKeys.CHOOSE_BUS_STOP_MODEL_OBSERVABALE_COLLECTION);
+            Items = CacheService.Get<BusStopDataModel>(CacheKeys.BUS_STOP_DATA_MODEL).Stops;
             MyListView.ItemsSource = Items;
         }
 
         void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            if (!(e.Item is ChooseBusStopModel chosenStop))
+            if (!(e.Item is StopModel chosenStop))
                 return;
 
             if (Start)
