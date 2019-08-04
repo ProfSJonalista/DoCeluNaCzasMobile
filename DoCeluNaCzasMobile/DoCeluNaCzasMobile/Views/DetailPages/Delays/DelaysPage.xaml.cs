@@ -1,8 +1,8 @@
 ﻿using DoCeluNaCzasMobile.Models.Delay;
+using DoCeluNaCzasMobile.Models.General;
 using DoCeluNaCzasMobile.ViewModels.Delay.Delays;
 using System.Collections.ObjectModel;
 using System.Timers;
-using DoCeluNaCzasMobile.ViewModels.Delay.BusStopChoose;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -17,7 +17,7 @@ namespace DoCeluNaCzasMobile.Views.DetailPages.Delays
 
         public DelaysPage() => InitializeComponent();
 
-        public DelaysPage(ChooseBusStopModel stop)
+        public DelaysPage(StopModel stop)
         {
             InitializeComponent();
             Title = stop.StopDesc;

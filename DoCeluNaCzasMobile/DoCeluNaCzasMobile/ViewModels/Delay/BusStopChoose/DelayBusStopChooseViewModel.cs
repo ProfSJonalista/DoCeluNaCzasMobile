@@ -1,4 +1,4 @@
-﻿using DoCeluNaCzasMobile.Models.Delay;
+﻿using DoCeluNaCzasMobile.Models.General;
 using DoCeluNaCzasMobile.Services.Delay;
 using DoCeluNaCzasMobile.ViewModels.Delay.BusStopChoose.Commands;
 using DoCeluNaCzasMobile.Views.DetailPages.Delays;
@@ -27,7 +27,7 @@ namespace DoCeluNaCzasMobile.ViewModels.Delay.BusStopChoose
 
             var modifiedStops = stops.Select(stop => new ChooseBusStopViewModel
             {
-                ChooseBusStopModel = stop,
+                StopModel = stop,
                 DelayBusStopChooseViewModel = this
             }).ToList();
 
@@ -38,12 +38,12 @@ namespace DoCeluNaCzasMobile.ViewModels.Delay.BusStopChoose
 
         public void NavigateToAddPage() => ChooseBusStopDelayService.Navigate(typeof(AddBusStopPage));
 
-        public void Navigate(Type type, ChooseBusStopModel stop) => ChooseBusStopDelayService.Navigate(type, stop);
+        public void Navigate(Type type, StopModel stop) => ChooseBusStopDelayService.Navigate(type, stop);
 
-        public void DeleteStop(ChooseBusStopModel stopToDelete)
+        public void DeleteStop(StopModel stopToDelete)
         {
             ChooseBusStopDelayService.DeleteFromDb(stopToDelete);
-            var toDelete = Items.FirstOrDefault(x => x.ChooseBusStopModel.StopId == stopToDelete.StopId);
+            var toDelete = Items.FirstOrDefault(x => x.StopModel.StopId == stopToDelete.StopId);
             Items.Remove(toDelete);
         }
     }

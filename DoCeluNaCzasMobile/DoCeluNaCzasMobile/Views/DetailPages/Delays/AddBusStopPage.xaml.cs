@@ -1,4 +1,4 @@
-﻿using DoCeluNaCzasMobile.Models.Delay;
+﻿using DoCeluNaCzasMobile.Models.General;
 using DoCeluNaCzasMobile.ViewModels.Delay.AddBusStop;
 using System.Linq;
 using Xamarin.Forms;
@@ -20,7 +20,7 @@ namespace DoCeluNaCzasMobile.Views.DetailPages.Delays
 
         async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            if(!(e.Item is ChooseBusStopModel stop))
+            if(!(e.Item is StopModel stop))
                 return;
 
             AddBusStopViewModel.SaveToDb(stop);

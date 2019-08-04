@@ -1,4 +1,4 @@
-﻿using DoCeluNaCzasMobile.Models.Delay;
+﻿using DoCeluNaCzasMobile.Models.General;
 using DoCeluNaCzasMobile.Services.RouteSearch;
 using System;
 
@@ -7,8 +7,8 @@ namespace DoCeluNaCzasMobile.ViewModels.RouteSearch
     public class RouteSearchViewModel
     {
         
-        public ChooseBusStopModel StartStop { get; set; }
-        public ChooseBusStopModel DestStop { get; set; }
+        public StopModel StartStop { get; set; }
+        public StopModel DestStop { get; set; }
         public bool Departure { get; set; }
         public DateTime UserChosenDate { get; set; }
         public TimeSpan UserChosenTime { get; set; }

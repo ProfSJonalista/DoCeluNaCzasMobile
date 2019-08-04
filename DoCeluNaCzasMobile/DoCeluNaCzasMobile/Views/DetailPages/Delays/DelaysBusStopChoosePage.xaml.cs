@@ -1,5 +1,4 @@
-﻿using DoCeluNaCzasMobile.Models.Delay;
-using DoCeluNaCzasMobile.ViewModels.Delay.BusStopChoose;
+﻿using DoCeluNaCzasMobile.ViewModels.Delay.BusStopChoose;
 using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -40,8 +39,8 @@ namespace DoCeluNaCzasMobile.Views.DetailPages.Delays
             else
             {
                 BusStopListView.ItemsSource = DelayBusStopChooseViewModel.Items.Where(stop =>
-                       stop.ChooseBusStopModel.BusLineNames.ToLower().Contains(e.NewTextValue.ToLower())
-                    || stop.ChooseBusStopModel.StopDesc.ToLower().Contains(e.NewTextValue.ToLower()));
+                       stop.StopModel.BusLineNames.ToLower().Contains(e.NewTextValue.ToLower())
+                    || stop.StopModel.StopDesc.ToLower().Contains(e.NewTextValue.ToLower()));
             }
         }
 
@@ -50,7 +49,7 @@ namespace DoCeluNaCzasMobile.Views.DetailPages.Delays
             if (!(e.Item is ChooseBusStopViewModel stop))
                 return;
 
-            DelayBusStopChooseViewModel.Navigate(typeof(DelaysPage), stop.ChooseBusStopModel);
+            DelayBusStopChooseViewModel.Navigate(typeof(DelaysPage), stop.StopModel);
         }
     }
 }

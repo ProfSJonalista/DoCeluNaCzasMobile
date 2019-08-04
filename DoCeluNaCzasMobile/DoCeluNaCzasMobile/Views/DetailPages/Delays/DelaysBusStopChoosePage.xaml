@@ -24,15 +24,15 @@
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout>
-                            <Label Text="{Binding ChooseBusStopModel.StopDesc}"
+                            <Label Text="{Binding StopModel.StopDesc}"
                                    Style="{DynamicResource ListItemTextStyle}"
                                    VerticalOptions="Start"
                                    FontSize="Large"/>
-                            <Label Text="{Binding ChooseBusStopModel.BusLineNames}"
+                            <Label Text="{Binding StopModel.BusLineNames}"
                                    Style="{DynamicResource ListItemDetailTextStyle}"
                                    VerticalOptions="Fill"
                                    TextColor="Red"/>
-                            <Label Text="{Binding ChooseBusStopModel.DestinationHeadsigns}"
+                            <Label Text="{Binding StopModel.DestinationHeadsigns}"
                                    Style="{DynamicResource ListItemDetailTextStyle}"
                                    VerticalOptions="Fill"/>
                             <Button x:Name="DeleteBusStop"
