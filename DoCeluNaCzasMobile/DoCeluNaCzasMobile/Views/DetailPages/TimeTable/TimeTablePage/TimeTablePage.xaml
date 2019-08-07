@@ -2,10 +2,11 @@
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             xmlns:days="clr-namespace:DoCeluNaCzasMobile.Views.DetailPages.TimeTable.TimeTablePage.Days;assembly=DoCeluNaCzasMobile"
-            x:Class="DoCeluNaCzasMobile.Views.DetailPages.TimeTable.TimeTablePage.TimeTablePage">
+            x:Class="DoCeluNaCzasMobile.Views.DetailPages.TimeTable.TimeTablePage.TimeTablePage"
+            BarBackgroundColor="{StaticResource Turquoise}">
 
     <days:WeekdayPage x:Name="WeekdayPageTab" Title="Dni powszednie"/>
     <days:SaturdayPage x:Name="SaturdayPageTab" Title="Soboty"/>
     <days:SundayPage x:Name="SundayPageTab" Title="Niedziele i święta"/>
-
+    
 </TabbedPage>

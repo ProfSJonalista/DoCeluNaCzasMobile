@@ -2,9 +2,10 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DoCeluNaCzasMobile.Views.DetailPages.RouteSearch.ChooseStopPage">
-    <StackLayout Margin="10">
+    <StackLayout>
         <SearchBar Placeholder="Wprowadź numer linii lub nazwę przystanku"
-                   TextChanged="SearchBar_OnTextChanged"/>
+                   TextChanged="SearchBar_OnTextChanged"
+                   Margin="0, 10, 0, 10"/>
 
         <ListView x:Name="MyListView"
                   ItemsSource="{Binding Items}"
@@ -19,14 +20,19 @@
                             <Label Text="{Binding StopDesc}" 
                                    Style="{DynamicResource ListItemTextStyle}"
                                    VerticalOptions="Start"
-                                   FontSize="Large"/>
+                                   FontSize="13"
+                                   Margin="10, 10, 10, 5"/>
                             <Label Text="{Binding BusLineNames}"
                                    Style="{DynamicResource ListItemDetailTextStyle}"
                                    VerticalOptions="Fill"
-                                   TextColor="Red"/>
+                                   FontSize="13"
+                                   FontAttributes="Bold"
+                                   Margin="10, 5, 10, 10"/>
                             <Label Text="{Binding DestinationHeadsigns}"
                                    Style="{DynamicResource ListItemDetailTextStyle}"
-                                   VerticalOptions="Fill"/>
+                                   VerticalOptions="Fill"
+                                   FontSize="13"
+                                   Margin="10, 0, 10, 10"/>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
