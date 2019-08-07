@@ -1,7 +1,9 @@
 ﻿using DoCeluNaCzasMobile.DataAccess.Repository.Net.Helpers;
 using Microsoft.AspNet.SignalR.Client;
 using System;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
+using DoCeluNaCzasMobile.Models.Delay;
 
 namespace DoCeluNaCzasMobile.Services.HubServices
 {
@@ -22,13 +24,16 @@ namespace DoCeluNaCzasMobile.Services.HubServices
 
         public async Task<TDataType> GetData<TDataType, TParamType>(string methodName, params object[] args) where TDataType : new()
         {
+            var data = new TDataType();
+
             for (var i = 0; i < 3; i++)
             {
                 try
                 {
                     if (args.Length > 0)
-                        return await _hubProxy.Invoke<TDataType>(methodName, (TParamType)args[0]);
-                    return await _hubProxy.Invoke<TDataType>(methodName);
+                        data = await _hubProxy.Invoke<TDataType>(methodName, (TParamType)args[0]);
+                    else
+                        data = await _hubProxy.Invoke<TDataType>(methodName);
                 }
                 catch (Exception e)
                 {
@@ -36,7 +41,7 @@ namespace DoCeluNaCzasMobile.Services.HubServices
                 }
             }
 
-            return new TDataType();
+            return data;
         }
     }
 }

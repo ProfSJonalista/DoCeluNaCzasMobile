@@ -1,5 +1,4 @@
-﻿using DoCeluNaCzasMobile.DataAccess.Repository.Net.Helpers;
-using DoCeluNaCzasMobile.Models.Delay;
+﻿using DoCeluNaCzasMobile.Models.Delay;
 using DoCeluNaCzasMobile.Services.HubServices;
 using DoCeluNaCzasMobile.Services.HubServices.Helpers;
 using System.Collections.ObjectModel;
