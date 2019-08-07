@@ -57,9 +57,10 @@ namespace DoCeluNaCzasMobile.Views.DetailPages.Delays
 
         protected override void OnDisappearing()
         {
-            base.OnDisappearing();
             DelayViewModel.StopConnection();
             StopTimer();
+
+            base.OnDisappearing();
         }
 
         void SetTimer()

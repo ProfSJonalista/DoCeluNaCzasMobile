@@ -10,7 +10,6 @@
 
         public static string BUS_STOP_DATA_MODEL = SERVER_CONNECTION + "api/BusStop";
         public static string GROUPED_JOINED_MODEL_LIST = SERVER_CONNECTION + "api/JoinedTrips";
-        public static string CHOOSE_BUS_STOP_OBSERVABLE_COLLECTION = SERVER_CONNECTION + "api/ChooseBusStop";
 
         public static string MINUTE_TIME_TABLES_BY_BUS_LINE_NAME = SERVER_CONNECTION + "api/TimeTable?busLineName={0}";
 
