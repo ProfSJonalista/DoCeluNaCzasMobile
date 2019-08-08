@@ -17,6 +17,8 @@
             <Color x:Key="Light-Turquoise">#a5b7b7</Color>
             <!--White-->
             <Color x:Key="White">#FFF</Color>
+            <!-- Yellow -->
+            <Color x:Key="Yellow">#f7e4a8</Color>
 
             <!-- Change navigation bar color -->
             <Style TargetType="NavigationPage">

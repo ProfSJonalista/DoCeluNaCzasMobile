@@ -3,12 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DoCeluNaCzasMobile.Views.DetailPages.RouteSearch.RoutesPage">
 
-    <StackLayout Margin="20">
+    <StackLayout>
         <ListView x:Name="MyListView"
             ItemsSource="{Binding Items}"
             ItemTapped="Handle_ItemTapped"
             CachingStrategy="RecycleElement"
-            HasUnevenRows="True">
+            HasUnevenRows="True"
+                  SeparatorVisibility="None">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -17,51 +18,78 @@
                                 <RowDefinition Height="Auto"></RowDefinition>
                                 <RowDefinition Height="Auto"></RowDefinition>
                                 <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
                             </Grid.RowDefinitions>
 
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="100"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="5"/>
+                                <ColumnDefinition Width="120"/>
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
 
+                            <Label x:Name="BusesLabel1"
+                                   Style="{DynamicResource ListItemTextStyle}" 
+                                   Grid.Row="0"
+                                   Grid.Column="0"
+                                   BackgroundColor="{StaticResource Yellow}"
+                                   Grid.ColumnSpan="6"
+                               />
                             <Label x:Name="BusesLabel"
                                    Text="{Binding Buses}" 
                                    Style="{DynamicResource ListItemTextStyle}" 
                                    Grid.Row="0"
-                                   Grid.Column="0"/>
-
-                            <Label Text="Czas podróży"
+                                   Grid.Column="1"
+                                   FontAttributes="Bold"
+                                   BackgroundColor="{StaticResource Yellow}"
+                                   Grid.ColumnSpan="6"
+                               />
+                          
+                            <Label Text="Czas podróży:"
                                    Grid.Row="1"
-                                   Grid.Column="0"
-                                   Grid.ColumnSpan="2"/>
+                                   Grid.Column="1"
+                                   Grid.ColumnSpan="2"
+                                   FontSize="Small"
+                                   Margin="0,5,0,0"
+                                   FontAttributes="Bold"/>
 
                             <Label x:Name="TimeOfTravelLabel"
                                    Text="{Binding FullTimeOfTravel, StringFormat='{}{0:hh\\:mm}'}"
                                    Grid.Row="1"
-                                   Grid.Column="1"
-                                   Grid.ColumnSpan="2"/>
+                                   Grid.Column="2"
+                                   Grid.ColumnSpan="2"
+                                   FontSize="Small"
+                                   Margin="0,5,0,0"/>
 
                             <Label x:Name="DepartureLabel"
-                                   Text="Odjazd"
+                                   Text="Odjazd:"
                                    Grid.Row="2"
-                                   Grid.Column="0"/>
+                                   Grid.Column="1"
+                                   FontSize="Small"
+                                   FontAttributes="Bold"/>
 
                             <Label Text="{Binding DepartureTime, StringFormat='{}{0:HH\\:mm}'}"
                                    Style="{DynamicResource ListItemDetailTextStyle}"
                                    Grid.Row="2"
-                                   Grid.Column="1"/>
+                                   Grid.Column="2"
+                                   FontSize="Small"/>
 
                             <Label x:Name="ArrivalLabel"
-                                   Text="Przyjazd"
-                                   Grid.Row="2"
-                                   Grid.Column="2"/>
+                                   Text="Przyjazd:"
+                                   Grid.Row="3"
+                                   Grid.Column="1"
+                                   FontSize="Small"
+                                   Margin="0,0,0,20"
+                                   FontAttributes="Bold"/>
 
                             <Label Text="{Binding ArrivalTime, StringFormat='{}{0:HH\\:mm}'}"
                                    Style="{DynamicResource ListItemDetailTextStyle}"
-                                   Grid.Row="2"
-                                   Grid.Column="3"/>
+                                   Grid.Row="3"
+                                   Grid.Column="2"
+                                   FontSize="Small"
+                                   Margin="0,0,0,20"/>
+
+                            <!-- left top right bottom-->
                         </Grid>
                     </ViewCell>
                 </DataTemplate>

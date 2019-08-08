@@ -5,89 +5,109 @@
              Title="Detail"
              Padding="10"
              BackgroundColor="White">
-  <Grid>
+  <Grid
+      Margin="0,20,0,0">
     <Grid.RowDefinitions>
-      <RowDefinition Height="50" />
-      <RowDefinition Height="50" />
-      <RowDefinition Height="45" />
-      <RowDefinition Height="45" />
-      <RowDefinition Height="45" />
-      <RowDefinition Height="45" />
-    </Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="1" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="10" /> <!-- margin -->
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
 
     <Grid.ColumnDefinitions>
-      <ColumnDefinition Width="150" />
-      <ColumnDefinition Width="*" />
-      <ColumnDefinition />
+            <ColumnDefinition Width="6*" />
+            <ColumnDefinition Width="4*" />
     </Grid.ColumnDefinitions>
 
     <Label x:Name="StartLabel"
-           BackgroundColor="{StaticResource White}"
            Text="{Binding StartStop.StopDesc}"
            Grid.Column="0"
-           Grid.Row="0"/>
+           Grid.Row="0"
+           VerticalOptions="Center"/>
 
+     
     <Button x:Name="StartStopChooseButton"
             Clicked="StartStopChooseButton_OnClicked"
             BackgroundColor="{StaticResource Turquoise}"
             TextColor="White"
             Text="Wybierz"
-            Grid.Column="2"
-            Grid.Row="0"/>
+            Grid.Column="1"
+            Grid.Row="0"
+            HeightRequest="40"
+            VerticalOptions="Center"/>
 
-    <Label x:Name="DestLabel"
-           BackgroundColor="{StaticResource White}"
+        <Label x:Name="DestLabel"
            Text="{Binding DestStop.StopDesc}"
            Grid.Column="0"
-           Grid.Row="1"/>
+           Grid.Row="1"
+           VerticalOptions="Center"
+               HeightRequest="40"/>
 
-    <Button x:Name="DestStopChooseButton"
+        <Button x:Name="DestStopChooseButton"
             Clicked="DestStopChooseButton_OnClicked"
             BackgroundColor="{StaticResource Turquoise}"
             TextColor="White"
             Text="Wybierz"
-            Grid.Column="2"
-            Grid.Row="1"/>
+            Grid.Column="1"
+            Grid.Row="1"
+                HeightRequest="40"
+            VerticalOptions="Center"/>
 
-    <Label x:Name="DepartureSwitchLabel"
-           BackgroundColor="{StaticResource White}"
+        <Label x:Name="DepartureSwitchLabel"
            Text="Odjazd"
            Grid.Column="0"
-           Grid.Row="2"/>
+           Grid.Row="2"
+           VerticalOptions="Center"/>
 
-    <Switch x:Name="DepartureSwitch"
+        <Switch x:Name="DepartureSwitch"
             IsToggled="{Binding Departure}"
             Grid.Column="1"
             Grid.Row="2"/>
 
-    <DatePicker x:Name="DesiredDatePicker"
+        <Label x:Name="Separator"
+               Grid.ColumnSpan="2"
+               Grid.Row="3"
+               BackgroundColor="#ccc"/>
+
+        <DatePicker x:Name="DesiredDatePicker"
                 Grid.Column="0"
-                Grid.Row="3"
-                Date="{Binding UserChosenDate}"/>
+                Grid.Row="4"
+                Grid.RowSpan="2"
+                Date="{Binding UserChosenDate}"
+                VerticalOptions="Center"/>
 
-    <TimePicker x:Name="DesiredTimePicker"
+        <TimePicker x:Name="DesiredTimePicker"
                 Grid.Column="1"
-                Grid.Row="3"
-                Time ="{Binding UserChosenTime}"/>
+                Grid.Row="4"
+                    Grid.RowSpan="2"
+                Time ="{Binding UserChosenTime}"
+                VerticalOptions="Center"/>
 
-    <Button x:Name="SearchRouteButton"
+        <Button x:Name="SearchRouteButton"
             Clicked="SearchRouteButton_Clicked"
             Text="Szukaj trasy"
-            Grid.Row="4"
+            Grid.Row="6"
             Grid.Column="0"
-            Grid.ColumnSpan="2"
             BackgroundColor="{StaticResource Turquoise}"
             TextColor="White"
-            BorderRadius="5"/>
+            BorderRadius="5"
+            HeightRequest="40"
+            VerticalOptions="Center"/>
 
-    <Button x:Name="Swap"
+        <Button x:Name="Swap"
             Clicked="SwapButton_Clicked"
             Text="Zamień"
-            Grid.Row="4"
-            Grid.Column="2"
+            Grid.Row="6"
+            Grid.Column="1"
             BackgroundColor="{StaticResource Turquoise}"
             TextColor="White"
-            BorderRadius="5"/>
+            BorderRadius="5"
+            HeightRequest="40"
+            VerticalOptions="Center"/>
 
-  </Grid>
+        <!-- left top right bottom-->
+    </Grid>
 </ContentPage>
