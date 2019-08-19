@@ -60,14 +60,7 @@ namespace DoCeluNaCzasMobile.Services.RouteSearch
 
         async Task<StopChange> DoAsync(StopChange stop)
         {
-            var delayModel = await _hubService.GetData<DelayModel, StopChange>(HubNames.GET_ONE_DELAY, stop);
-
-            if (delayModel != null && delayModel.EstimatedTime > DateTime.MinValue)
-            {
-                stop.EstimatedTime = delayModel.EstimatedTime;
-            }
-
-            return stop;
+            return await _hubService.GetData<StopChange, StopChange>(HubNames.GET_ONE_DELAY, stop);
         }
     }
 }
