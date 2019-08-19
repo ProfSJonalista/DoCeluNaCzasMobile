@@ -9,6 +9,7 @@ using DoCeluNaCzasMobile.Views.DetailPages.UserAccount;
 using DoCeluNaCzasMobile.Views.MainPage;
 using System;
 using System.Collections.Generic;
+using DoCeluNaCzasMobile.Services.RouteSearch;
 using Xamarin.Forms;
 
 namespace DoCeluNaCzasMobile.Services.Navigation
@@ -44,7 +45,7 @@ namespace DoCeluNaCzasMobile.Services.Navigation
                 }
                 else if (targetType == typeof(ChangePage))
                 {
-                    await masterDetailPage.Detail.Navigation.PushAsync(new ChangePage((List<Change>)parameters[0]));
+                    await masterDetailPage.Detail.Navigation.PushAsync(new ChangePage((List<Change>)parameters[0], (RouteSearchDelayService)parameters[1]));
                 }
                 else if (targetType == typeof(BusStopChoicePage))
                 {
@@ -56,7 +57,7 @@ namespace DoCeluNaCzasMobile.Services.Navigation
                 }
                 else if (targetType == typeof(StopChangePage))
                 {
-                    await masterDetailPage.Detail.Navigation.PushAsync(new StopChangePage((List<StopChange>)parameters[0]));
+                    await masterDetailPage.Detail.Navigation.PushAsync(new StopChangePage((List<StopChange>)parameters[0], (RouteSearchDelayService) parameters[1]));
                 }
             }
             else

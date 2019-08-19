@@ -1,14 +1,13 @@
 ﻿using DoCeluNaCzasMobile.DataAccess.Repository.Net.Helpers;
 using Microsoft.AspNet.SignalR.Client;
 using System;
-using System.Collections.ObjectModel;
 using System.Threading.Tasks;
-using DoCeluNaCzasMobile.Models.Delay;
 
 namespace DoCeluNaCzasMobile.Services.HubServices
 {
     public class HubService
     {
+        bool _connected;
         readonly IHubProxy _hubProxy;
         readonly HubConnection _hubConnection;
 
@@ -16,11 +15,20 @@ namespace DoCeluNaCzasMobile.Services.HubServices
         {
             _hubConnection = new HubConnection(Urls.SERVER_CONNECTION);
             _hubProxy = _hubConnection.CreateHubProxy(hubName);
+            _connected = false;
         }
 
-        public async Task StartConnection() => await _hubConnection.Start();
+        public async Task StartConnection()
+        {
+            await _hubConnection.Start();
+            _connected = true;
+        }
 
-        public void StopConnection() => _hubConnection.Stop();
+        public void StopConnection()
+        {
+            _hubConnection.Stop();
+            _connected = false;
+        }
 
         public async Task<TDataType> GetData<TDataType, TParamType>(string methodName, params object[] args) where TDataType : new()
         {
@@ -43,5 +51,7 @@ namespace DoCeluNaCzasMobile.Services.HubServices
 
             return data;
         }
+
+        public bool IsConnected() => _connected;
     }
 }
