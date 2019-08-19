@@ -68,7 +68,7 @@
                                    FontSize="Small"
                                    FontAttributes="Bold"/>
 
-                            <Label Text="{Binding DepartureTime, StringFormat='{}{0:HH\\:mm}'}"
+                            <Label Text="{Binding FirstStop.DepartureTime, StringFormat='{}{0:HH\\:mm}'}"
                                    Style="{DynamicResource ListItemDetailTextStyle}"
                                    Grid.Row="2"
                                    Grid.Column="2"
@@ -82,7 +82,7 @@
                                    Margin="0,0,0,20"
                                    FontAttributes="Bold"/>
 
-                            <Label Text="{Binding ArrivalTime, StringFormat='{}{0:HH\\:mm}'}"
+                            <Label Text="{Binding LastStop.ArrivalTime, StringFormat='{}{0:HH\\:mm}'}"
                                    Style="{DynamicResource ListItemDetailTextStyle}"
                                    Grid.Row="3"
                                    Grid.Column="2"
