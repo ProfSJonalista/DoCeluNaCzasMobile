@@ -1,10 +1,8 @@
 ﻿using DoCeluNaCzasMobile.DataAccess.Repository.Database;
-using DoCeluNaCzasMobile.Models.Delay;
+using DoCeluNaCzasMobile.Models.General;
 using DoCeluNaCzasMobile.Services.Navigation;
 using System;
 using System.Collections.ObjectModel;
-using DoCeluNaCzasMobile.Models.General;
-using DoCeluNaCzasMobile.ViewModels.Delay.BusStopChoose;
 
 namespace DoCeluNaCzasMobile.Services.Delay
 {

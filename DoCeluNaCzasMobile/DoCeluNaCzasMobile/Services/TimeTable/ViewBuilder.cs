@@ -21,6 +21,7 @@ namespace DoCeluNaCzasMobile.Services.TimeTable
 
         static void CreateColumns(Grid grid, Dictionary<int, List<int>> minuteDictionary)
         {
+            //oblicza ilość potrzebnych kolumn na minuty, po czym dodaje jeszcze jedną na kolumnę z godzinami
             var numberOfColumnsNeeded = minuteDictionary.Aggregate((l, r) => l.Value.Count > r.Value.Count ? l : r).Value.Count + 1;
 
             for (var i = 0; i < numberOfColumnsNeeded; i++)

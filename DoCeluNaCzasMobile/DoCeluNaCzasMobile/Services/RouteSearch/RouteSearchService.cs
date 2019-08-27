@@ -20,7 +20,6 @@ namespace DoCeluNaCzasMobile.Services.RouteSearch
             _publicTransportRepository = new PublicTransportRepository();
         }
 
-
         public async void ViewRoutes()
         {
             var startStopId = _routeSearchViewModel.StartStop.StopId;
