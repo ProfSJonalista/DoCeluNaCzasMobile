@@ -22,14 +22,14 @@
                     </Grid.RowDefinitions>
 
 
-                    <Image Source="tramb.png" Grid.Row="0" Grid.Column="0" HorizontalOptions="Center"  BackgroundColor="blue"/>
+                    <Image Source="tramb.png" Grid.Row="0" Grid.Column="0" HorizontalOptions="Center"/>
                     <Label Text="Do Celu Na Czas"
                            Grid.Column="0"
                            Grid.Row="0"
                            Style="{DynamicResource SubtitleStyle}"
                            HorizontalOptions="StartAndExpand"
                            VerticalOptions="End"
-                           Margin="10,0,0,5" 
+                           Margin="15,0,0,10" 
                            TextColor="White"
                     />
                     <!-- left top right bottom-->
@@ -38,11 +38,11 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout Padding="15,10" HorizontalOptions="FillAndExpand">
+                        <StackLayout Padding="15,12" HorizontalOptions="FillAndExpand">
                             <Label VerticalOptions="FillAndExpand"
                      VerticalTextAlignment="Center"
                      Text="{Binding Title}"
-                     FontSize="20"/>
+                     FontSize="Medium"/>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>

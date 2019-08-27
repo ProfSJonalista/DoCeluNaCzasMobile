@@ -2,9 +2,10 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DoCeluNaCzasMobile.Views.DetailPages.Delays.AddBusStopPage">
-    <StackLayout Margin="10">
+    <StackLayout>
         <SearchBar Placeholder="Wprowadź numer linii lub nazwę przystanku"
-                   TextChanged="SearchBar_OnTextChanged"/>
+                   TextChanged="SearchBar_OnTextChanged"
+                   Margin="-12,10,0,10"/>
 
         <ListView x:Name="MyListView"
                   ItemsSource="{Binding Items}"
@@ -16,17 +17,23 @@
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout>
-                            <Label Text="{Binding StopDesc}" 
-                                   Style="{DynamicResource ListItemTextStyle}"
-                                   VerticalOptions="Start"
-                                   FontSize="Large"/>
                             <Label Text="{Binding BusLineNames}"
                                    Style="{DynamicResource ListItemDetailTextStyle}"
                                    VerticalOptions="Fill"
-                                   TextColor="Red"/>
+                                   FontSize="15"
+                                   FontAttributes="Bold"
+                                   HorizontalOptions="StartAndExpand"
+                                   Margin="10, 15, 10, 10"/>
+                            <Label Text="{Binding StopDesc}" 
+                                   Style="{DynamicResource ListItemTextStyle}"
+                                   VerticalOptions="Start"
+                                   FontSize="15"
+                                   Margin="10, 5, 10, 5"/>
                             <Label Text="{Binding DestinationHeadsigns}"
                                    Style="{DynamicResource ListItemDetailTextStyle}"
-                                   VerticalOptions="Fill"/>
+                                   VerticalOptions="Start"
+                                   FontSize="15"
+                                   Margin="10, 0, 10, 10"/>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>

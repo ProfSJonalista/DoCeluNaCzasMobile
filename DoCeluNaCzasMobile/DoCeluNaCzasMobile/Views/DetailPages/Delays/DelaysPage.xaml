@@ -5,11 +5,49 @@
 
     <StackLayout Margin="10">
 
-        <Label x:Name="NoDelaysLabel"
+        <StackLayout VerticalOptions="CenterAndExpand"
+                     Orientation="Vertical">
+            <Image x:Name="AvailableIcon" 
+               Source="notavailable.png"
+               VerticalOptions="CenterAndExpand"
+               HorizontalOptions="CenterAndExpand"
+               WidthRequest="80"
+               IsVisible="False"
+               />
+            <Label x:Name="NoDelaysLabel"
                Text="Brak opóźnień"
                HorizontalOptions="CenterAndExpand"
-               VerticalOptions="CenterAndExpand"/>
+               VerticalOptions="CenterAndExpand"
+               IsVisible="False"/>
+        </StackLayout>
 
+        <Grid x:Name="TableHeader" IsVisible="False" Padding="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            
+            <Label x:Name="LineHeader" Text="Linia"
+                   FontAttributes="Bold"
+                   VerticalOptions="CenterAndExpand"
+                   Style="{DynamicResource ListItemTextStyle}"
+                   Grid.Column="0"/>
+            <Label x:Name="DirectionHeader" Text="Kierunek"
+                   FontAttributes="Bold"
+                   VerticalOptions="CenterAndExpand"
+                   Style="{DynamicResource ListItemTextStyle}"
+                   Grid.Column="1"/>
+            <Label x:Name="DelayHeader" Text="Odjazd"
+                   FontAttributes="Bold"
+                   VerticalOptions="CenterAndExpand"
+                   Style="{DynamicResource ListItemTextStyle}" 
+                   Grid.Column="2"/>
+            
+        </Grid>
         <ListView x:Name="DelayListView"
                   ItemsSource="{Binding Items}"
                   ItemTapped="Handle_ItemTapped"
@@ -19,9 +57,9 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <Grid>
+                        <Grid Padding="5">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="50"/>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>

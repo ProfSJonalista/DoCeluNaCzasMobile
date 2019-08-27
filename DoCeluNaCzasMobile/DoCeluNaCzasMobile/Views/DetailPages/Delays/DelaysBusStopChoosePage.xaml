@@ -3,45 +3,77 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DoCeluNaCzasMobile.Views.DetailPages.Delays.DelaysBusStopChoosePage">
 
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add"
-                     Command="{Binding NavToAddPageCommand}"/>
-    </ContentPage.ToolbarItems>
+  <ContentPage.ToolbarItems>
+    <ToolbarItem Text="Dodaj  "
+                 Command="{Binding NavToAddPageCommand}"
+                 />
+  </ContentPage.ToolbarItems>
 
-    <StackLayout>
-        <Label x:Name="NoStopsLabel"
-               Text="Brak przystanków"
-               HorizontalOptions="CenterAndExpand"
-               VerticalOptions="CenterAndExpand"/>
+  <StackLayout>
+    <Label x:Name="NoStopsLabel"
+           Text="Brak przystanków"
+           HorizontalOptions="CenterAndExpand"
+           VerticalOptions="CenterAndExpand"/>
 
-        <ListView x:Name="BusStopListView"
-                  ItemsSource="{Binding Items}"
-                  ItemTapped="Handle_ItemTapped"
-                  CachingStrategy="RecycleElement"
-                  HasUnevenRows="True">
+    <ListView x:Name="BusStopListView"
+              ItemsSource="{Binding Items}"
+              ItemTapped="Handle_ItemTapped"
+              CachingStrategy="RecycleElement"
+              HasUnevenRows="True">
 
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <StackLayout>
-                            <Label Text="{Binding StopModel.StopDesc}"
-                                   Style="{DynamicResource ListItemTextStyle}"
-                                   VerticalOptions="Start"
-                                   FontSize="Large"/>
-                            <Label Text="{Binding StopModel.BusLineNames}"
-                                   Style="{DynamicResource ListItemDetailTextStyle}"
-                                   VerticalOptions="Fill"
-                                   TextColor="Red"/>
-                            <Label Text="{Binding StopModel.DestinationHeadsigns}"
-                                   Style="{DynamicResource ListItemDetailTextStyle}"
-                                   VerticalOptions="Fill"/>
-                            <Button x:Name="DeleteBusStop"
-                                    Text="Delete"
-                                    Command="{Binding DeleteStopCommand}"/>
-                        </StackLayout>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-    </StackLayout>
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <ViewCell>
+            <StackLayout>
+              <Grid>
+                <Grid.RowDefinitions>
+                  <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="9*" />
+                  <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Label Text="{Binding StopModel.BusLineNames}"
+                   Style="{DynamicResource ListItemDetailTextStyle}"
+                   VerticalOptions="Center"
+                   FontSize="15"
+                   Grid.Row="0"
+                   Grid.Column="0"
+                   FontAttributes="Bold"
+                   HorizontalOptions="StartAndExpand"
+                   Margin="10, 15, 10, 10"/>
+
+                <Button x:Name="DeleteBusStop"      
+                        Text="X"
+                        WidthRequest="40"
+                        HeightRequest="40"
+                        HorizontalOptions="End"
+                        FontSize="15"
+                        Style="{DynamicResource ListItemTextStyle}"
+                        Grid.Row="0"
+                   Grid.Column="1"
+                        Margin="0, 5, 0, 0"
+                        VerticalOptions="Start"
+                        BackgroundColor="Transparent"
+                        Command="{Binding DeleteStopCommand}"/>
+              </Grid>
+
+              <Label Text="{Binding StopModel.StopDesc}"
+                     Style="{DynamicResource ListItemTextStyle}"
+                     VerticalOptions="Start"
+                     FontSize="15"
+                     Margin="10, 5, 10, 5"/>
+
+              <Label Text="{Binding StopModel.DestinationHeadsigns}"
+                     Style="{DynamicResource ListItemDetailTextStyle}"
+                     VerticalOptions="Fill"
+                     FontSize="15"
+                     Margin="10, 0, 10, 10"/>
+            </StackLayout>
+
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+  </StackLayout>
 </ContentPage>

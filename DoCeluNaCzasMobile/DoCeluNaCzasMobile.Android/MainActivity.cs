@@ -6,7 +6,7 @@ using System.IO;
 
 namespace DoCeluNaCzasMobile.Droid
 {
-    [Activity(Label = "DoCeluNaCzasMobile", Icon = "@drawable/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "Do Celu Na Czas", Icon = "@drawable/iconDCNCZ", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle bundle)
