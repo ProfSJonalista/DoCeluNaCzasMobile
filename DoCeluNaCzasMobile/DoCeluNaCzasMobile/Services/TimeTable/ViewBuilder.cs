@@ -10,12 +10,12 @@ namespace DoCeluNaCzasMobile.Services.TimeTable
     {
         public ScrollView Build(Dictionary<int, List<int>> minuteDictionary, DayType dayType)
         {
-            var grid = new Grid { Margin = 20 };
+            var grid = new Grid { RowSpacing = 1 };
+            grid.Margin = new Thickness(0, 20, 0, 20);
 
             CreateColumns(grid, minuteDictionary);
             CreateRows(grid);
             InsertData(grid, minuteDictionary, dayType);
-
             return new ScrollView { Content = grid };
         }
 
@@ -33,7 +33,17 @@ namespace DoCeluNaCzasMobile.Services.TimeTable
         {
             for (var i = 0; i < 24; i++)
             {
-                grid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Star });
+                grid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Star});
+
+                if( i % 2 != 0) 
+                {
+                    var graybckg = new Label();
+                    Grid.SetRow(graybckg, i);
+                    Grid.SetColumn(graybckg, 0);
+                    Grid.SetColumnSpan(graybckg, 10);
+                    graybckg.BackgroundColor = (Color) Application.Current.Resources["LightGray"];
+                    grid.Children.Add(graybckg);
+                }
             }
         }
 
@@ -50,13 +60,17 @@ namespace DoCeluNaCzasMobile.Services.TimeTable
                 var hour = item.Key;
                 var minuteList = item.Value;
                 var hourLabel = new Label { Text = PadLeft(hour.ToString()) };
-
+                hourLabel.FontAttributes = FontAttributes.Bold;
+                hourLabel.Margin = new Thickness(10, 0, 0, 0);
                 grid.Children.Add(hourLabel, 0, hour);
 
                 foreach (var minute in minuteList)
                 {
                     var text = PadLeft(minute.ToString());
                     var minuteLabel = new Label { Text = text };
+
+
+
 
                     if (hour == nearestTime.Hours && minute == nearestTime.Minutes && !isMarked && currentDayType == dayType)
                     {

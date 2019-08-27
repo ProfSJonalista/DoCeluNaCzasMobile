@@ -20,8 +20,8 @@ namespace DoCeluNaCzasMobile.ViewModels.MainMasterPage
                 new MainMasterPageMenuItem { Id = 1, Title = "Rozkład jazdy" },
                 new MainMasterPageMenuItem { Id = 2, Title = "Opóźnienia" },
                 new MainMasterPageMenuItem { Id = 3, Title = "Mapa" },
-                new MainMasterPageMenuItem { Id = 4, Title = "Konto użytkownika" },
-                new MainMasterPageMenuItem { Id = 5, Title = "Ustawienia" },
+                //new MainMasterPageMenuItem { Id = 4, Title = "Konto użytkownika" },
+                //new MainMasterPageMenuItem { Id = 5, Title = "Ustawienia" },
             });
         }
 

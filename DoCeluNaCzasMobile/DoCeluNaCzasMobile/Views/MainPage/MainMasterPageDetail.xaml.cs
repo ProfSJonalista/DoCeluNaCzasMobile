@@ -75,8 +75,9 @@ namespace DoCeluNaCzasMobile.Views.MainPage
 
         void SetLabels()
         {
-            StartLabel.Text = RouteSearchViewModel.StartStop?.StopDesc ?? "Od";
-            DestLabel.Text = RouteSearchViewModel.DestStop?.StopDesc ?? "Do";
+
+            StartLabel.Text = RouteSearchViewModel.StartStop?.StopDesc ?? "Przystanek początkowy";
+            DestLabel.Text = RouteSearchViewModel.DestStop?.StopDesc ?? "Przystanek końcowy";
         }
     }
 }
