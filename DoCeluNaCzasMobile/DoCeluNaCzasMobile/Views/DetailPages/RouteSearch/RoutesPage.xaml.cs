@@ -15,7 +15,6 @@ namespace DoCeluNaCzasMobile.Views.DetailPages.RouteSearch
         static Timer _timer;
         readonly RouteSearchDelayService _routeSearchDelayService;
         public ObservableCollection<Route> Items { get; set; }
-
         public RoutesPage() => InitializeComponent();
 
         public RoutesPage(List<Route> routeList)
@@ -23,26 +22,44 @@ namespace DoCeluNaCzasMobile.Views.DetailPages.RouteSearch
             InitializeComponent();
             Items = new ObservableCollection<Route>(routeList);
             _routeSearchDelayService = new RouteSearchDelayService();
-
+            //route = routeList.Find(x => x )
             MyListView.ItemsSource = Items;
+
         }
 
         protected override async void OnAppearing()
         {
             base.OnAppearing();
+            
 
-            if(!_routeSearchDelayService.IsConnected())
+            if (Items.Count == 0)
+            {
+                NoRoutesLabel.IsVisible = true;
+                GridDirections.IsVisible = false;
+                AvailableIcon.IsVisible = true;
+                MyListView.IsVisible = false;
+            }
+            else
+            {
+                ChooseRouteLabel.IsVisible = true;
+                RouteDirectionFrom.Text = Items[0].FirstStop.Name;
+                RouteDirectionTo.Text = Items[0].LastStop.Name;
+            }
+            //RouteDirectionFromLabel.Text = "Nazwa przystanku";
+            if (!_routeSearchDelayService.IsConnected())
                 await _routeSearchDelayService.StartConnection();
 
             Items = await _routeSearchDelayService.GetRoutesEstimatedTimesOfArrival(Items);
             SetTimer();
+
+
         }
 
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
 
-            if(_timer != null)
+            if (_timer != null)
                 StopTimer();
         }
 

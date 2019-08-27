@@ -50,9 +50,22 @@ namespace DoCeluNaCzasMobile.Views.DetailPages.Delays
             var visible = Items.Count > 0;
 
             DelayListView.IsVisible = visible;
+            if(DelayListView.IsVisible == true)
+            {
+                TableHeader.IsVisible = true;
+            }
             DelayListView.ItemsSource = Items;
 
             NoDelaysLabel.IsVisible = !visible;
+
+            if(Items.Count == 0)
+            {
+                LineHeader.IsVisible = false;
+                DirectionHeader.IsVisible = false;
+                DelayHeader.IsVisible = false;
+                NoDelaysLabel.IsVisible = true;
+                AvailableIcon.IsVisible = true;
+            }
         }
 
         protected override void OnDisappearing()

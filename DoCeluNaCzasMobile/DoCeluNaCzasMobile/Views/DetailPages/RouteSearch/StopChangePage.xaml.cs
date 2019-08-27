@@ -37,7 +37,7 @@ namespace DoCeluNaCzasMobile.Views.DetailPages.RouteSearch
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-
+            
             if (!_routeSearchDelayService.IsConnected())
                 await _routeSearchDelayService.StartConnection();
 

@@ -13,12 +13,18 @@
             <Color x:Key="Turquoise">#007b7d</Color>
             <!--Gray-->
             <Color x:Key="Gray">#ccc</Color>
+            <!--Light Gray-->
+            <Color x:Key="LightGray">#f0f0f0</Color>
             <!--Light Turquoise -->
             <Color x:Key="Light-Turquoise">#a5b7b7</Color>
             <!--White-->
             <Color x:Key="White">#FFF</Color>
             <!-- Yellow -->
             <Color x:Key="Yellow">#f7e4a8</Color>
+            <Color x:Key="Transparent">#00000000</Color>
+
+            <Color x:Key="DepartureGreen">#35bd6b</Color>
+            <Color x:Key="DelayBlue">#34bab5</Color>
 
             <!-- Change navigation bar color -->
             <Style TargetType="NavigationPage">
