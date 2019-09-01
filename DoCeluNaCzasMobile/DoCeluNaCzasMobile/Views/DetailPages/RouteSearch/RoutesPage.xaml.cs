@@ -2,6 +2,7 @@
 using DoCeluNaCzasMobile.Services.Navigation;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Timers;
 using DoCeluNaCzasMobile.Services.RouteSearch;
 using Xamarin.Forms;
@@ -22,15 +23,12 @@ namespace DoCeluNaCzasMobile.Views.DetailPages.RouteSearch
             InitializeComponent();
             Items = new ObservableCollection<Route>(routeList);
             _routeSearchDelayService = new RouteSearchDelayService();
-            //route = routeList.Find(x => x )
             MyListView.ItemsSource = Items;
-
         }
 
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            
 
             if (Items.Count == 0)
             {
@@ -42,17 +40,16 @@ namespace DoCeluNaCzasMobile.Views.DetailPages.RouteSearch
             else
             {
                 ChooseRouteLabel.IsVisible = true;
-                RouteDirectionFrom.Text = Items[0].FirstStop.Name;
-                RouteDirectionTo.Text = Items[0].LastStop.Name;
+
+                RouteDirectionFrom.Text = Items.FirstOrDefault()?.FirstStop.Name;
+                RouteDirectionTo.Text = Items.FirstOrDefault()?.LastStop.Name;
             }
-            //RouteDirectionFromLabel.Text = "Nazwa przystanku";
+            
             if (!_routeSearchDelayService.IsConnected())
                 await _routeSearchDelayService.StartConnection();
 
             Items = await _routeSearchDelayService.GetRoutesEstimatedTimesOfArrival(Items);
             SetTimer();
-
-
         }
 
         protected override void OnDisappearing()

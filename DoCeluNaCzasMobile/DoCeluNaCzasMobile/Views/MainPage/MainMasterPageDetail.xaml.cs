@@ -27,7 +27,6 @@ namespace DoCeluNaCzasMobile.Views.MainPage
         {
             base.OnAppearing();
             BindingContext = RouteSearchViewModel;
-
             SetLabels();
         }
 
@@ -60,6 +59,10 @@ namespace DoCeluNaCzasMobile.Views.MainPage
                 return;
             }
 
+            LoadingIndicator.IsEnabled = true;
+            LoadingIndicator.IsRunning = true;
+            LoadingIndicator.IsVisible = true;
+
             RouteSearchViewModel.ViewRoutes();
         }
 
@@ -75,7 +78,9 @@ namespace DoCeluNaCzasMobile.Views.MainPage
 
         void SetLabels()
         {
-
+            LoadingIndicator.IsEnabled = false;
+            LoadingIndicator.IsRunning = false;
+            LoadingIndicator.IsVisible = false;
             StartLabel.Text = RouteSearchViewModel.StartStop?.StopDesc ?? "Przystanek początkowy";
             DestLabel.Text = RouteSearchViewModel.DestStop?.StopDesc ?? "Przystanek końcowy";
         }

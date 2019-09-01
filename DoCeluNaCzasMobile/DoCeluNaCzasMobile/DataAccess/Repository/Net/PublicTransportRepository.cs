@@ -1,4 +1,5 @@
-﻿using System.Net.Http;
+﻿using System;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace DoCeluNaCzasMobile.DataAccess.Repository.Net
@@ -9,7 +10,14 @@ namespace DoCeluNaCzasMobile.DataAccess.Repository.Net
 
         public async Task<string> DownloadDataAsync(string url)
         {
-            return await Client.GetStringAsync(url);
+            try
+            {
+                return await Client.GetStringAsync(url);
+            }
+            catch (Exception e)
+            {
+                return string.Empty;
+            }
         }
     }
 }

@@ -77,7 +77,7 @@
                                    BackgroundColor="{StaticResource DepartureGreen}">
                                 <Label x:Name="DepartureTime1" 
                                    TextColor="White"
-                                   Text="{Binding DepartureTime, StringFormat='{}{0:hh\\:mm}'}"
+                                   Text="{Binding DepartureTime, StringFormat='{}{0:HH\\:mm}'}"
                                    Style="{DynamicResource ListItemDetailTextStyle}"
                                    FontSize="16"
                                    VerticalOptions="CenterAndExpand"
@@ -90,7 +90,7 @@
                                    BackgroundColor="{StaticResource DelayBlue}">
                                 <Label x:Name="EstimatedTimeLabel" 
                                    TextColor="White"
-                                   Text="{Binding EstimatedTime, StringFormat='{}{0:hh\\:mm}'}"
+                                   Text="{Binding EstimatedTime, StringFormat='{}{0:HH\\:mm}'}"
                                    Style="{DynamicResource ListItemDetailTextStyle}"
                                    FontSize="16"
                                    VerticalOptions="CenterAndExpand"

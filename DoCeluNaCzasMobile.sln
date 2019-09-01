@@ -13,6 +13,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{BD2E1C8A-A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoCeluNaCzasMobile.Tests", "DoCeluNaCzasMobile.Tests\DoCeluNaCzasMobile.Tests.csproj", "{AD7B78B0-AE51-4FB7-9B11-4E22A2B538CA}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{44C86CC4-FF38-4A69-9B60-3BD4E6ACCADF}"
+	ProjectSection(SolutionItems) = preProject
+		DCNCMcodeMap.dgml = DCNCMcodeMap.dgml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Ad-Hoc|Any CPU = Ad-Hoc|Any CPU

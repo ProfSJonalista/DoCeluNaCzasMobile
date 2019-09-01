@@ -8,18 +8,19 @@
   <Grid
       Margin="0,20,0,0">
     <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="50" />
-            <RowDefinition Height="50" />
-            <RowDefinition Height="1" />
-            <RowDefinition Height="40" />
-            <RowDefinition Height="10" /> <!-- margin -->
-            <RowDefinition Height="50" />
-        </Grid.RowDefinitions>
+      <RowDefinition Height="50"/>
+      <RowDefinition Height="50" />
+      <RowDefinition Height="50" />
+      <RowDefinition Height="1" />
+      <RowDefinition Height="40" />
+      <RowDefinition Height="10" /><!-- margin -->
+      <RowDefinition Height="50" />
+      <RowDefinition Height="50" />
+    </Grid.RowDefinitions>
 
     <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="7*" />
-            <ColumnDefinition Width="3*" />
+      <ColumnDefinition Width="7*" />
+      <ColumnDefinition Width="3*" />
     </Grid.ColumnDefinitions>
 
     <Label x:Name="StartLabel"
@@ -28,7 +29,7 @@
            Grid.Row="0"
            VerticalOptions="Center"/>
 
-     
+
     <Button x:Name="StartStopChooseButton"
             Clicked="StartStopChooseButton_OnClicked"
             BackgroundColor="{StaticResource Turquoise}"
@@ -39,74 +40,85 @@
             HeightRequest="40"
             VerticalOptions="Center"/>
 
-        <Label x:Name="DestLabel"
-           Text="{Binding DestStop.StopDesc}"
-           Grid.Column="0"
-           Grid.Row="1"
-           VerticalOptions="Center"/>
+    <Label x:Name="DestLabel"
+       Text="{Binding DestStop.StopDesc}"
+       Grid.Column="0"
+       Grid.Row="1"
+       VerticalOptions="Center"/>
 
-        <Button x:Name="DestStopChooseButton"
-            Clicked="DestStopChooseButton_OnClicked"
-            BackgroundColor="{StaticResource Turquoise}"
-            TextColor="White"
-            Text="Wybierz"
-            Grid.Column="1"
-            Grid.Row="1"
-            HeightRequest="40"
-            VerticalOptions="Center"/>
+    <Button x:Name="DestStopChooseButton"
+        Clicked="DestStopChooseButton_OnClicked"
+        BackgroundColor="{StaticResource Turquoise}"
+        TextColor="White"
+        Text="Wybierz"
+        Grid.Column="1"
+        Grid.Row="1"
+        HeightRequest="40"
+        VerticalOptions="Center"/>
 
-        <Label x:Name="DepartureSwitchLabel"
-           Text="Odjazd"
-           Grid.Column="0"
-           Grid.Row="2"
-           VerticalOptions="Center"/>
+    <Label x:Name="DepartureSwitchLabel"
+       Text="Odjazd"
+       Grid.Column="0"
+       Grid.Row="2"
+       VerticalOptions="Center"/>
 
-        <Switch x:Name="DepartureSwitch"
-            IsToggled="{Binding Departure}"
-            Grid.Column="1"
-            Grid.Row="2"/>
+    <Switch x:Name="DepartureSwitch"
+        IsToggled="{Binding Departure}"
+        Grid.Column="1"
+        Grid.Row="2"/>
 
-        <Label x:Name="Separator"
-               Grid.ColumnSpan="2"
-               Grid.Row="3"
-               BackgroundColor="#ccc"/>
+    <Label x:Name="Separator"
+           Grid.ColumnSpan="2"
+           Grid.Row="3"
+           BackgroundColor="#ccc"/>
 
-        <DatePicker x:Name="DesiredDatePicker"
-                Grid.Column="0"
-                Grid.Row="4"
-                Grid.RowSpan="2"
-                Date="{Binding UserChosenDate}"
-                VerticalOptions="Center"/>
-
-        <TimePicker x:Name="DesiredTimePicker"
-                Grid.Column="1"
-                Grid.Row="4"
-                    Grid.RowSpan="2"
-                Time ="{Binding UserChosenTime}"
-                VerticalOptions="Center"/>
-
-        <Button x:Name="SearchRouteButton"
-            Clicked="SearchRouteButton_Clicked"
-            Text="Szukaj trasy"
-            Grid.Row="6"
+    <DatePicker x:Name="DesiredDatePicker"
             Grid.Column="0"
-            BackgroundColor="{StaticResource Turquoise}"
-            TextColor="White"
-            BorderRadius="5"
-            HeightRequest="40"
+            Grid.Row="4"
+            Grid.RowSpan="2"
+            Date="{Binding UserChosenDate}"
             VerticalOptions="Center"/>
 
-        <Button x:Name="Swap"
-            Clicked="SwapButton_Clicked"
-            Text="Zamień"
-            Grid.Row="6"
+    <TimePicker x:Name="DesiredTimePicker"
             Grid.Column="1"
-            BackgroundColor="{StaticResource Turquoise}"
-            TextColor="White"
-            BorderRadius="5"
-            HeightRequest="40"
+            Grid.Row="4"
+                Grid.RowSpan="2"
+            Time ="{Binding UserChosenTime}"
             VerticalOptions="Center"/>
 
-        <!-- left top right bottom-->
-    </Grid>
+    <Button x:Name="SearchRouteButton"
+        Clicked="SearchRouteButton_Clicked"
+        Text="Szukaj trasy"
+        Grid.Row="6"
+        Grid.Column="0"
+        BackgroundColor="{StaticResource Turquoise}"
+        TextColor="White"
+        BorderRadius="5"
+        HeightRequest="40"
+        VerticalOptions="Center"/>
+
+    <Button x:Name="Swap"
+        Clicked="SwapButton_Clicked"
+        Text="Zamień"
+        Grid.Row="6"
+        Grid.Column="1"
+        BackgroundColor="{StaticResource Turquoise}"
+        TextColor="White"
+        BorderRadius="5"
+        HeightRequest="40"
+        VerticalOptions="Center"/>
+
+    <!-- left top right bottom-->
+    <ActivityIndicator x:Name="LoadingIndicator"
+                       Grid.Row="7"
+                       Grid.Column="0"
+                       Grid.ColumnSpan="2"
+                       IsRunning="False"
+                       IsEnabled="False"
+                       IsVisible="False"
+                       Color="Turquoise"
+                       BackgroundColor="Transparent"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center"/>
+  </Grid>
 </ContentPage>

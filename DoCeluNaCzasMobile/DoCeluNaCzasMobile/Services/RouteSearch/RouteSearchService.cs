@@ -32,7 +32,7 @@ namespace DoCeluNaCzasMobile.Services.RouteSearch
             var modifiedUrl = string.Format(Urls.ROUTE_SEARCH, startStopId, destStopId, departure, desiredTime);
             var json = await _publicTransportRepository.DownloadDataAsync(modifiedUrl);
 
-            var routeList = JsonConvert.DeserializeObject<List<Route>>(json);
+            var routeList = JsonConvert.DeserializeObject<List<Route>>(json) ?? new List<Route>();
 
             NavigationService.Navigate(typeof(RoutesPage), routeList);
         }
